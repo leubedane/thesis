@@ -16,17 +16,33 @@ Nach der letzten Auswahl sind alle für die Konfiguration benötigten Elemente a
 Nachdem eine vollständige Konfiguration erzeugt wurde, wird daraus ein Excel-Dokument generiert. In diesem sind die Upgrades enthalten, die in den einzelnen Flugzeuge eingebaut werden müssen. Aus dem Dokument wird ein Upgrade-Angebot erstellt, dass anschließend dem Kunden vorgelegt wird.
 
 \section{Workflow Modellierung}
-Beim derzeitigen Konfigurationsprozess wird die eigentliche Konfiguration dem Experten überlassen. Ein Kunde wählt die Codes und Identifikationsnummern aus Katalog und derzeitigem Flugzeugbestand aus, erhält jedoch erst nach der Arbeit des Experten eine Bestätigung über die Gültigkeit der Konfiguration. Ziel sollte es daher sein, diesen Prozess kundenfreundlicher zu gestalten. Dieses Ziel soll durch folgende zwei Maßnahmen erreicht werden: \par
+Beim derzeitigen Konfigurationsprozess wird die eigentliche Konfiguration dem Experten überlassen. Ein Kunde wählt die Codes und Identifikationsnummern aus Katalog und derzeitigem Flugzeugbestand aus, erhält jedoch erst nach der Arbeit des Experten eine Bestätigung über die Gültigkeit der Konfiguration. Dieser Prozess wird bei der Portierung auf die mobile Umgebung verändert, so dass ein neuer Workflow entsteht. Die Prozesse sind im Folgenden in einen mobilen Konfigurationsprozess und den unterstützenden App-Workflow unterteilt.
+\subsection{Mobiler Konfigurationsprozess}
+Der derzeitige Workflow sollte die neuen Möglichkeiten einer mobilen Konfigurationsumgebung beinhalten. Mit der Mobilität ist ein Szenario einer direkten Konfiguration mit dem Kunden und einem Vertriebsexperten möglich. Beide können mithilfe der App direkt kommunizieren und das Ugrade gemeinsam durchführen. 
+Primäres Ziel dieser Anpassung ist den Prozess kundenfreundlicher zu gestalten. Dieses Ziel soll durch folgende zwei Maßnahmen erreicht werden: \par
 
 \begin{itemize}
         \item \textbf{Vereinfachung der Auswahl:} Das An- und Abwählen der Flugzeuge, bzw. der Upgrades soll vereinfacht werden. Die Auswahl soll nicht nur durch die Produktcodes, sondern durch verständlichere Weise erfolgen. 
         \item \textbf{Schnelleres Feedback:} Durch eine mobile Lösung soll bereits beim Kunden ein Feedback über die Gültigkeit der Konfiguration vorhanden sein.
 \end{itemize}
 
-Mit beiden Maßnahmen wird der Kunde stärker in den Prozess der Konfiguration einbezogen. Durch die mobile Umgebung ist im neuen Workflow die Möglichkeit gegeben, dass ein Vertriebsexperte mit einem Kunden gemeinsam eine Konfiguration erstellt. Durch diesen Prozess können bspw. Alternativen, die Auftreten besser mit dem Kunden geklärt werden. 
- 
+Mit beiden Maßnahmen wird der Kunde stärker in den Prozess der Konfiguration einbezogen. Im Idealfall kann der Kunde die Anwendung alleine bedienen und der Experte steht nur Beratend zur Seite. Eine weitere Besonderheit der neuen Anwendung kann sein, dass der Kunde zu einem weiteren Upgrade bewogen wird, welches er erst beim Benutzen der Anwendung entdeckt. Eine weitere Möglichkeit ist das gezielte Anzeigen von kundenspezifische Informationen, die für weitere Kaufaktivitäten sorgen können. \par
 
- Ziel muss es daher sein, die Auswahl der Konfigurationselemente Flugzeug und Upgrade zu vereinfachen, damit der Kunde besser in den Prozess integriert ist. 
+\subsection{Workflow der App}
+Der Anwendungsworkflow muss zu dem neuen fachlichen Prozess passen und ihn unterstützen. Dies geschieht durch Anpassungen an die Kommunikation mit dem Konfigurationsserver. 
+Der aktuelle Client und der Server befinden sich auf der gleichen Umgebung. Somit können beide direkt miteinander kommunizieren und benötigen keine aufwändigen Webservice Schnittstellen. Für den neuen Prozess muss der Konfigurationsserver von der mobilen Umgebung erreichbar sein. Dies bedeutet, dass es eine Schnittstelle für die App geben muss. Die Kommunikation mit dem Webserver kann durch den mobilen Einsatz erschwert werden. Dies ist beispielsweise der Fall, wenn die Konfiguration beim Kunden vor Ort stattfindet und eine schlechte, bis gar keine Verbindung vorhanden ist. Aus diesem Grund ist bei den Nicht-Funktionalen Anforderung in Abschnitt \ref{non_functional_requirements} ein sogenannter Offline Modus enthalten, der die Zusammenstellung einer Konfiguration auch ohne Anbindung an den Konfigurator ermöglicht. Um eine flüssige Navigation gewährleisten zu können, muss die Kommunikation mit dem Server auf das Wesentliche konzentriert sein. Dies bedeutet, dass eine Konfiguration erst am Ende stattfindet und die einzelnen Schritte, die im derzeitigen Client durchgeführt werden zusammengelegt werden müssen. \par
+\begin{figure}
+\label{appWorkflow}
+\centering
+\includegraphics[width=300px]{images/workflow_webgui}
+\caption{Programmablauf der Konfigurator-App}
+\end{figure}
+In Abbildung \ref{appWorkflow} ist der Anwendungsverlauf der App zu sehen. Analog zu der Weboberfläche muss zuerst ein Programm ausgewählt werden. Nach der Programmauswahl kann der Benutzer entscheiden, ob er zuerst die Flugzeuge oder die Upgrades auswählt. Sobald er beides ausgewählt hat, wird geprüft, ob der Konfigurationsserver erreichbar ist. Wenn er verfügbar ist, werden die Konfigurationsgruppen angezeigt. Andernfalls wird dem Benutzer die Möglichkeit gegeben, die aktuelle Konfiguration zu speichern. Diese kann später geladen und im "'Online-Modus"' überprüft werden. Nach erfolgter Konfiguration werden die Alternativen in einer separaten Ansicht ausgewählt. Ist die Konfiguration vollständig, so kann das Upgrade direkt bestellt werden und den Update Vorgang beenden. \par
+
+Um für einen möglichst geringen Kommunikationsaufwand mit dem Konfigurationsserver zu sorgen, wird der Server erst nach erfolgter Auswahl bedient. Auf dem Konfigurationsserver sollen alle Einzelschritte, die der vorherige Client durchgeführt hat zusammengefasst werden. 
+
+  
+
 
 \section{Mobile Plattformen}
 \subsection{Native Anwendungen}
