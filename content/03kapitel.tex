@@ -50,14 +50,30 @@ Nachdem der Workflow, sowie die Anforderungen der Anwendung erläutert wurden, f
         
         \item \textbf{Schnittstelle:} Welche Möglichkeit für eine Schnittstelle zu dem Konfiguratorserver gibt es? 
         
-        \item \textbf{Technologie:} Welche Technologien werden vom Anwendungstypen unterstützt? Gibt es ein Technologie, die der Kunde bevorzugt, bzw. komplett ausschließt. Hat die Technologie ein besonderes Alleinstellungsmerkmal?
+        \item \textbf{Kundenpräferenz:} Gibt es eine bestimmte Technologie/Plattform, die vom Kunden explizit gewünscht ist? Hat die Technologie ein besonderes Alleinstellungsmerkmal?
         
         \item \textbf{Performance:} Für die Anzeige der einzelnen Produktbilder, sowie eine schnelle Navigation innerhalb der Anwendung ist die Performance des jeweiligen Typs wichtig.      
+        
 \end{itemize}
-
+Bei der Auswahl der Technologien werden nur Plattformen ausgewählt, die auf Tabletgeräten verfügbar sind. Es werden alle Kriterien für den Anwendungstyp bewertet und zusätzlich für die einzelnen Technologien.
 
 
 \subsection{Native Anwendungen}
+Native Anwendungen sind auf die jeweilige Zielplattform beschränkt. Dieser Typ einer Anwendung beschränkt sich auf das zuvor gewählte Betriebssystem. Der geschriebene Programmcode kann meistens nur auf der Zielplattform verwendet werden. Für die Bewertung von nativen Anwendungen werden die drei am Meisten genutzten Betriebssysteme im Tabletbereich verwendet: Android, iOS und Windows 8\cite{bib:nativeBS}. \par
+
+\textbf{Offlinemodus:} Bei einer nativen App ist keine Serveranbindung notwendig. Alle Daten können ohne eine Internetverbindung lokal auf dem Gerät selbst vorhanden sein. In einer nativen Anwendung können alle Dateioperationen, wie auf einem normalen Betriebssystem durchgeführt werden. Dies hat den großen Vorteil, dass auf den Speicher zugegriffen werden kann. Große Datensätze, die beim Offlinemodus anfallen, können damit auf dem Gerät gespeichert werden.  In diesem Kriterium ist das Verhalten für alle drei Betriebssysteme gleich, womit keine Unterscheidung der einzelnen Technologien notwendig ist.\par
+
+\textbf{Sicherheit:} Durch die native Umgebung ist die Anwendung nur auf dem Betriebssystem vorhanden und in einer geschlossenen Umgebung. Die Kommunikation mit dem Webserver muss allerdings selbstständig verschlüsselt werden, insbesondere wenn Die Anwendung bei einem Kunden in dessen Netz verwendet wird. Ein weiteres Problem, welches native Anwendungen besitzen sind die lokalen Sicherheitslücken eines jedes Betriebssystems. Regelmäßig tauchen neue versteckte Fehler im Betriebssystem auf, die Schaden zufügen könnten. 
+
+\begin{itemize}
+        \item \textbf{Android und iOS:} Bei beiden Betriebssystemen werden regelmäßig Sicherheitslücken offengelegt. Die Angriffe auf beide Systeme ist zunehmend, wobei das iOS-System im Vergleich besser abschneidet und in mehreren 
+        
+        \item \textbf{Windows 8:} Durch die hohe Verbreitung von Windows Betriebssystemen sind diese Systeme besonders anfällig, bzw. oft verwendete Ziele bei Angriffen. Die breite Anzahl der Nutzer sorgt jedoch für ausreichend Lösungen zur Sicherung der Anwendung.
+        
+       
+\end{itemize}
+
+\textbf{Schnittstelle:} Für die Kommunikation mit dem Konfigurationsserver bieten sich bei einer nativen Anwendung Webservices an. Diese können in den Standards 
 \subsection{Web Anwendungen}
 phone gapp, gwt, 
 \subsection{Hybride Anwendungen}
