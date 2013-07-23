@@ -1,5 +1,5 @@
 \chapter{Konzeption der Anwendung}\label{chapter_3}
-Im vorigen Kapitel wurden die Anforderungen, sowie das Umfeld der Arbeit erläutert. In diesem Abschnitt wird der aktuelle Workflow beim Konfigurieren analysiert und anschließend an die mobile Umgebung angepasst. Nach der Workflow-Modellierung wird mit einer Entscheidung über die richtige Plattform fortgefahren.
+Im vorigen Kapitel wurden die Anforderungen, sowie das Umfeld der Arbeit erläutert. In diesem Abschnitt wird der aktuelle Workflow beim Konfigurieren analysiert und anschließend an die mobile Umgebung angepasst. Nach der Workflow-Modellierung wird mit einer Entscheidung über den richtigen Typ der App.
 
 \section{Aktueller Konfigurationsprozess}
 Im aktuellen Prozess des Kunden wird ein Upgrade zuerst über den Produktkatalog gefunden. Im Katalog ist eine eindeutige Nummer enthalten, die bei der Bestellung verwendet wird. Die Fluggesellschaft nennt zu der Upgrade-Nummer, die Flugzeuge, die dieses Upgrade erhalten sollen. Diese Informationen werden von einem Design-Manager angenommen. Für die Weiterverarbeitung werden diese Informationen im Konfigurator-Client aus Abschnitt \ref{airbusConfigurator} erfasst. Die einzelnen Schritte der Erfassung sind in Abbildung \ref{webguiWorkflow} zu sehen. \par
@@ -34,18 +34,31 @@ Der aktuelle Client und der Server befinden sich auf der gleichen Umgebung. Somi
 \begin{figure}
 \label{appWorkflow}
 \centering
-\includegraphics[width=300px]{images/workflow_webgui}
+\includegraphics[width=400px]{images/workflow_app}
 \caption{Programmablauf der Konfigurator-App}
 \end{figure}
-In Abbildung \ref{appWorkflow} ist der Anwendungsverlauf der App zu sehen. Analog zu der Weboberfläche muss zuerst ein Programm ausgewählt werden. Nach der Programmauswahl kann der Benutzer entscheiden, ob er zuerst die Flugzeuge oder die Upgrades auswählt. Sobald er beides ausgewählt hat, wird geprüft, ob der Konfigurationsserver erreichbar ist. Wenn er verfügbar ist, werden die Konfigurationsgruppen angezeigt. Andernfalls wird dem Benutzer die Möglichkeit gegeben, die aktuelle Konfiguration zu speichern. Diese kann später geladen und im "'Online-Modus"' überprüft werden. Nach erfolgter Konfiguration werden die Alternativen in einer separaten Ansicht ausgewählt. Ist die Konfiguration vollständig, so kann das Upgrade direkt bestellt werden und den Update Vorgang beenden. \par
+In Abbildung \ref{appWorkflow} ist der Anwendungsverlauf der App zu sehen. Analog zu der Weboberfläche wird bei einer neuen Konfiguration zuerst ein Programm (\textbf{Programmauswahl}) ausgewählt. Nach der Auswahl gelangt der Benutzer in eine \textbf{Zusammenfassung} der aktuellen Konfiguration. Von dieser Ansicht aus können Flugzeuge (\textbf{Flugzeugauswahl}) oder  Upgrades (\textbf{Upgradeauswahl}) selektiert werden. Sobald beides vorhanden ist, wird die Erreichbarkeit der Konfigurationsschnittstelle geprüft. Bei Verfügbarkeit befinden wir uns im "'Online"' Modus und es werden die Konfigurationsgruppen angezeigt. Nach erfolgter Konfiguration werden die Alternativen in einer separaten Ansicht (\textbf{Alternativenauswahl}) ausgewählt. Ist die Konfiguration vollständig, so kann das Upgrade direkt bestellt werden und den Update Vorgang beenden. Ist der Server nicht verfügbar, kann der Benutzer die aktuelle Konfiguration speichern und damit den Prozess abschließen. Anschließend kann die Auswahl direkt über den Startbildschirm geladen werden. \par
 
-Um für einen möglichst geringen Kommunikationsaufwand mit dem Konfigurationsserver zu sorgen, wird der Server erst nach erfolgter Auswahl bedient. Auf dem Konfigurationsserver sollen alle Einzelschritte, die der vorherige Client durchgeführt hat zusammengefasst werden. 
+Um für einen möglichst geringen Kommunikationsaufwand mit dem Konfigurationsserver zu sorgen, wird der Server erst nach erfolgter Auswahl bedient. Der Typ bezieht sich auf eine Art Die Kommunikation wird alle zuvor beinhalteten Einzelschritte auf dem aktuellen Client zu einem Zusammenfügen. Die Trennung von Online (rot) und Offline (blau)  ist in der Abbildung ebenfalls aufgezeigt. 
 
-  
+\section{Auswahl der Anwendungsplattform}
+Nachdem der Workflow, sowie die Anforderungen der Anwendung erläutert wurden, folgt in diesem Abschnitt die Auswahl der passenden Anwendungsplattform. Es werden die drei verschiedenen Anwendungstypen nativ, web und hybrid untersucht \cite{bib:mobilePlattform}. Bei jeder dieser Plattformen werden die bekanntesten Technologien verwendet. Die Untersuchung beruht auf den in Kapitel \ref{requirements} gestellten Anforderungen. Es werden folgende Auswahlkriterien verwendet:
+\begin{itemize}
+        \item \textbf{Offlinemodus:} Können offline Daten beliebig gespeichert werden? Gibt es eine passende Technologie für einen solchen Modus?
+        
+        \item \textbf{Sicherheit:} Da bei der Konfiguration sensible Daten verwendet werden, muss die Anwendung entsprechend gesichert werden können. Die einzelnen Sicherungsmaßnahmen sollen hierbei untersucht werden.
+        
+        \item \textbf{Schnittstelle:} Welche Möglichkeit für eine Schnittstelle zu dem Konfiguratorserver gibt es? 
+        
+        \item \textbf{Technologie:} Welche Technologien werden vom Anwendungstypen unterstützt? Gibt es ein Technologie, die der Kunde bevorzugt, bzw. komplett ausschließt. Hat die Technologie ein besonderes Alleinstellungsmerkmal?
+        
+        \item \textbf{Performance:} Für die Anzeige der einzelnen Produktbilder, sowie eine schnelle Navigation innerhalb der Anwendung ist die Performance des jeweiligen Typs wichtig.      
+\end{itemize}
 
 
-\section{Mobile Plattformen}
+
 \subsection{Native Anwendungen}
 \subsection{Web Anwendungen}
+phone gapp, gwt, 
 \subsection{Hybride Anwendungen}
 \subsection{Abwägung}
