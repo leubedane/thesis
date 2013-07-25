@@ -41,40 +41,62 @@ In Abbildung \ref{appWorkflow} ist der Anwendungsverlauf der App zu sehen. Analo
 
 Um für einen möglichst geringen Kommunikationsaufwand mit dem Konfigurationsserver zu sorgen, wird der Server erst nach erfolgter Auswahl bedient. Der Typ bezieht sich auf eine Art Die Kommunikation wird alle zuvor beinhalteten Einzelschritte auf dem aktuellen Client zu einem Zusammenfügen. Die Trennung von Online (rot) und Offline (blau)  ist in der Abbildung ebenfalls aufgezeigt. 
 
-\section{Auswahl der Anwendungsplattform}
-Nachdem der Workflow, sowie die Anforderungen der Anwendung erläutert wurden, folgt in diesem Abschnitt die Auswahl der passenden Anwendungsplattform. Es werden die drei verschiedenen Anwendungstypen nativ, web und hybrid untersucht \cite{bib:mobilePlattform}. Bei jeder dieser Plattformen werden die bekanntesten Technologien verwendet. Die Untersuchung beruht auf den in Kapitel \ref{requirements} gestellten Anforderungen. Es werden folgende Auswahlkriterien verwendet:
-\begin{itemize}
-        \item \textbf{Offlinemodus:} Können offline Daten beliebig gespeichert werden? Gibt es eine passende Technologie für einen solchen Modus?
-        
-        \item \textbf{Sicherheit:} Da bei der Konfiguration sensible Daten verwendet werden, muss die Anwendung entsprechend gesichert werden können. Die einzelnen Sicherungsmaßnahmen sollen hierbei untersucht werden.
-        
-        \item \textbf{Schnittstelle:} Welche Möglichkeit für eine Schnittstelle zu dem Konfiguratorserver gibt es? 
-        
-        \item \textbf{Kundenpräferenz:} Gibt es eine bestimmte Technologie/Plattform, die vom Kunden explizit gewünscht ist? Hat die Technologie ein besonderes Alleinstellungsmerkmal?
-        
-        \item \textbf{Performance:} Für die Anzeige der einzelnen Produktbilder, sowie eine schnelle Navigation innerhalb der Anwendung ist die Performance des jeweiligen Typs wichtig.      
-        
-\end{itemize}
-Bei der Auswahl der Technologien werden nur Plattformen ausgewählt, die auf Tabletgeräten verfügbar sind. Es werden alle Kriterien für den Anwendungstyp bewertet und zusätzlich für die einzelnen Technologien.
+\section{Grundlegende Anforderungen} \label{requirements}
+Die Anwendung ist kein vom Kunden vorgegebenes Projekt. Dies hat zur Folge, dass es keine strikten Anforderungen an die App gibt. Die Anwendung soll, wie in Abschnitt \ref{goal} festgelegt den Konfigurationsprozess des Kunden vereinfachen und "mobil" verfügbar machen. Der Prototyp soll den Kunden überzeugen, seinen derzeitigen Konfigurationsprozess in den Neuen zu überführen. Die Anforderungen an die Software müssen demnach so festgelegt werden, dass sie für eine hohe Akzeptanz beim Kunden sorgt. Damit die Anwendung akzeptiert wird, müssen alle Gütekriterien dieses Ziel verfolgen. \par
+
+Die Festlegung der Kriterien ist nach Rücksprache mit den Entwicklern und dem Projektleiter des Kunden entstanden. Gemeinsam wurde eine Priorisierung der einzelnen Anforderungen entsprechend der Zielsetzung erarbeitet. Im Folgenden ist das Ergebnis in Funktionale und Nicht-Funktionale Anforderungen eingeordnet. Fachliche Funktionen der Anwendung sind in den funktionalen Anforderungen enthalten. Diese wurden anhand der bestehenden Software und den Möglichkeiten des Konfigurators erstellt. Weiterhin wurden zusätzliche Anforderungen, die aufgrund der mobilen Umgebung notwendig sind, hinzugefügt. Bei den Nicht-Funktionalen Kriterien steht die Usability, das Anpassen an die Umgebung , sowie die Kundenbegeisterung im Vordergrund. 
+
+\subsection{Abgrenzung der Anforderungen}
+Aufgrund der begrenzten Zeit im Rahmen dieser Arbeit wird die Anwendung prototypisch implementiert. Dies bedeutet, dass die Daten nicht vollständig sein müssen. Allerdings müssen die Daten in sich konsistent und auch an die Datenstruktur des Kunden angelehnt sein. Der Prototyp soll die Möglichkeiten einer mobilen,  auf den Kunden zugeschnittenen, Konfigurationslösung zeigen. Für das Erreichen dieses Zieles werden zwei abgeschlossene Use-Cases bei innerhalb der Arbeit implementiert, die alle Funktionen der Anwendung beinhalten. Die Auswahl dieser Use-Cases ist Teil dieser Arbeit und wird im nächsten Kapitel beschrieben. \par
+
+ Die bestehenden Funktionen des Konfigurationsservers werden verwendet. Es sind evtl. Anpassungen an die Reihenfolge der Aufrufe aufgrund der mobilen Zielumgebung notwendig. Um die Konfigurationsergebnisse empfangen zu können, soll eine einfache Webservicekommunikation mit dem Server stattfinden, die Kommunikationssicherung, wie Authentifizierung und Verschlüsselung ist nicht Teil der Arbeit. Dies soll bei einer späteren, vollständigen Implementierung berücksichtigt werden.
+
+\subsection{Nicht-Funktionale Anforderungen}\label{non_functional_requirements}
+\begin{tabular}[H]{| p{0.5cm} | p{2.2cm} | p{4.5cm} | p{5.3cm} | p{1.3cm} |}
+\toprule[2pt] \rowcolor{dunkelgrau}
+\hline
+  NR. & Anforderung & Beschreibung & Details & Priorität \\
+  \hline
+  N1 & Einfache \newline Bedienung & Die Anwendung soll von unerfahrenen Benutzern schnell bedient werden können.& Schwerpunkte der Softwareergonomie\cite{bib:softwareErgonomie}: 
+  \begin{itemize}
+        \item Selbstbeschreibungs-fähigkeit
+        \item Lernförderlichkeit
+        \item Erwartungs-konformität
+     \end{itemize}
+   & A \\
+  \hline
+  N2 & Schnelle Bedienung & Die Auswahl der einzelnen Komponenten soll möglichst schnell getätigt werden können. & Es muss für eine flüssige Navigation zwischen den einzelnen Seiten gesorgt werden. Der Benutzer sollte keine langen Wartezeiten beim Bedienen der Anwendung haben. & A \\
+  \hline
+    N3 & Offline-Online Modus & Die Anwendung soll einen Offline- und Online-Modus enthalten & Es sollen Konfigurationsdaten offline zusammengestellt werden können, die später oder zeitgleich online (mit Konfigurationsserver) geprüft werden. & A \\
+    \hline
+    N4 & Allein-stellungs-merkmal & Um den Kunden zu begeistern ist ein besonderes Feature, welches die Anwendung als Alleinstellungsmerkmal besitzt wünschenswert.& Es sollen besonders "'aufregende"' Features, die eine Technologie bietet in die Anwendung integriert und in einem sinnvollen Kontext genutzt werden.  & B\\
+    \hline
+\bottomrule[2pt]
+\end{tabular}
+
+\subsection{Funktionale Anforderungen}
+\begin{tabular}[H]{| p{0.4cm} | p{2.3cm} | p{4.5cm} | p{5.3cm} | p{1.3cm} |}
+\toprule[2pt] \rowcolor{dunkelgrau}
+\hline
+  NR. & Anforderung & Beschreibung & Details & Priorität \\
+  \hline
+  F1 & Upgrade-auswahl & Es sollen Upgrades für Flugzeuge auswählbar sein & Bevor die Auswahl stattfindet, soll es verschiedene Filtermöglichkeiten geben, wie beispielsweise der Flugzeugtyp oder die Art des Upgrades.
+   & A \\
+  \hline
+  F2 & Flugzeug-auswahl & Es müssen Flugzeuge eines bestimmten Kunden auswählbar sein. & Es soll auch hier, analog zu B1 die Möglichkeit der Auswahl von Flugzeugen auf einen vorher gefilterten Datensatz geben. & A \\
+  \hline
+    F3 & Konfiguration & Nach erfolgter Auswahl werden die Ergebnisse der Konfiguration dargestellt. & Kommunikation mit dem Konfigurationsserver, sowie die Darstellung der Ergebnisse auf dem Client& A \\
+    \hline
+     F4 & Alternativen & Bei mehreren Möglichkeiten einer Auswahl sollen Alternativen ausgewählt werden können & Übersichtliche Darstellung von Alternativenauswahl.& A \\
+        \hline
+    F5 & Speichern & Die getätigte Auswahl soll gespeichert werden& Nach Abschluss der Konfiguration soll diese lokal gespeichert werden, um ein erneutes Laden zu ermöglichen. & B\\
+    \hline
+    F6 & Laden & Getätigte Konfigurationen müssen geladen werden können& Beim Start der Anwendung sollen getätigte Konfigurationen geladen und angezeigt werden können & B\\
+    \hline
+\bottomrule[2pt]
+\end{tabular}
 
 
-\subsection{Native Anwendungen}
-Native Anwendungen sind auf die jeweilige Zielplattform beschränkt. Dieser Typ einer Anwendung beschränkt sich auf das zuvor gewählte Betriebssystem. Der geschriebene Programmcode kann meistens nur auf der Zielplattform verwendet werden. Für die Bewertung von nativen Anwendungen werden die drei am Meisten genutzten Betriebssysteme im Tabletbereich verwendet: Android, iOS und Windows 8\cite{bib:nativeBS}. \par
 
-\textbf{Offlinemodus:} Bei einer nativen App ist keine Serveranbindung notwendig. Alle Daten können ohne eine Internetverbindung lokal auf dem Gerät selbst vorhanden sein. In einer nativen Anwendung können alle Dateioperationen, wie auf einem normalen Betriebssystem durchgeführt werden. Dies hat den großen Vorteil, dass auf den Speicher zugegriffen werden kann. Große Datensätze, die beim Offlinemodus anfallen, können damit auf dem Gerät gespeichert werden.  In diesem Kriterium ist das Verhalten für alle drei Betriebssysteme gleich, womit keine Unterscheidung der einzelnen Technologien notwendig ist.\par
 
-\textbf{Sicherheit:} Durch die native Umgebung ist die Anwendung nur auf dem Betriebssystem vorhanden und in einer geschlossenen Umgebung. Die Kommunikation mit dem Webserver muss allerdings selbstständig verschlüsselt werden, insbesondere wenn Die Anwendung bei einem Kunden in dessen Netz verwendet wird. Ein weiteres Problem, welches native Anwendungen besitzen sind die lokalen Sicherheitslücken eines jedes Betriebssystems. Regelmäßig tauchen neue versteckte Fehler im Betriebssystem auf, die Schaden zufügen könnten. 
 
-\begin{itemize}
-        \item \textbf{Android und iOS:} Bei beiden Betriebssystemen werden regelmäßig Sicherheitslücken offengelegt. Die Angriffe auf beide Systeme ist zunehmend, wobei das iOS-System im Vergleich besser abschneidet und in mehreren 
-        
-        \item \textbf{Windows 8:} Durch die hohe Verbreitung von Windows Betriebssystemen sind diese Systeme besonders anfällig, bzw. oft verwendete Ziele bei Angriffen. Die breite Anzahl der Nutzer sorgt jedoch für ausreichend Lösungen zur Sicherung der Anwendung.
-        
-       
-\end{itemize}
-
-\textbf{Schnittstelle:} Für die Kommunikation mit dem Konfigurationsserver bieten sich bei einer nativen Anwendung Webservices an. Diese können in den Standards 
-\subsection{Web Anwendungen}
-phone gapp, gwt, 
-\subsection{Hybride Anwendungen}
-\subsection{Abwägung}
