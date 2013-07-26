@@ -9,16 +9,27 @@ Voraussetzung für diesen Trend ist eine veränderte Wahrnehmung des Kunden. Das
 Die zweite große Herausforderung entsteht bei baulichen Abhängigkeiten der einzelnen Produktteile. Bei einem komplexen Produkt mit vielen Einzelteilen können viele Abhängigkeiten entstehen. Wenn bei einem Auto bspw. ein bestimmter Motor ausgewählt wurde, so lassen sich nur für den Motor passende Getriebe einbauen. Durch die Verwendung mehrerer Möglichkeiten für eine bestimmte Einzelkomponente steigt ebenfalls die Anzahl der Abhängigkeiten. Die Prüfung dieser Abhängigkeiten muss ein Experte durchführen, der sich bestens mit der Produktzusammensetzung auskennt. Damit die einzelnen Vorgänge nicht zu komplex werden, müssen geeignete Formen der Darstellung gefunden werden.
 
 \subsection{Produktkatalog}
-Um dem Kunden einen Einblick in das Produkt zu verschaffen werden sogenannte Produktkataloge verwendet. Diese Kataloge sind meist in Papierform vorhanden und enthalten für den Kunden relevante Informationen über das Produkt. 
-
-Für die Zusammenstellung eines Produktes benötigt der Kunde ein geeignetes Hilfsmittel. Ein solches Hilfsmittel kann ein Produktkatalog sein. In einem Katalog werden die einzelnen Komponenten eines Produktes dargestellt.  
+Um dem Kunden einen Einblick in das Produkt zu verschaffen werden sogenannte Produktkataloge verwendet. Diese Kataloge sind meist in Papierform vorhanden und enthalten für den Kunden relevante Informationen über das Produkt.  Hierbei wird oben genanntes Ziel, beim Kunden eine andere Sicht des Produktes zu erzeugen, verfolgt. Für das Erreichen dieses Ziels bestehen Produktkataloge aus anschaulichen Bildern und besitzen eine übersichtliche Struktur für ein schnelles Finden des gewünschten Produktes. Die Herausforderung bei einem Katalog besteht bei der Abwägung, wie viele technische Informationen enthalten sein müssen, damit das Produkt für den Kunden konfigurierbar wird. Je weniger der Kunde von der technischen Seite wissen muss, desto einfacher gestaltet sich der gesamte Konfigurationsprozess.  
 
 
-\subsection{boolesche Logik in der Produktmodellierung}
+\subsection{Boolesche Algebra in der Produktmodellierung}
+Die Zweite bereits genannte Herausforderung bei Produkten ist das Auswerten bzw. Modellieren der  komplexen Abhängigkeiten von Einzelbauteilen.  Ein Ansatz zur Lösung dieses Problems ist die boolesche Algebra. Bei der booleschen Algebra werden zwei Werte: wahr und falsch definiert \cite{bib:boolescheAlgebra1}. In der Aussagenlogik wird dies so verwendet, dass eine Aussage, wie "'Heute regnet es"' entweder wahr oder falsch sein kann \cite{bib:boolescheAlgebra2}. Mithilfe von verschiedenen Operatoren lassen sich die Aussagen miteinander Verknüpfen, so dass auch komplexere Zusammenhänge möglich sind. Grundlegend zu nennen sind hier die Disjunktion, bei der einer von zwei Aussagen wahr sein muss, um den kompletten Ausdruck wahr werden zu lassen. Bei der Konjunktion müssen beide Aussagen zutreffend sein. Um Schlussfolgerungen durchführen zu können ist die sogenannte Wenn-Dann Verknüpfung wichtig. Diese besagt, dass eine Aussage wahr ist, sobald eine Andere erfüllt ist.\par
 
+Übertragen auf das Modellieren eines Produktes mit den Abhängigkeiten der Einzelbauteile lassen sich mithilfe der booleschen Algebra verknüpfen. Eine Auswertung dieser Modellierung erzeugt eine klare Aussage über die technische Umsetzung der aktuellen Auswahl. Hierbei können komplexe Zusammenhänge innerhalb eines Produktes korrekt abgebildet werden. Für das Auto Beispiel wäre eine Modellierung der Beziehung von Motor und Getriebe in folgender Form möglich: \par
+\begin{center}
+$ Verwendung von Motor A    \Rightarrow Einbau von Getriebe A $
+\end{center} \par
+Bedeutung: Wenn der Motor A verwendet werden soll, dann muss das Getriebe A eingebaut werden, damit die Aussage (Verwendung des Motors A) wahr ist. 
+\par
+Ein Problem, welches bei der Modellierung mit booleschen Regeln auftritt sind sogenannte Alternativen. Diese treten bei einer Zusammenstellung auf, bei der es mehrere Möglichkeiten gibt, wie eine Aussage wahr werden kann. Ein Beispiel wäre hier, dass die Auswahl der Reifen gefordert wird, wenn ein Motor und ein Getriebe ausgewählt wurde. Eine Beispiel Modellierung würde folgendermaßen aussehen: \par
+\begin{center}
+$ Motor A \wedge Getriebe A \wedge (Sitz A \vee Armaturenbrett B )  $
+\end{center} \par
+Damit diese Bedingung wahr werden kann, müssen entweder Sitz A oder Armaturenbrett B ausgewählt werden. Eine weitere Möglichkeit in diesem Fall wäre die Auswahl beider Komponenten. Dieser konkrete Fall würde beim Einbau von Motor A und Getriebe A somit drei Alternativen bieten. Dieses Problem bei der Produktkonfiguration mit booleschen Regeln gilt es zu beachten, sowie Möglichkeiten zu finden, wie diese ausgewertet werden können.
 
 \section{Produktkonfiguratoren}\label{konfiguratoren}
-Das Ziel des Produktkonfigurators ist es, produktspezifisches Wissen für die Anwender bereit zu stellen. Dieses hilft beim individuellen Zusammenstellung des Produktes. Ein solches System wird in die Kategorie der Expertensysteme\cite{bib:puppe} oder wissensbasierte Systeme eingeordnet. Der Aufbau eines solches System ist in Abbildung \ref{expert_system_structure} zu sehen. \par
+Die Definition, welche Probleme bei einem komplexen Produkt auftreten können wurde im vorigen Abschnitt geklärt. Das Problem, wie eine große Anzahl der booleschen Regeln, die für die Produktmodellierung benötigt werden verarbeitet werden können bleibt bestehen. Eine Lösungsmöglichkeit bieten sogenannte Produktkonfiguratoren.
+Das Ziel des Produktkonfigurators ist es, produktspezifisches Wissen für die Anwender bereit zu stellen, welches zuvor von Experten in das System eingepflegt wurde. Dieses hilft beim individuellen Zusammenstellung des Produktes durch die Verwendung des Produktwissens. Ein solches System wird in die Kategorie der Expertensysteme\cite{bib:puppe} oder wissensbasierte Systeme eingeordnet. Der Aufbau eines solches System ist in Abbildung \ref{expert_system_structure} zu sehen. \par
 \begin{figure}
 \centering
 \includegraphics[width=250px]{images/expertensysteme}
@@ -29,35 +40,40 @@ Das Ziel des Produktkonfigurators ist es, produktspezifisches Wissen für die An
 Die zentrale Komponente ist die \textit{Wissensverarbeitung}. Diese hat auf alle weiteren Komponenten Zugriff und interagiert mit diesen. Es werden die erhaltenen Fakten mithilfe der vorhandenen Regeln verknüpft. Aus der Verknüpfung werden neue Fakten gewonnen, die auf der \textit{Benutzerschnittstelle} angezeigt werden. Die Wissensbasis ist für das Speichern des Expertenwissens in Fakten und Regeln zuständig. Die Speicherung der Daten kann auf folgende zwei Arten geschehen\cite{bib:expert1}:\par
 \begin{itemize}
         \item \textbf{generisch}: unabhängig vom aktuellen Anwendungsfall. Meist in einfachen Wenn-Dann-Regeln oder auf einem Modell beruhend. 
-        \item \textbf{fallspezifisch}: zur Lösung eines konkreten Anwendungsfall
+        \item \textbf{fallspezifisch}: stellt Lösungen für einen konkreten Anwendungsfall bereit.
 \end{itemize}
  Die Pflege dieser Basis erfolgt durch die \textit{Wissenserwerbskomponente}. Mit deren Hilfe lässt sich das vorhandene Expertenwissen in das System einpflegen. Die \textit{Erklärungskomponente} unterstützt das Nachvollziehen des Ergebnisses durch Erläuterungen zu den getätigten Entscheidungen.
 
 \subsection{CAS Configurator Merlin Enterprise} \label{configurator}
-Das Produkt CAS Configurator Merlin Enterprise ist die Konfigurationslösung der CAS Software AG für große Unternehmen. Das Produkt besteht aus einigen Standardkomponenten, die auf die einzelnen Bedürfnisse der Großkunden angepasst werden. In Abbildung \ref{airbus_structure} ist der Aufbau und das Zusammenspiel der verschiedenen Komponenten des Konfigurators zu sehen. \par
+Das Produkt CAS Configurator Merlin Enterprise ist die Konfigurationslösung der CAS Software AG für große Unternehmen. Das Produkt besteht aus Standardkomponenten, die auf die einzelnen Bedürfnisse der Großkunden angepasst werden. In Abbildung \ref{airbus_structure} ist der Aufbau und das Zusammenspiel der verschiedenen Komponenten des Konfigurators zu sehen: \par
 \begin{figure}
 \centering
 \includegraphics[width=\hsize]{images/AirbusAufbau}
-\caption{Architektur der Airbus Komponenten}
+\caption{Architektur der Merlin Enterprise Komponenten}
 \label{airbus_structure}
 \end{figure}
-Die Wissensverarbeitungs-Komponente aus Abschnitt \ref{konfiguratoren} ist hier der sogenannte \textit{Konfigurationskern}. Er ist für die Auswertung der getätigten Auswahl von Elementen des Produktes zuständig. Mithilfe von booleschen Regeln, welche mit dem \textit{Produktpflegeeditor} modelliert wurden und in einer \textit{Datenbank} gespeichert sind, wird die Auswahl verifiziert.
+Die Wissensverarbeitungs-Komponente aus Abschnitt \ref{konfiguratoren} ist hier der sogenannte \textit{Konfigurationskern}. Der Kern wertet die zuvor zusammengestellten Produktkomponenten aus. Für die Auswertung verwendet er sogenannte Regeldateien, die mit dem \textit{Produktpflegeeditor} modelliert wurden. Diese Regeln sind auf booleschen Algebra aufgebaut um komplexe Abhängigkeiten der Einzelteile eines Produktes modellieren zu können. Die Speicherung dieser Dateien erfolgt in der \textit{Datenbank}.
 \par
- Der Konfigurationskern berechnet ebenfalls sogenannte Alternativen. Diese treten auf, sobald die derzeitige Selektion alleine, ohne Hinzunahme von weiteren Bauteilen, nicht umsetzbar ist. Der Konfigurator kann in diesem Fall neue Möglichkeiten (Alternativen) vorschlagen, damit die Konfiguration durchgeführt werden kann. Die Auswahl der Konfigurationselemente erfolgt im sogenannten Konfigurator-Client. Der Client ist mit der Benutzerschnittstelle im Expertensystem zu vergleichen. \par
+ Der Konfigurationskern berechnet ebenfalls sogenannte Alternativen. Diese treten auf, sobald die derzeitige Selektion alleine, ohne Hinzunahme von weiteren Bauteilen, nicht umsetzbar ist. Der Konfigurator kann in diesem Fall neue Möglichkeiten (Alternativen) vorschlagen, damit die Konfiguration durchgeführt werden kann. Die Auswahl der Konfigurationselemente erfolgt im sogenannten \textit{Konfigurator-Client}. Der Client ist mit der Benutzerschnittstelle im Expertensystem zu vergleichen. \par
 
-Der Konfigurationskern, sowie der Client befinden sich auf einem Java-Applikations-Server. Der Produktpflegeeditor ist eine eigenständige Rich-Client Anwendung, welche auf dem Eclipse Rich-Client-Plattform Framework\cite{bib:eclipseRCP} basiert.
+Der Konfigurationskern, sowie der Client befinden sich auf einem Java-Application-Server. Der Produktpflegeeditor ist eine eigenständige Rich-Client Anwendung, welche auf dem Eclipse Rich-Client-Plattform Framework\cite{bib:eclipseRCP} basiert.
 
-\subsection{Konfigurator des Kunden Airbus} \label{airbusConfigurator}
-Die Arbeit wird speziell für den Flugzeughersteller Airbus\footnote{http://www.airbus.com/} angefertigt und beruht damit auf deren Konfigurationsmöglichkeiten. Airbus verwendet den Konfigurator für das Upgraden von bereits vorhandenen Flugzeugen einzelner Fluggesellschaften. Ein Beispiel für ein solches Upgrade können diverse Systemupgrades, wie bspw. ein neues Navigationssystem oder Ähnliches sein. Eine weitere Besonderheit im Konfigurationsprozess ist das Prüfen mit einzelnen Flugzeugen. Jedes verkaufte Flugzeug ist in der Datenbasis erfasst, sowie deren genaue Spezifikation und Bauteile. Der Konfigurator kann die Baubarkeit der einzelnen Upgrades genau auf ein bestimmtes Flugzeug prüfen lassen. \par
+\subsection{Anwendungsbeispiel der Arbeit} \label{airbusConfigurator}
+Damit die Arbeit anhand eines geeigneten Beispiels durchgeführt werden kann, wird der vorhandene Produktkonfigurator des Kunden Airbus verwendet\footnote{http://www.airbus.com/}.
+Die Konfigurationslösung wird für den Upgradeprozess eines vorhandenen Flugzeuges verwendet.
+Dieses Anwendungsfeld ist besonders herausfordern, da somit zu der Auswahl der Produktkomponenten zusätzlich einzelne oder mehrere Flugzeuge ausgewählt werden müssen. Dies hat zur Folge, dass eine übersichtliche Darstellung der Upgrades alleine nicht ausreicht. Es muss ebenfalls eine Lösung für die einzelnen  Dadurch, dass jedes Flugzeug individuell zusammengestellt wurde, muss jedes auch eigenständig überprüft werden. 
+Ein Beispiel für ein Upgrade in diesem Bereich können diverse Systemupgrades, wie bspw. ein neues Navigationssystem sein. 
+\par
 
-%TODO Beschreibung
- Bei der Modellierung von Konfigurationen werden sogenannte Status verwendet. Diese Status (engl. states) werden für Flugzeuge angelegt. Jeder einzelne Status repräsentiert eine erreichbare Konfiguration. Um einen Übergang zu einem state zu erreichen, wird ein bestimmtes Upgrade eingebaut  
- \par
 
-Für die Konfiguration wird z.Zt. eine Weboberfläche als Konfigurations-Client verwendet. Diese Oberfläche ist sehr einfach gehalten und kann nur von Experten bedient werden, da mit einzelnen Produktcodes bei der Konfiguration gearbeitet wird. Die Weboberfläche befindet sich auf dem gleichen Applikationsserver wie der Kern und es besteht eine direkte Anbindung. In der Datenbank werden nicht nur Produkt- und Regelinformationen gehalten, sondern auch die Flugzeugdaten. 
 
   
 \section{Mobile Anwendungen}
+Die Frage, wie der Kunde besser an dem Entstehungsprozess eines Produktes teilhaben kann und dessen komplexen Aufbau verstehen kann ist nur über ausreichend Kommunikation und Wissensvermittlung zu bewerkstelligen. Eine Möglichkeit zur Unterstützung dieses Prozesses bieten mobile Anwendungen.\par
+
+Diese sind definiert als eine Software, die auf einem Smartphone oder Tablet verwendet wird. Die Besonderheiten solcher Anwendungen sind die Optimierungen auf die begrenzten Ressourcen der mobilen Endgeräte. Auf der anderen Seite sind mit dieser Form der Anwendung neue Anwendungsgebiete der Software möglich. Ein neues Einsatzgebiet ist der mobile Einsatz der App bei einem Kunden vor Ort \cite{bib:mobileMarketing}. Hier können insbesondere Tablet-PCs die Kommunikation mit dem Kunden fördern \cite{bib:tableVertrieb}. Die Vorteile durch den großen Bildschirm und die Möglichkeit wie bei einem Blatt Papier den Kunden ins Verkaufsgespräch mit einzubeziehen sind hier überzeugend. Eine Bedienung der Geräte durch Touch-Eingaben ermöglicht eine bessere Interaktion mit der Software. Die Möglichkeiten beim Einsatz dieser Geräte im Geschäftsumfeld ist noch nicht ausgeschöpft und birgt auch weiterhin Potenziale \cite[Fazit]{bib:mobileMarketing2}. 
+
+
 
 \subsection{Native Anwendungen}
 \subsection{Web Anwendungen}
