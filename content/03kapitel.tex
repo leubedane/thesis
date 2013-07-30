@@ -28,7 +28,7 @@ Zusammenfassend treten drei grundlegende Probleme bei einem Konfigurationsprozes
         
         \item zusätzlicher Kommunikationsaufwand durch zu spätes Feedback
 \end{itemize}
-Diese drei Punkte werden in der Modellierung des neuen Workflows verbessert.
+Diese drei Punkte müssen im neuen Workflow verbessert werden.
 
 \subsection{Übertragung auf den Kunden}
 Beim Anwendungsbeispiel des Kunden erfolgt die Auswahl der Upgrades ebenfalls über einen Produktkatalog. In diesem Katalog sind die einzelnen Upgrades aufgeführt. Die Auswahl der Produkte erfolgt über eine vorhandene Weboberfläche. Diese Oberfläche ist über die Homepage des Kunden verfügbar. Der Endkunde, im Anwendungsbeispiel eine Fluggesellschaft wählt das gewünschte Upgrade aus dem Katalog aus. Bei der Bestellung werden die Produktcodes der Auswahl verwendet. Zusätzlich müssen die Flugzeuge angegeben werden, die das Upgrade erhalten sollen. Die Identifizierung erfolgt ebenfalls anhand des eindeutigen Flugzeugcodes. Beide Codes werden im nächsten Schritt von einem Produktkonfigurator erfasst und anschließend eine Überprüfung der Konfiguration durchgeführt.   \par 
@@ -50,7 +50,7 @@ Nachdem eine vollständige Konfiguration erzeugt wurde, wird daraus ein Excel-Do
 
 Das Hauptproblem des aktuellen Systems ist, dass nur Experten die Anwendung bedienen können. Eine effektive Nutzung kann nur mithilfe der Produktcodes erfolgen. Dies führt dazu, dass man ein großes Wissen über die Produktstruktur besitzen muss. Dadurch kann mit der aktuellen Anwendung der Kunde die Konfiguration nicht selbstständig durchführen. Dieses Problem wird im Folgenden bei der Modellierung des neuen Workflows gelöst.
 
-\section{Workflow Modellierung}
+\section{Workflow Modellierung}\label{workflow_modelling}
 Der neue Workflow muss die im vorigen Abschnitt erwähnten Probleme des Konfigurationsprozesses lösen.  Anschließend müssen die Lösungen auf den konkreten Anwendungsfall übertragen werden und ein neuer Programmablauf gefunden werden, der den Lösungsweg beinhaltet.
 
 \subsection{Mobiler Konfigurationsprozess}\label{mobileConfiguration}
@@ -87,7 +87,8 @@ Da die Verwendung des Konfigurationsservers, wie in Kapitel \ref{configurator} b
 Nachdem der grundlegende Prozess auf die Bedürfnisse des Kunden, sowie an die mobile Umgebung angepasst sind, können daraus die Anforderungen der Anwendung für das Anwendungsbeispiel festgelegt werden. Bei der Festlegung wird zuerst die allgemeine Anforderung erläutert, sowie anschließend auf das Anwendungsbeispiel spezifiziert. Für eine einfachere Darstellung wird im Folgenden zwischen Funktionalen und Nicht-Funktionalen Anforderungen unterschieden. 
 
 \subsection{Nicht-Funktionale Anforderungen}\label{non_functional_requirements}
-Die Nicht-Funktionalen Anforderungen betreffen alle Maßnahmen zur Vereinfachung, bzw. Unterstützung des Prozesses, sowie Anforderungen aufgrund des vorhandenen Systems. Diese speziellen Voraussetzungen sind für den Benutzer meistens nicht sichtbar und laufen im Hintergrund, bzw. Unbewusst ab. Aus diesem Grund müssen hier auch spezielle Gütekriterien festgelegt werden, um am Ende eine Evaluation zu ermöglichen. Für den neuen Workflow wurden folgende Anforderungen spezifiziert:
+Die Nicht-Funktionalen Anforderungen betreffen alle Maßnahmen zur Vereinfachung, bzw. Unterstützung des Prozesses, sowie Anforderungen aufgrund des vorhandenen Systems. Diese speziellen Voraussetzungen sind für den Benutzer meistens nicht sichtbar und laufen im Hintergrund, bzw. Unbewusst ab. Aus diesem Grund müssen hier auch spezielle Gütekriterien festgelegt werden, um am Ende eine Evaluation zu ermöglichen. Als Basis für diese Anforderungen werden die 10 Heuristiken für Benutzerschnittstellen von Nielsen \cite{bib:heuristicsNielsen} verwendet.
+Es lassen sich aus dem neuen Workflow folgende Anforderungen spezifizieren:
 
 
 \paragraph{Einfache Bedienung:} Dadurch, dass der Kunde kein Experte ist und die Anwendung nicht jeden Tag verwendet, muss die Bedienung für den Kunden einfach sein. Je weniger bei der Verwendung der Software erklärt werden muss, desto besser ist diese Anforderung erfüllt. Für die Erfüllung dieses Ziels sollen Folgende Schwerpunkte der Softwareergonomie \cite{bib:softwareErgonomie} behandelt werden: 
@@ -96,53 +97,85 @@ Die Nicht-Funktionalen Anforderungen betreffen alle Maßnahmen zur Vereinfachung
         \item Lernförderlichkeit
         \item Erwartungskonformität
 \end{itemize}
+Nielsen verwendet hierfür die Begriffe Konsistenz, Erkennung vor Erinnerung und Hilfe bzw. Dokumentation.
 
-\paragraph{Schnelle Bedienung:} Die zweite Zielgruppe der Anwendung ist weiterhin der Experte. Für diesen muss es die Möglichkeit einer schnellen Bedienung der Anwendung geben, so dass er möglichst Effizient die Konfiguration gestalten kann.
+\paragraph{Schnelle Bedienung:} Die zweite Zielgruppe der Anwendung ist der Experte. Für diesen muss es die Möglichkeit einer schnellen Bedienung der Anwendung geben, so dass er möglichst effizient die Konfiguration gestalten kann. Somit wird eine flexible Bedienung der Anwendung nötig. Für eine zusätzliche Steigerung der Effizienz muss die Navigation zwischen den einzelnen Seiten schnell sein. Dies bedeutet, dass beim Übergang von einer zur nächsten Seite der Benutzer nicht lange warten sollte. Ebenfalls muss es genügend Feedback geben, wenn ein Seitenwechsel länger dauern sollte. Hier werden die beiden Heuristiken Sichtbarkeit des aktuellen Status und Flexibilität, sowie Effizienz bei der Benutzung beachtet.
 
-\begin{tabular}[H]{| p{0.5cm} | p{2.2cm} | p{4.5cm} | p{5.3cm} | p{1.3cm} |}
+\paragraph{Optimierung auf die Umgebung: } Da ein mobiles Gerät nur begrenzte oder eingeschränkte Resourcen zur Verfügung hat, müssen die einzelnen Bedienelemente auf die Umgebung angepasst sein. Ebenfalls muss die Bedienung für eine Touch-Eingabe optimiert sein. 
+Für ein einheitliches Aussehen der Anwendung müssen die Richtlinien der jeweiligen Technologie beachtet werden. Diese Anforderung enthält die beiden Heuristiken Ästhetisches und minimalistisches Design, sowie Standards und Konsistenz.
+
+Für eine bessere Übersicht der Nicht-Funktionalen Anforderungen sind diese in der Tabelle \ref{nonFunctionalRequ} dargestellt. Zu jeder Anforderung wird hier ein zusätzlicher Bezeichner definiert.
+
+
+\begin{tabular}[H]{| p{0.7cm} | p{2.2cm} | p{4.5cm} | p{5.5cm}|}
+
 \toprule[2pt] \rowcolor{dunkelgrau}
 \hline
-  NR. & Anforderung & Beschreibung & Details & Priorität \\
+  Bez. & Anforderung & Beschreibung & Heuristiken nach Nielson \\
   \hline
-  N1 & Einfache \newline Bedienung & Die Anwendung soll von unerfahrenen Benutzern schnell bedient werden können.& Schwerpunkte der Softwareergonomie\cite{bib:softwareErgonomie}: 
-  \begin{itemize}
-        \item Selbstbeschreibungs-fähigkeit
-        \item Lernförderlichkeit
-        \item Erwartungs-konformität
-     \end{itemize}
-   & A \\
+  N1 & Einfache \newline Bedienung & Die Anwendung soll von unerfahrenen Benutzern bedient werden können.& \begin{itemize}
+          \item Sichtbarkeit des aktuellen Status
+          \item Erkennung vor Erinnerung
+          \item Hilfe und Dokumentation
+  \end{itemize} \\
   \hline
-  N2 & Schnelle Bedienung & Die Auswahl der einzelnen Komponenten soll möglichst schnell getätigt werden können. & Es muss für eine flüssige Navigation zwischen den einzelnen Seiten gesorgt werden. Der Benutzer sollte keine langen Wartezeiten beim Bedienen der Anwendung haben. & A \\
+  N2 & Schnelle \newline Bedienung & Experten müssen die Anwendung schnell und effizient bedienen können. & \begin{itemize}
+            \item Flexibilität und Effizienz bei Benutzung
+            \item Sichtbarkeit des aktuellen Status
+    \end{itemize}  \\
   \hline
-    N3 & Offline-Online Modus & Die Anwendung soll einen Offline- und Online-Modus enthalten & Es sollen Konfigurationsdaten offline zusammengestellt werden können, die später oder zeitgleich online (mit Konfigurationsserver) geprüft werden. & A \\
-    \hline
-    N4 & Allein-stellungs-merkmal & Um den Kunden zu begeistern ist ein besonderes Feature, welches die Anwendung als Alleinstellungsmerkmal besitzt wünschenswert.& Es sollen besonders "'aufregende"' Features, die eine Technologie bietet in die Anwendung integriert und in einem sinnvollen Kontext genutzt werden.  & B\\
+    N3 & Optimierung auf Umgebung & Die Anwendung muss auf die Zielplattform optimiert werden. &  \begin{itemize}
+              \item Ästhetisches und minimalistisches Design
+              \item Standards und Konsistenz
+      \end{itemize} \\
     \hline
 \bottomrule[2pt]
 \end{tabular}
+\label{nonFunctionalRequ}
 
 \subsection{Funktionale Anforderungen}
-Eine funktionale Anforderung betrifft den Prozess, bspw. die Auswahl eines Upgrades.
-\begin{tabular}[H]{| p{0.4cm} | p{2.3cm} | p{4.5cm} | p{5.3cm} | p{1.3cm} |}
+Die Funktionalen Anforderungen sind von der Prozessbeschreibung im Abschnitt \ref{mobileConfiguration} abhängig. Im Folgenden werden diese speziell auf das Anwendungsprojekt spezifiziert. Zusätzlich zu der Spezifikation wird der Bezug zum neuen Workflow dargestellt:
+
+\paragraph{Filterung der Anwendungsdaten: } Da sehr viele Daten vorhanden sind, müssen diese für eine übersichtliche Darstellung im Vorfeld gefiltert werden. Die Filterung erfolgt in zwei Schritten:
+\begin{enumerate}
+\item Auswahl der Kundendaten: Die Anwendung soll speziell bei einem Kunden eingesetzt werden. Aus diesem Grund kommen nur die kundenspezifischen Daten zum Einsatz.
+\item Programmauswahl: Durch die Wahl des Programmes wird eine Filterung der einzelnen Flugzeuge und der möglichen Updates erreicht.
+\end{enumerate}
+Diese Anforderung wird ebenfalls durch die Verwendung einer mobilen Umgebung notwendig. Damit der zweite modellierte Workflow mit einer nicht vorhandenen Internetverbindung funktioniert, müssen die Daten offline verfügbar sein. Da nur begrenzte Speichermöglichkeiten auf dem Gerät vorhanden sind, können nicht alle Kundendaten gespeichert werden. Dies bedingt eine Filterung durch die Auswahl des Kunden.
+
+\paragraph{Upgradeauswahl: } Bei der Auswahl von Upgrades im Anwendungsbeispiel werden die Funktionen des Produktkataloges benötigt. Es muss möglich sein, ein bestimmtes Produkt an- oder abzuwählen. Damit der Kunde die Struktur des Produktes versteht, müssen die einzelnen Produkte nach einer bestimmten Struktur geordnet sein. 
+
+\paragraph{Flugzeugauswahl: } Flugzeuge, die ein ausgewähltes Upgrade erhalten sollen, müssen ebenfalls in der Anwendung auswählbar sein. Die Anforderungen an diese Auswahl sind nicht die Gleichen wie bei der Produktauswahl. Der Schwerpunkt muss hier auf ein schnelles Finden der einzelnen Flugzeuge gelegt werden. Dies wird ebenfalls durch eine dem Kunden bekannte Struktur erreicht. 
+
+\paragraph{Anzeige der Konfigurationsergebnisse: } Damit der Kunde ein schnelles Feedback der aktuellen Auswahl erhält, müssen die Konfigurationsergebnisse angezeigt werden. Dies impliziert eine Anbindung an den Konfigurationsserver, der die entsprechenden Ergebnisse berechnet. Diese Anzeige muss eine vereinfachte Darstellung beinhalten, damit der Kunde diese Ergebnisse verstehen kann.
+
+\paragraph{Alternativenauswahl: } Damit eine vollständige Konfiguration erzeugt werden kann, muss die Anwendung eine Auswahl für Alternativen bereitstellen. Hierbei muss das Verständnis des Kunden für das Produkt berücksichtigt werden. Die Alternativen müssen auf eine verständliche Art dargestellt sein. 
+
+\paragraph{Speichern und Laden der Konfiguration: } Die zweite Voraussetzung des alternativen offline Workflows ist eine Speicherung der Konfiguration. Für eine spätere Bearbeitung ist das erneute Laden der Konfiguration notwendig. Diese beide Anforderungen werden aufgrund der mobilen Zielumgebung benötigt.
+
+Die Zuordnung der einzelnen Anforderungen zu den jeweiligen Prozessschritten ist in Tabelle \ref{functionalRequirements} zu sehen. Hierbei werden die drei Prozessanforderungen Produktkatalog, Konfiguration und mobile Zielumgebung unterschieden.
+\par 
+\begin{tabular}[H]{| p{0.4cm} | p{2.5cm} | p{5.9cm} | p{4.5cm} |}
 \toprule[2pt] \rowcolor{dunkelgrau}
 \hline
-  NR. & Anforderung & Beschreibung & Details & Priorität \\
+  NR. & Anforderung & Beschreibung & Prozesszuordnung \\
   \hline
-  F1 & Upgrade-auswahl & Es sollen Upgrades für Flugzeuge auswählbar sein & Bevor die Auswahl stattfindet, soll es verschiedene Filtermöglichkeiten geben, wie beispielsweise der Flugzeugtyp oder die Art des Upgrades.
-   & A \\
+  F1 & Upgrade-auswahl & Es sollen Upgrades für Flugzeuge auswählbar sein & Produktkatalog
+   \\
   \hline
-  F2 & Flugzeug-auswahl & Es müssen Flugzeuge eines bestimmten Kunden auswählbar sein. & Es soll auch hier, analog zu B1 die Möglichkeit der Auswahl von Flugzeugen auf einen vorher gefilterten Datensatz geben. & A \\
+  F2 & Flugzeug-auswahl & Es müssen Flugzeuge eines bestimmten Kunden auswählbar sein. & Produktkatalog  \\
   \hline
-    F3 & Konfiguration & Nach erfolgter Auswahl werden die Ergebnisse der Konfiguration dargestellt. & Kommunikation mit dem Konfigurationsserver, sowie die Darstellung der Ergebnisse auf dem Client& A \\
+    F3 & Konfigurations-ergebnisse anzeigen & Übersichtliche Darstellung der aktuellen Zusammenstellung & Konfiguration \\
     \hline
-     F4 & Alternativen & Bei mehreren Möglichkeiten einer Auswahl sollen Alternativen ausgewählt werden können & Übersichtliche Darstellung von Alternativenauswahl.& A \\
+     F4 & Alternativen-auswahl & Bei mehreren Möglichkeiten einer Auswahl sollen Alternativen ausgewählt werden können & Konfiguration \\
         \hline
-    F5 & Speichern & Die getätigte Auswahl soll gespeichert werden& Nach Abschluss der Konfiguration soll diese lokal gespeichert werden, um ein erneutes Laden zu ermöglichen. & B\\
+    F5 & Speichern und Laden & Die getätigte Auswahl soll gespeichert und geladen werden können& mobile Zielumgebung \\
     \hline
-    F6 & Laden & Getätigte Konfigurationen müssen geladen werden können& Beim Start der Anwendung sollen getätigte Konfigurationen geladen und angezeigt werden können & B\\
+    F6 & Filterung der Anwendungsdaten & Die Daten (Flugzeuge und Upgrades) müssen gefiltert werden können & mobile Zielumgebung \\
     \hline
 \bottomrule[2pt]
 \end{tabular}
+\label{functionalRequirements}
 
 
 
