@@ -76,7 +76,7 @@ Für die Umsetzung der aus Abschnitt \ref{mobileConfiguration} erstellten Maßna
 \includegraphics[width=\hsize]{images/workflow_app}
 \caption{Programmablauf der Konfigurator-App}
 \end{figure}
-In Abbildung \ref{appWorkflow} ist der Anwendungsverlauf der App zu sehen. Analog zu der Weboberfläche wird bei einer neuen Konfiguration zuerst ein Programm (\textbf{Programmauswahl}) ausgewählt. Dies ist aufgrund einer Filterung der Daten weiterhin notwendig. Nach der Auswahl gelangt der Benutzer in eine \textbf{Zusammenfassung} der aktuellen Konfiguration. Von dieser Ansicht aus können Flugzeuge (\textbf{Flugzeugauswahl}) oder  Upgrades (\textbf{Upgradeauswahl}) selektiert werden. Hier wird den unterschiedlichen Bedürfnissen des Kunden entsprochen und kein strikter Konfigurationsablauf vorgegeben, wie es im vorherigen System war. Mit dieser Umstellung wird dem Kunden die Möglichkeit gegeben die einzelnen Upgrades nacheinander zu wählen und jederzeit eine schnelle Änderung zu ermöglichen. Sobald mindestens ein Flugzeug oder ein Upgrade ausgewählt ist, wird die Konfiguration überprüft. 
+In Abbildung \ref{appWorkflow} ist der Anwendungsverlauf der App zu sehen. Analog zu der Weboberfläche wird bei einer neuen Konfiguration zuerst ein Programm (\textbf{Programm-auswahl}) ausgewählt. Dies ist aufgrund einer Filterung der Daten weiterhin notwendig. Nach der Auswahl gelangt der Benutzer in eine \textbf{Zusammenfassung} der aktuellen Konfiguration. Von dieser Ansicht aus können Flugzeuge (\textbf{Flugzeugauswahl}) oder  Upgrades (\textbf{Upgradeauswahl}) selektiert werden. Hier wird den unterschiedlichen Bedürfnissen des Kunden entsprochen und kein strikter Konfigurationsablauf vorgegeben, wie es im vorherigen System war. Mit dieser Umstellung wird dem Kunden die Möglichkeit gegeben die einzelnen Upgrades nacheinander zu wählen und jederzeit eine schnelle Änderung zu ermöglichen. Sobald mindestens ein Flugzeug oder ein Upgrade ausgewählt ist, wird die Konfiguration überprüft. 
 Nach der Überprüfung werden die  Konfigurationsgruppen, die der Konfigurator erstellt hat angezeigt. Diese Gruppen kann der Benutzer einsehen und bei mehreren Alternativen in einer 
 separaten Ansicht (\textbf{Alternativenauswahl}) die richtige Lösung auswählen. Ist die Konfiguration vollständig, so hat der Nutzer die Möglichkeit die aktuelle Zusammenstellung zu bestellen und den Vorgang mit der Bestellung zu beenden. 
 
@@ -90,13 +90,14 @@ Nachdem der grundlegende Prozess auf die Bedürfnisse des Kunden, sowie an die m
 Die Nicht-Funktionalen Anforderungen betreffen alle Maßnahmen zur Vereinfachung, bzw. Unterstützung des Prozesses, sowie Anforderungen aufgrund des vorhandenen Systems. Diese speziellen Voraussetzungen sind für den Benutzer meistens nicht sichtbar und laufen im Hintergrund, bzw. Unbewusst ab. Aus diesem Grund müssen hier auch spezielle Gütekriterien festgelegt werden, um am Ende eine Evaluation zu ermöglichen. Für den neuen Workflow wurden folgende Anforderungen spezifiziert:
 
 
-\paragraph{Einfache Bedienung:} Dadurch, dass der Kunde kein Experte ist und die Anwendung nicht jeden Tag verwendet, muss die Bedienung für den Kunden einfach sein. Je weniger bei der Verwendung der Software erklärt werden muss, desto besser ist diese Anforderung erfüllt. Für die Erfüllung dieses Ziels sollen Folgende Schwerpunkte der Softwareergonomie behandelt werden: 
+\paragraph{Einfache Bedienung:} Dadurch, dass der Kunde kein Experte ist und die Anwendung nicht jeden Tag verwendet, muss die Bedienung für den Kunden einfach sein. Je weniger bei der Verwendung der Software erklärt werden muss, desto besser ist diese Anforderung erfüllt. Für die Erfüllung dieses Ziels sollen Folgende Schwerpunkte der Softwareergonomie \cite{bib:softwareErgonomie} behandelt werden: 
 \begin{itemize}
         \item Selbstbeschreibungsfähigkeit
         \item Lernförderlichkeit
         \item Erwartungskonformität
-     \end{itemize}
+\end{itemize}
 
+\paragraph{Schnelle Bedienung:} Die zweite Zielgruppe der Anwendung ist weiterhin der Experte. Für diesen muss es die Möglichkeit einer schnellen Bedienung der Anwendung geben, so dass er möglichst Effizient die Konfiguration gestalten kann.
 
 \begin{tabular}[H]{| p{0.5cm} | p{2.2cm} | p{4.5cm} | p{5.3cm} | p{1.3cm} |}
 \toprule[2pt] \rowcolor{dunkelgrau}
