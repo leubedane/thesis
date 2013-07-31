@@ -1,46 +1,31 @@
-\chapter{Entwurf der Benutzeroberfläche}\label{chapter_4}
-
+\chapter{Entwurf der Benutzerschnittstelle}\label{chapter_4}
+Die Anforderungen der Anwendung für die Unterstützung des neuen Workflows wurden im vorigen Kapitel abgeleitet. Diese Kriterien werden im nächsten Schritt in einem Entwurf der Benutzerschnittstelle umgesetzt. Bevor die Schnittstelle entworfen werden kann, muss die geeignete Anwendungsform und eine darauf basierende Technologie ausgewählt werden. Anschließend folgt eine kurze Analyse der Zielplattform und deren Konzepte, damit diese beim Entwurf berücksichtigt werden können, bevor die einzelnen Ansichten entworfen werden.
 
 \section{Auswahl der Anwendungsplattform}
+Aufgrund der vielen Möglichkeiten bei der Entwicklung von mobilen Anwendungen muss die Art und Technologie der Anwendung richtig gewählt werden. Hierbei soll zuerst die passende Anwendungsform (Nativ, Web oder Hybrid siehe \ref{mobileAppsGrundlagen}) gewählt werden. Durch diese Vorauswahl, wird die Anzahl der möglichen Technologien begrenzt, was im folgenden Schritt die Auswahl vereinfacht.
+
 
 \subsection{Anwendungsform}
+Damit die richtige Anwendungsform der App ausgewählt werden kann, müssen die drei Möglichkeiten Nativ, Web und Hybrid auf ihre Eignung bei der Umsetzung der Anforderungen hin untersucht werden. Wichtig bei der Entscheidung ist die Festlegung der konkreten Kriterien. 
+Die Umsetzung der rein fachlichen Funktionen, wie die Produktauswahl und die Konfiguration kann mit jeder Anwendungsform durchgeführt werden. Hier sind die Unterschiede für eine Auswahl nicht ausreichend. \par
+Bei den  Funktionalen Anforderungen sind die zwei Kriterien, die aufgrund der mobilen Zielumgebung wichtig sind für die Auswahl entscheidend. Diese sind das Speichern und Laden (F5), sowie die Filterung der Anwendungsdaten (F6). Damit diese Funktionen umgesetzt werden können, ist eine Verwendung des Dateisystems auf der mobilen Zielumgebung nötig. Hier muss eine Form der Speicherung, ob Datenbank oder einfaches Speichern in einer Datei möglich sein. Diese Voraussetzung ist das erste Gütekriterium bei der Entscheidung über die Anwendungsform. Die weiteren Kriterien leiten sich von den Nicht-Funktionalen Anforderungen ab. Hier wird die Schnelle Bedienung (N2) und die Optimierung auf die Umgebung (N3) als Auswahlkriterium verwendet. Die Einfache Bedienung (N1) hängt von der Implementierung der Anwendung ab, wodurch eine Bewertung für jeden Anwendungstyp entfällt. Im Folgenden werden die einzelnen Punkte für jede Anwendungsform bewertet, sodass am Ende eine Gegenüberstellung stattfinden kann.
+
+\paragraph{Native Anwendung: }  Die schnelle Bedienung der Anwendung, wie in Anforderung N2 spezifiziert, erfolgt durch die effiziente Nutzung der Systemressourcen. Bei der Verwendung von vielen Bildern ist das schnelle Laden vom Dateisystem eine wichtige Voraussetzung für das 
+Bei Nativen Anwendungen ist der komplette Funktionsumfang der mobilen Zielplattform verfügbar.  Dies ermöglicht den Zugriff auf eine Datenbank oder Dateisystem ohne zusätzlichen Aufwand. Die Erfüllung der Anforderungen F5 und F6 ist ohne Einschränkungen möglich.  
+
+\paragraph{Web Anwendung: } Web Anwendungen werden im Browser ausgeführt. 
+ Dies kann dazu führen, dass nicht alle Funktionen des Betriebssystems nutzbar sind. Der Zugriff auf das Dateisystem ist eine dieser Beschränkungen. Durch die geschlossene Umgebung stehen nur einige Dateioperationen zur Verfügung. Dies erschwert die Durchführung der Funktionalen Anforderungen F5 und F6. 
+ Ein Ansatz zur Lösung des Problems wäre die Installation des Servers direkt auf dem Zielsystem, so dass dieser lokal zur Verfügung steht. Eine Erfüllung der Anforderungen ist damit möglich, jedoch mit erheblichem Mehraufwand, als mit einer Nativen Anwendung. Da in jedem Fall ein Server für die Konfiguration verwendet wird, ist eine Kommunikation vom Client über zwei Systeme notwendig.
+
+\paragraph{Hybride Anwendung: }Mit dem hybriden Ansatz werden die Probleme des Zugriffs auf das lokale Dateisystem behoben. Durch die Verwendung der lokalen Schnittstellen können die Ressourcen wie bei einer Nativen Anwendung verwendet werden. Der Nachteil bei dieser Lösung besteht in einem erhöhten Aufwand bei der Implementierung. Es müssen die einzelnen Funktionen im nativen Anwendungscontainer (siehe \ref{hybridApplication}) implementiert werden, sowie eine gute Trennung der Web und Nativen Komponenten erfolgen.
+
+
 \subsection{Anwendungstechnologie}
-Nachdem der Workflow, sowie die Anforderungen der Anwendung erläutert wurden, folgt in diesem Abschnitt die Auswahl der passenden Anwendungsplattform. Es werden die drei verschiedenen Anwendungstypen nativ, web und hybrid untersucht \cite{bib:mobilePlattform}. Bei jeder dieser Plattformen werden die bekanntesten Technologien verwendet. Die Untersuchung beruht auf den in Kapitel \ref{requirements} gestellten Anforderungen. Es werden folgende Auswahlkriterien verwendet:
-\begin{itemize}
-        \item \textbf{Offlinemodus:} Können offline Daten beliebig gespeichert werden? Gibt es eine passende Technologie für einen solchen Modus?
+      
         
-        \item \textbf{Sicherheit:} Da bei der Konfiguration sensible Daten verwendet werden, muss die Anwendung entsprechend gesichert werden können. Die einzelnen Sicherungsmaßnahmen sollen hierbei untersucht werden.
-        
-        \item \textbf{Schnittstelle:} Welche Möglichkeit für eine Schnittstelle zu dem Konfiguratorserver gibt es? 
-        
-        \item \textbf{Kundenpräferenz:} Gibt es eine bestimmte Technologie/Plattform, die vom Kunden explizit gewünscht ist? Hat die Technologie ein besonderes Alleinstellungsmerkmal?
-        
-        \item \textbf{Performance:} Für die Anzeige der einzelnen Produktbilder, sowie eine schnelle Navigation innerhalb der Anwendung ist die Performance des jeweiligen Typs wichtig.      
-        
-\end{itemize}
-Bei der Auswahl der Technologien werden nur Plattformen ausgewählt, die auf Tabletgeräten verfügbar sind. Es werden alle Kriterien für den Anwendungstyp bewertet und zusätzlich für die einzelnen Technologien.
 
 
-\subsection{Native Anwendungen}
-Native Anwendungen sind auf die jeweilige Zielplattform beschränkt. Dieser Typ einer Anwendung beschränkt sich auf das zuvor gewählte Betriebssystem. Der geschriebene Programmcode kann meistens nur auf der Zielplattform verwendet werden. Für die Bewertung von nativen Anwendungen werden die drei am Meisten genutzten Betriebssysteme im Tabletbereich verwendet: Android, iOS und Windows 8\cite{bib:nativeBS}. \par
 
-\textbf{Offlinemodus:} Bei einer nativen App ist keine Serveranbindung notwendig. Alle Daten können ohne eine Internetverbindung lokal auf dem Gerät selbst vorhanden sein. In einer nativen Anwendung können alle Dateioperationen, wie auf einem normalen Betriebssystem durchgeführt werden. Dies hat den großen Vorteil, dass auf den Speicher zugegriffen werden kann. Große Datensätze, die beim Offlinemodus anfallen, können damit auf dem Gerät gespeichert werden.  In diesem Kriterium ist das Verhalten für alle drei Betriebssysteme gleich, womit keine Unterscheidung der einzelnen Technologien notwendig ist.\par
-
-\textbf{Sicherheit:} Durch die native Umgebung ist die Anwendung nur auf dem Betriebssystem vorhanden und in einer geschlossenen Umgebung. Die Kommunikation mit dem Webserver muss allerdings selbstständig verschlüsselt werden, insbesondere wenn Die Anwendung bei einem Kunden in dessen Netz verwendet wird. Ein weiteres Problem, welches native Anwendungen besitzen sind die lokalen Sicherheitslücken eines jedes Betriebssystems. Regelmäßig tauchen neue versteckte Fehler im Betriebssystem auf, die Schaden zufügen könnten. 
-
-\begin{itemize}
-        \item \textbf{Android und iOS:} Bei beiden Betriebssystemen werden regelmäßig Sicherheitslücken offengelegt. Die Angriffe auf beide Systeme ist zunehmend, wobei das iOS-System im Vergleich besser abschneidet und in mehreren 
-        
-        \item \textbf{Windows 8:} Durch die hohe Verbreitung von Windows Betriebssystemen sind diese Systeme besonders anfällig, bzw. oft verwendete Ziele bei Angriffen. Die breite Anzahl der Nutzer sorgt jedoch für ausreichend Lösungen zur Sicherung der Anwendung.
-        
-       
-\end{itemize}
-
-\textbf{Schnittstelle:} Für die Kommunikation mit dem Konfigurationsserver bieten sich bei einer nativen Anwendung Webservices an. Diese können in den Standards 
-\subsection{Web Anwendungen}
-phone gapp, gwt, 
-\subsection{Hybride Anwendungen}
-\subsection{Abwägung}
 
 \section{Untersuchung der Plattform Windows 8}
 \subsection{Bedienkonzepte}
