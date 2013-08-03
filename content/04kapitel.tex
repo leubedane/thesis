@@ -64,7 +64,7 @@ Bei der vorliegenden Arbeit wird auf Windows 8 gesetzt. Im Gegensatz zu iOS und 
 
 \section{Untersuchung der Plattform Windows 8}
 Damit die Anforderung eines ästhetischen und minimalistischen Designs (N3) erfüllt ist, muss vor der Gestaltung der einzelnen Ansichten die Zielplattform untersucht werden. Die Designgrundlagen müssen verstanden werden, um ein passendes Aussehen realisieren zu können. 
-Die Folgende Untersuchung wird in drei Teile aufgeteilt. Im ersten Abschnitt werden allgemeine Design Prinzipien behandelt, darauf aufbauend die Bedienkonzepte und Alleinstellungsmerkmale der Plattform.
+Die Folgende Untersuchung wird in drei Teile aufgeteilt. Im ersten Abschnitt werden allgemeine Design Prinzipien behandelt, darauf aufbauend die Bedienkonzepte und touchoptimierten Bedienelemente der Plattform.
 
 \subsection{Design Richtlinien}
 Damit einheitliche Apps entwickelt werden, hat Microsoft Richtlinien (Entnommen aus: \cite{bib:win80}, \cite{bib:win81}, \cite{bib:win82}, \cite{bib:win83}) aufgestellt.
@@ -84,10 +84,16 @@ Das zweite wichtige Bedienkonzept ist das horizontale Scrollen. Aufgrund der gr�
 
 Beim Aufbau der Anwendung kann entweder eine hierarchische oder  flache Struktur verwendet werden. Für den in Abschnitt \ref{workflowNew} erstellen Workflow ist eine hierarchische Architektur passender. Der Ursprung geht hier immer von der Startseite, der sogenannten Hub-Page aus. Diese Seite ist der zentrale Startpunkt von der alle weiteren Aktionen ausgehen. Die zweite Ebene sind sogenannte Section Pages. Diese stellen den Inhalt einer  Kategorie dar. Die unterste Ebene sind die Detail Pages. Diese enthalten die jeweiligen Details eines Elementes in einer Kategorie. Bei einer Zeitungs App wäre beispielsweise auf der Startseite die einzelnen Kategorien wie Politik, Wirtschaft oder Sport zu sehen. In der Kategorie Ansicht die jeweiligen Überschriften der Artikel. Die Detail Seite würde den Artikel zeigen. Dieser baumartige Aufbau wird durch das Verwenden eines Zurück Buttons unterstützt, der in jeder Ansicht, außer der Startseite vorhanden ist. Durch diesen Button wird dem Benutzer eine weitere Navigationsmöglichkeit gegeben.
 
-\subsection{Alleinstellungsmerkmal}
+Beim Design der Ansichten ist ein durchdachtes Bedienkonzept aufgrund der beiden Anforderungen N1 und N2 wichtig. Die Möglichkeiten, die zur Verfügung gestellt werden, sollten beim ersten Entwurf der App enthalten sein.
 
+\subsection{Touchoptimierte Bedienelemente}
+Für die Unterstützung der Bedienung durch Gesten enthält das Framework besondere Oberflächenelemente. Diese sind für die Verwendung mittels Touch optimiert. Die in der Arbeit verwendeten Elemente werden im folgenden vorgestellt.
+Die Design Richtlinien von Microsoft erzeugen Probleme bei der Darstellung von vielen Daten. Eine Umsetzung der Richtlinie "'Content over Chrome"', sowie die Darstellung auf einem Gerät mit kleinerem Bildschirm verursachen einen großen Aufwand beim Scrollen. Hier kann eine lange Zeit für das Auswählen eines bestimmten Datums benötigt werden. \par
 
+Für die Lösung dieses Problems bietet Windows 8 den sogenannten Semantischen Zoom an. Diese Funktion wird mit einer Kneif-Geste auf dem aktuellen Datensatz durchgeführt. Hierdurch wird die Ansicht nicht optisch verkleinert. Es erfolgt ein Wechsel von der Detailansicht zu einer Kategorieansicht. Die Datensätze werden somit semantisch verkleinert, wodurch ein schnelles Navigieren zum gewünschten Datum möglich ist. Der Semantische Zoom darf nicht geschachtelt verwendet werden und ist damit auf eine Ebene beschränkt. Voraussetzung für die Verwendung des Zooms ist die Einteilung der Daten in Kategorien. Ohne diese Kategorien kann keine übergeordnete Ansicht erstellt werden.
+
+Das zweite neue Bedienelement, welches für eine Touch-Optimierung dient, ist die sogenannte Flip-Ansicht. Mit ihr kann durch ein Wischen von der linken oder rechten Seite die Ansicht gewechselt werden. Dieses Element kann den Benutzer bei einem schnellen navigieren helfen. Es sollten jedoch nicht zu viele Elemente für den Wechsel vorhanden sein.
 
 \section{Design der Ansichten}
-
+Die vorgestellten Konzepte der Anwendungsplattform, sowie die einzelnen Bedienelemente werden für den Entwurf der Ansichten verwendet. 
 \section{Interaktion der Ansichten}
