@@ -77,7 +77,7 @@ Ein weiteres wichtiges Design Element ist die Typographie. Hier geht es um die b
 Diese Richtlinien werden beim Entwurf der einzelnen Ansichten berücksichtigt. 
 
 
-\subsection{Bedienkonzepte}
+\subsection{Bedienkonzepte}\label{usingConcepts}
 Bei den Konzepten für die Bedienung steht bei Windows 8 eine besondere Optimierung für Tablet-PCs im Vordergrund. Es werden deshalb sehr viele Gesten verwendet. Eine wichtige Geste ist das sogenannte "'wischen"'. Diese Aktion ist von jeder Seite des Bildschirms erlaubt. Beim Wischen von oben oder unten wird die sogenannte AppBar eingeblendet. Diese Bar wird an der oberen Seite für die Navigation durch die Anwendung verwendet. Dies ermöglicht einen schnellen Wechsel zwischen den Ansichten. Die untere AppBar wird für Aktionen verwendet, die nicht Vordergrund stehen. Ein Beispiel wäre die Filterung der Eingabedaten nach bestimmten Kriterien. Ein Wischen von der rechten Seit lässt die sogenannte CharmBar erscheinen. Der Inhalt dieser Bar ist die Verwendung von sogenannten Contracts (engl. Verträge). Diese Funktionen werden für alle Anwendungen durch das Betriebssystem bereitgestellt. An dieser Stelle können Einstellungen oder Suchen durchgeführt werden. \par 
 
 Das zweite wichtige Bedienkonzept ist das horizontale Scrollen. Aufgrund der größeren Bedienelemente sind nicht immer alle Elemente sichtbar. Die Lösung ist ein horizontales Ausbreiten des Inhalts. Damit die Inhalte verwendet werden können, wird ein horizontales Scrollen mit einer Wisch-Geste durchgeführt. Hier muss darauf geachtet werden, dass ein Ausschnitt des nächsten Elementes sichtbar ist, damit dem Benutzer eine Erweiterung der Ansicht signalisiert wird. \par 
@@ -95,9 +95,56 @@ Für die Lösung dieses Problems bietet Windows 8 den sogenannten Semantischen Z
 Das zweite neue Bedienelement, welches für eine Touch-Optimierung dient, ist die sogenannte Flip-Ansicht. Mit ihr kann durch ein Wischen von der linken oder rechten Seite die Ansicht gewechselt werden. Dieses Element kann den Benutzer bei einem schnellen navigieren helfen. Es sollten jedoch nicht zu viele Elemente für den Wechsel vorhanden sein.
 
 \section{Entwurf der Ansichten}
-Die vorgestellten Konzepte der Anwendungsplattform, sowie die einzelnen Bedienelemente werden für den Entwurf der Ansichten verwendet. Der Workflow der App, wie in Abschnitt \ref{appWorkflow} beschrieben, wird hier als Grundlage verwendet. Alle Prozessschritte erhalten eine eigene Ansicht. Zusätzlich werden die Anforderungen aus Kapitel \ref{functionalRequirements} beim Entwurf berücksichtigt.
-\subsection{Startseite}
+Die vorgestellten Konzepte der Anwendungsplattform, sowie die einzelnen Bedienelemente werden für den Entwurf der Ansichten verwendet. Der Workflow der App, wie in Abschnitt \ref{appWorkflow} beschrieben, wird hier als Grundlage verwendet. Damit alle Prozessschritte durchgeführt werden können, muss für jeden Zustand eine Ansicht vorhanden sein. Für die Umsetzung der Anforderungen aus Kapitel \ref{functionalRequirements} werden evtl. zusätzliche Benutzerschnittstellen benötigt.
+
+
+\subsection{Hauptfunktion der Anwendung}
+Um den Benutzer bei der Verwendung der App zu unterstützen, müssen zu Beginn die Hauptfunktionen der Anwendung erkannt werden. Diese Funktionen sollen gut platziert werden, um eine schnelle Bedienung zu ermöglichen. Die Platzierung erfolgt in der Hauptansicht, von der alle weiteren Aktion ausgehen.
+
+Bei der vorliegenden Arbeit sind die Hauptfunktionen der Produktkatalog und die Konfiguration. Im Anwendungsbeispiel ist die Auswahl der Flugzuge eine Voraussetzung, damit konfiguriert werden kann. Aus diesem Grund gehört die Flugzeugauswahl ebenfalls zu den Hauptfunktionen. Wie im neuen Workflow modelliert, sind diese drei Funktionen von der Zusammenfassungsseite aus zugänglich. Somit ist diese Seite die Hauptfunktionsseite\par 
+\begin{figure}
+\centering
+\includegraphics[width=\hsize]{images/summary_entwurf}
+\caption{Entwurf der Zusammenfassung Seite}
+\label{summarySketch}
+\end{figure}
+
+Der erste Entwurf der Zusammenfassung ist in Abbildung \ref{summarySketch} zu sehen. Die Hauptfunktionen Upgradeauswahl und Flugzeugauswahl sind als Buttons mit Text und Icon auf der linken Seite zu sehen. Bei der Selektion eines Buttons wird die jeweilige Ansicht der Auswahl geöffnet. Die weiteren Elemente der Zusammenfassung bestehen aus der aktuellen Auswahl. Die Darstellung erfolgt immer mit einem Bild und dem passenden Text in der Kachel Optik. Auf der ganz rechten Seite wird zuerst das ausgewählte Flugzeugprogramm angezeigt. Daneben werden die bisher ausgewählten Upgrades und Flugzeuge dargestellt. Die Reihenfolge der Darstellung hängt von der Auswahl ab. Diese werden in der gleichen Abfolge, wie zuvor ausgewählt wurde angezeigt. Damit wird das zuletzt Gewählte immer auf der linken Seite angezeigt. Bei der Zusammenfassungsseite werden die Microsoft Richtlinien für das horizontale Scrollen umgesetzt. Die einzelnen Elemente sind im Grid angeordnet.
+
+
 \subsection{Produktkatalog}
+Für das Verwenden der ersten Hauptfunktion, der Produktauswahl wird der entsprechende Button in der Zusammenfassung verwendet. Beim Entwurf dieser Ansicht ist die Herausforderung die übersichtliche Darstellung des Produktes. Da beim Anwendungsbeispiel ein großes und komplexes Produkt vorhanden ist, sind entsprechend viele Upgrademöglichkeiten vorhanden. Die Idee bei der Konzeption ist das Einteilen der einzelnen Upgrades in verschiedene Bereiche im Flugzeug. Beim derzeitigen Katalog sind die Upgrades bereits in Kategorien sortiert. Diese werden im Entwurf für die Einteilung auf die einzelnen Bereiche verwendet. \par
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\hsize]{images/catalogue_entwurf}
+\caption{Entwurf der Produktkategorie Auswahl}
+\label{catalogueSketch}
+\end{figure}
+Abbildung \ref{catalogueSketch} zeigt die Zuteilung der Kategorien auf die einzelnen Bereiche im Flugzeug. Wichtig hierbei ist das Verwenden von ansprechenden Bildern und großen Auswahlboxen. Der Kunde muss die benötigten Upgrades den einzelnen Bereichen zuordnen können und kann mit der Anwendung schnell zu seinem benötigten Produkt navigieren. Mit der Darstellung wird das Ziel erreicht, den Kunden für die Komplexität des Produktes zu sensibilisieren und ihm gleichzeitig eine bessere Suchmöglichkeit als über Produkt- oder Kategorienummern zu ermöglichen. \par 
+
+Nach der Auswahl einer Kategorie wird nach dem in Abschnitt \ref{usingConcepts} vorgestellten Prinzip der hierarchischen Navigation eine Detail Seite angezeigt. Diese enthält die Details über die Upgrademöglichkeiten. Die Struktur beim Katalog des Anwendungsbeispiels enthält eine weitere Unterkategorie, die im Entwurf (siehe Abbildung \ref{detailSketch}) auf der linken Seite als Liste dargestellt ist. Nach der Auswahl eines dieser Elemente wird auf der rechten Seite die möglichen Upgrades der gewählten Unterkategorie angezeigt. Zusätzlich werden Informationen über die vorhandenen Möglichkeiten und optional Bilder für die Erklärung dargestellt.  Für jedes vorhandene Upgrade in einer Unterkategorie werden einzelne Kacheln verwendet. Diese können per Klick selektiert werden. Die Informationen über das jeweilige Upgrade sind in der Kachel enthalten, ebenfalls ein Produktbild und ggf. der Name des Herstellers. Diese Elemente sind immer auf dem ersten Bildschirm ohne Scrollen sichtbar. Der Benutzer sollte nur bei Bedarf von mehr Informationen scrollen müssen. Hierdurch wird eine schnelle Auswahl der gewünschten Upgrades ermöglicht. 
+\begin{figure}
+\centering
+\includegraphics[width=\hsize]{images/detail_entwurf}
+\caption{Entwurf der Produktdetail Ansicht}
+\label{detailSketch}
+\end{figure}
+
 \subsection{Flugzeugauswahl}
+Die Auswahl der Flugzeuge ist aufgrund der Voraussetzung für die Konfiguration eine Hauptaufgabe. Für eine schnelle Selektion müssen die Daten zuvor gefiltert werden. Dadurch, dass die Anwendung beim Kunden direkt verwendet wird, sind auch nur dessen Daten relevant. Der Kunde verwendet für die Auswahl die sogenannte Flugzeugversion. Bei der Bestellung von neuen Flugzeugen werden diese in eine neue Version eingeordnet. Jede Flugzeuggesellschaft erhält ein Kürzel, worauf eine Nummer für die Version folgt. Bei der Auswahl der Flugzeuge wird diese Kategorisierung beibehalten. Die vorhandenen Datenelemente werden anhand der Flugzeugversion sortiert. \par
+
+\begin{figure}
+\centering
+\includegraphics[width=\hsize]{images/version_entwurf}
+\caption{Entwurf der Flugzeugauswahl}
+\label{aircraftSketch}
+\end{figure}
+Die Darstellung der einzelnen Flugzeuge erfolgt, wie in Abbildung \ref{aircraftSketch} zu sehen, im Grid. Die einzelnen Flugzeuge werden in einer Kachel angezeigt, wobei jede auswählbar ist. Die Sortierung der Daten erfolgt mit den Versionen als Überschrift der jeweiligen Gruppe. Damit die Daten schneller gefunden werden können, wird ein zusätzlicher Filter verwendet. Dieser soll die Flugzeuge nach dem jeweiligen Typ filtern und so für eine besser Übersicht sorgen. Der Filter wird über den Daten platziert und soll vom Scrollen ausgeschlossen werden. \par 
+
+Damit ein Experte beim Bedienen der Anwendung die Daten schneller auswählen kann, wie in der Funktionalen-Anforderung N2 spezifiziert, wird der Semantische Zoom für diesen Datensatz verwendet. Die herausgezoomte Ansicht enthält die Versionen als Kategorie in einem Grid dargestellt. 
+
 \subsection{Konfigurationsergebnisse}
+\subsection{Unterstützende Ansichten}
+
 \subsection{Navigationskonzept}
