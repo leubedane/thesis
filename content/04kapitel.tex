@@ -158,9 +158,18 @@ Die Ergebnisse der Konfiguration werden im modellierten Workflow nach erfolgter 
 
 \subsection{Weitere Ansichten}
 Der Entwurf für die Hautfunktionen Upgradeauswahl, Flugzeugauswahl und Konfigurationsergebnisdarstellung ist abgeschlossen. Für die Umsetzung der Funktionalen-Anforderungen müssen weitere Ansichten hinzugefügt werden. Damit ein Speichern und Laden (F5) ermöglicht wird, soll eine Startseite verwendet werden. \par 
+\begin{figure}
+\centering
+\includegraphics[width=\hsize]{images/start_entwurf}
+\caption{Entwurf der Startseite}
+\label{startSketch}
+\end{figure}
+Diese ist bereits im modellierten Workflow vorgesehen. Von der Startseite aus gelangt man in eine neue Konfiguration oder kann eine Vorhandene laden. Sie wird beim Start der Anwendung angezeigt. Somit ist diese Ansicht bei jeder Verwendung der App zu sehen. Aus diesem Grund ist das Design der Startseite wichtig. \par
 
-Diese ist bereits im modellierten Workflow vorgesehen. Von dieser Startseite sollen getätigte Konfigurationen geladen werden. Beim Start der Anwendung wird zuerst diese Seite angezeigt. Dadurch muss der Benutzer immer diese Ansicht sehen. Aus diesem Grund wird die Startseite besonders ansprechend sein. Dies wird durch ein kundenspezifisches Bild erreicht. Beim Klick auf dieses Bild wird eine neue Konfiguration gestartet. Die Größe des Bildes wird so gewählt, dass die letzten Konfigurationen erst durch ein scrollen komplett angezeigt werden. Hierdurch werden die Hauptfunktionen schneller zugänglich und es werden die Microsoft Richtlinien der Konzentration auf das Wesentliche verfolgt. 
+ Die Idee ist eine kundenspezifische Startseite. Dies sorgt für eine Dynamik beim Anzeigen der Seite. Der Inhalt ist vom jeweiligen Kunden abhängig. Dies wird zuerst durch ein kundenspezifisches Bild zu Beginn erreicht (siehe Abbildung \ref{startSketch}). Bei der Auswahl des Bildes wird eine neue Konfiguration gestartet. Die Größe wird so gewählt, dass die letzten Konfigurationen erst durch ein scrollen komplett angezeigt werden. Hierdurch wird die Hauptfunktion schneller zugänglich und  die Microsoft Richtlinien der Konzentration auf das Wesentliche berücksichtigt. Als zweites Merkmal des Kunden wird das Logo der Fluggesellschaft am oberen linken Rand angezeigt. Für einen schnelleren Einstieg in die Anwendung werden neue oder für die Fluggesellschaft interessante Upgrades zusätzlich auf der Startseite angezeigt. Bei einem Klick auf diese Kachel wird die Detail Seite geöffnet, so dass mehr Informationen angezeigt werden und eine Auswahl möglich ist. 
+\par 
 
+Für die Umsetzung der Funktionalen Anforderung F6, die ein Filtern der Anwendungsdaten spezifiziert, wird eine weitere Ansicht benötigt. Die Daten sind in der Flugzeugauswahl und in der neuen Startseite auf einen Kunden beschränkt. Andere Datensätze werden nicht benötigt.  Das Problem mit der Filterung kann aus diesem Grund mit einer Kundenauswahl gelöst werden. Diese Auswahl stellt im Anschluss alle kundenspezifischen Daten der Anwendung bereit. 
  
 
 \subsection{Navigationskonzept}
