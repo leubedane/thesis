@@ -169,7 +169,37 @@ Diese ist bereits im modellierten Workflow vorgesehen. Von der Startseite aus ge
  Die Idee ist eine kundenspezifische Startseite. Dies sorgt für eine Dynamik beim Anzeigen der Seite. Der Inhalt ist vom jeweiligen Kunden abhängig. Dies wird zuerst durch ein kundenspezifisches Bild zu Beginn erreicht (siehe Abbildung \ref{startSketch}). Bei der Auswahl des Bildes wird eine neue Konfiguration gestartet. Die Größe wird so gewählt, dass die letzten Konfigurationen erst durch ein scrollen komplett angezeigt werden. Hierdurch wird die Hauptfunktion schneller zugänglich und  die Microsoft Richtlinien der Konzentration auf das Wesentliche berücksichtigt. Als zweites Merkmal des Kunden wird das Logo der Fluggesellschaft am oberen linken Rand angezeigt. Für einen schnelleren Einstieg in die Anwendung werden neue oder für die Fluggesellschaft interessante Upgrades zusätzlich auf der Startseite angezeigt. Bei einem Klick auf diese Kachel wird die Detail Seite geöffnet, so dass mehr Informationen angezeigt werden und eine Auswahl möglich ist. 
 \par 
 
-Für die Umsetzung der Funktionalen Anforderung F6, die ein Filtern der Anwendungsdaten spezifiziert, wird eine weitere Ansicht benötigt. Die Daten sind in der Flugzeugauswahl und in der neuen Startseite auf einen Kunden beschränkt. Andere Datensätze werden nicht benötigt.  Das Problem mit der Filterung kann aus diesem Grund mit einer Kundenauswahl gelöst werden. Diese Auswahl stellt im Anschluss alle kundenspezifischen Daten der Anwendung bereit. 
- 
+Für die Umsetzung der Funktionalen Anforderung F6, die ein Filtern der Anwendungsdaten spezifiziert, wird eine weitere Ansicht benötigt. Die Daten sind in der Flugzeugauswahl und in der neuen Startseite auf einen Kunden beschränkt. Andere Datensätze werden nicht benötigt.  Das Problem mit der Filterung kann aus diesem Grund mit einer Kundenauswahl gelöst werden. Diese Auswahl stellt im Anschluss alle kundenspezifischen Daten der Anwendung bereit und erfüllt die Anforderung eines Filters. \par 
+\begin{figure}
+\centering
+\includegraphics[width=\hsize]{images/customer_entwurf}
+\caption{Entwurf der Kundenauswahl}
+\label{customerSketch}
+\end{figure}
+Die Ansicht für die Auswahl der Kunden wird analog zu der Flugzeugauswahl gestaltet. Der Entwurf ist in Abbildung \ref{customerSketch} zu sehen. Das Bild des einzelnen Kunden ist dessen Logo. Die Elemente sind im Grid angeordnet. Eine Einteilung in Kategorien erfolgt Alphabetisch. Im Anwendungsbeispiel sind sehr viele Kunden vorhanden. Damit eine schnelle Auswahl erfolgen kann, wird der Semantische Zoom in der Ansicht verwendet. Die Kategorisierung erfolgt über das Alphabet. Es kann jedem Buchstaben ein Kunde zugeordnet werden. Nach der Auswahl eines Datums werden die kundenspezifischen Anwendungsdaten auf das mobile Endgerät geladen und können anschließend beim Kunden "'offline"' verwendet werden. \par 
 
-\subsection{Navigationskonzept}
+Die zweite Filterung der Daten wird über die Programmauswahl realisiert. Diese Auswahl wird beim Starten einer neuen Konfiguration von der Startseite aus aufgerufen. Der Programmfilter wählt den richtigen Produktkatalog aus und verringert die Menge der vorhandenen Flugzeuge. Bei der visuellen Darstellung der Ansicht werden die vier möglichen Programme angezeigt. Damit der Kunde die Programmauswahl versteht, wird für jedes Programm ein passendes Flugzeugbild gewählt. Für die Umsetzung der "'Content over Chrome"' Richtlinie erhalten die vier Kacheln eine Bildschirmfüllende Größe, so dass die Auswahl mit Touch vereinfacht wird.
+
+
+\section{Navigation und Bedienung}
+Alle benötigten Ansichten sind den Anforderungen entsprechend konzipiert. Damit die Anforderung einer einfachen Bedienung (N1) erfüllt ist, muss ein passendes Navigationskonzept erstellt werden. Die Navigation unterstützt den Benutzer, indem es Fehler bei der Anwendung verzeiht. Hierzu gehört beispielsweise ein schnelles zurückspringen nach einer falschen Auswahl. Weiterhin muss ein schneller Ablauf des normalen Anwendungsfalls unterstützt werden. Der modellierte Workflow ist die Ausgangsbasis der Navigation. Dieser wird mit den zusätzlichen Ansichten und neuen Navigationsmöglichkeiten erweitert. \par 
+
+\subsection{Navigationsablauf}
+\begin{figure}
+\centering
+\includegraphics[width=\hsize]{images/workflow_app}
+\caption{Navigation in der App}
+\label{appNavigation}
+\end{figure}
+Abbildung \ref{appNavigation} zeigt die Möglichkeiten bei der Navigation. Es wird dabei eine hierarchische Struktur verwendet. Der Ursprungspunkt der Anwendung ist die Startseite. Von ihr können die vier Ansichten Programmauswahl, Zusammenfassung, Produktdetail und Kundenauswahl erreicht werden.  Nach der Auswahl eines Kunden erfolgt ein direkter Rücksprung zu der Startseite. Nach Auswahl der drei anderen Möglichkeiten ist das Ziel auf die Zusammenfassung zu kommen. Dies wird bei einer neuen Konfiguration erst nach der Auswahl eines Programms möglich, bei der Selektion eines Upgrades beim Zurückspringen aus der Detailansicht. Aus der Zusammenfassung kann auf alle Hauptfunktionen zugegriffen werden. Ebenfalls ist ein schnelles Zurückspringen aus jeder Ansicht möglich. Nach dem Abschluss einer Konfiguration wird zur Startseite zurück navigiert, in der nach einer Speicherung die Auswahl zu sehen ist. 
+ 
+\subsection{Bedienelemente}
+Damit die oben genannten Navigationsmöglichkeiten umgesetzt werden können, müssen passende Bedienelemente der Zielplattform ausgewählt werden. Hierzu werden folgende vier Möglichkeiten der Navigation eingesetzt: \par
+
+\textbf{Auswahl durch Kacheln:} Zu den Hauptfunktionen der Anwendung wird mit großen Auswahlflächen navigiert. Diese besitzen ein aussagekräftiges Icon und werden direkt auf der Oberfläche angezeigt (siehe Entwürfe).  
+
+\textbf{Obere AppBar:} Für die Navigation zu allen wichtigen Ansichten wird zusätzlich eine Möglichkeit in der oberen AppBar gegeben. Über dieses Bedienelement kann zu der Startansicht, Flugzeugauswahl, Upgradeauswahl und Zusammenfassung navigiert werden. Diese Navigationsmöglichkeit ist in jeder Ansicht möglich.
+
+\textbf{Untere AppBar:} Die Kundenauswahl soll für den normalen Anwender nicht sichtbar sein. Sie muss nur von einem erfahrenen Benutzer bedient werden. Aus diesem Grund wird die Navigation von der Startseite aus über die untere AppBar ermöglicht. Weiterhin wird die untere Leiste für ein schnelles Navigieren von der Detailansicht zur Zusammenfassung verwendet. 
+
+\textbf{Zurück Button:} In jeder Ansicht, außer der Startseite, wird dem Benutzer das Zurückkehren zur vorigen Ansicht ermöglicht. Hierdurch können Fehleingaben bei der Navigation schnell rückgängig gemacht werden.
