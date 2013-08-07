@@ -184,22 +184,22 @@ Die zweite Filterung der Daten wird über die Programmauswahl realisiert. Diese 
 \section{Navigation und Bedienung}
 Alle benötigten Ansichten sind den Anforderungen entsprechend konzipiert. Damit die Anforderung einer einfachen Bedienung (N1) erfüllt ist, muss ein passendes Navigationskonzept erstellt werden. Die Navigation unterstützt den Benutzer, indem es Fehler bei der Anwendung verzeiht. Hierzu gehört beispielsweise ein schnelles zurückspringen nach einer falschen Auswahl. Weiterhin muss ein schneller Ablauf des normalen Anwendungsfalls unterstützt werden. Der modellierte Workflow ist die Ausgangsbasis der Navigation. Dieser wird mit den zusätzlichen Ansichten und neuen Navigationsmöglichkeiten erweitert. \par 
 
-\subsection{Navigationsablauf}
+\subsection{Navigationsverlauf}
 \begin{figure}
 \centering
 \includegraphics[width=\hsize]{images/workflow_app}
 \caption{Navigation in der App}
 \label{appNavigation}
 \end{figure}
-Abbildung \ref{appNavigation} zeigt die Möglichkeiten bei der Navigation. Es wird dabei eine hierarchische Struktur verwendet. Der Ursprungspunkt der Anwendung ist die Startseite. Von ihr können die vier Ansichten Programmauswahl, Zusammenfassung, Produktdetail und Kundenauswahl erreicht werden.  Nach der Auswahl eines Kunden erfolgt ein direkter Rücksprung zu der Startseite. Nach Auswahl der drei anderen Möglichkeiten ist das Ziel auf die Zusammenfassung zu kommen. Dies wird bei einer neuen Konfiguration erst nach der Auswahl eines Programms möglich, bei der Selektion eines Upgrades beim Zurückspringen aus der Detailansicht. Aus der Zusammenfassung kann auf alle Hauptfunktionen zugegriffen werden. Ebenfalls ist ein schnelles Zurückspringen aus jeder Ansicht möglich. Nach dem Abschluss einer Konfiguration wird zur Startseite zurück navigiert, in der nach einer Speicherung die Auswahl zu sehen ist. 
+Abbildung \ref{appNavigation} zeigt die Möglichkeiten bei der Navigation. Es wird dabei eine hierarchische Struktur verwendet. Der Ursprungspunkt der Anwendung ist die Startseite. Von ihr können die vier Ansichten Programmauswahl, Zusammenfassung, Produktdetail und Kundenauswahl erreicht werden.  Nach der Auswahl eines Kunden werden die Kundendaten geladen und es erfolgt ein Rücksprung zur Startseite. Nach Auswahl der drei anderen Möglichkeiten ist das Ziel die Zusammenfassung zu erreichen. Dies wird bei einer neuen Konfiguration erst nach der Auswahl eines Programms möglich. Bei der Selektion eines Upgrades wird von der Detailseite zurückgesprungen. Aus der Zusammenfassung kann in jede Hauptfunktion navigiert werden. Damit ist immer eine Ausgangsbasis vorhanden, anhand deren der Benutzer sich orientieren kann.  Nach dem Abschluss einer Konfiguration wird zur Startseite zurück navigiert, damit eine neue Auswahl getätigt werden kann.
  
 \subsection{Bedienelemente}
 Damit die oben genannten Navigationsmöglichkeiten umgesetzt werden können, müssen passende Bedienelemente der Zielplattform ausgewählt werden. Hierzu werden folgende vier Möglichkeiten der Navigation eingesetzt: \par
 
 \textbf{Auswahl durch Kacheln:} Zu den Hauptfunktionen der Anwendung wird mit großen Auswahlflächen navigiert. Diese besitzen ein aussagekräftiges Icon und werden direkt auf der Oberfläche angezeigt (siehe Entwürfe).  
 
-\textbf{Obere AppBar:} Für die Navigation zu allen wichtigen Ansichten wird zusätzlich eine Möglichkeit in der oberen AppBar gegeben. Über dieses Bedienelement kann zu der Startansicht, Flugzeugauswahl, Upgradeauswahl und Zusammenfassung navigiert werden. Diese Navigationsmöglichkeit ist in jeder Ansicht möglich.
+\textbf{Obere AppBar:} Für die Navigation zu allen wichtigen Ansichten wird zusätzlich eine Möglichkeit in der oberen AppBar gegeben. Über dieses Bedienelement kann zu der Startansicht, Flugzeugauswahl, Upgradeauswahl und Zusammenfassung navigiert werden. Diese Navigationsmöglichkeit ist in jeder Ansicht möglich und hilft dem erfahrenen Benutzer bei einer schnellen Bedienung (N2).
 
-\textbf{Untere AppBar:} Die Kundenauswahl soll für den normalen Anwender nicht sichtbar sein. Sie muss nur von einem erfahrenen Benutzer bedient werden. Aus diesem Grund wird die Navigation von der Startseite aus über die untere AppBar ermöglicht. Weiterhin wird die untere Leiste für ein schnelles Navigieren von der Detailansicht zur Zusammenfassung verwendet. 
+\textbf{Untere AppBar:} Die Kundenauswahl ist nur für den Vertriebsexperten oder den Hersteller von Interesse. Aus diesem Grund wird die Navigation von der Startseite aus über die untere AppBar ermöglicht. Weiterhin wird die untere Leiste für ein schnelles Navigieren von der Detailansicht zur Zusammenfassung verwendet. Nach der Auswahl eines Upgrades wird durch einen Klick auf den entsprechenden Menüeintrag in der unteren AppBar  der Auswahlvorgang abgeschlossen und es erfolgt eine Navigation zur Zusammenfassung.
 
-\textbf{Zurück Button:} In jeder Ansicht, außer der Startseite, wird dem Benutzer das Zurückkehren zur vorigen Ansicht ermöglicht. Hierdurch können Fehleingaben bei der Navigation schnell rückgängig gemacht werden.
+\textbf{Zurück Button:} In jeder Ansicht, außer der Startseite, wird dem Benutzer das Zurückkehren zur vorigen Ansicht ermöglicht. Hierdurch kann eine unabsichtliche Navigation schnell rückgängig gemacht werden.
