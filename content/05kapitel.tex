@@ -1,10 +1,10 @@
 \chapter{Implementierung}\label{chapter_5}
-Die praktische Umsetzung des Entwurfs vom vorigen Abschnitt wird in diesem Kapitel beschrieben. Die Implementierung hat das Ziel die Umsetzung der zuvor entworfenen Ansichten, sowie die Realisierung der Anwendung auf der Zielplattform. Im folgenden wird die Architektur und der Aufbau beschrieben. Anschließend werden die wichtigsten Entscheidungen, die bei der Implementierung getroffen wurden erklärt.
+ Die Implementierung hat das Ziel die Umsetzung der zuvor entworfenen Ansichten, sowie die Realisierung der Anwendung auf der Zielplattform. Im folgenden wird die Architektur und der Aufbau beschrieben. Anschließend werden die wichtigsten Entscheidungen, die bei der Implementierung getroffen wurden erklärt.
 
 \section{Anwendungsarchitektur}
 Damit die Entwicklung der Anwendung beschleunigt werden kann, indem wiederverwendbare Muster in der Anwendung verwendet werden, wird zuerst eine geeignete Anwendungsarchitektur benötigt. Als erste Voraussetzung muss diese von der Zielumgebung, bzw. von der Technologie unterstützt werden. \par 
 
-Aufgrund des Offline-Modus in der Anwendung, sowie die Verwendung des Konfigurationsservers müssen zwei unterschiedliche Formen der Datenanbindung unterstützt werden. Dies hat zur Folge, dass ein einfacher Austausch der Datenanbindung in der Anwendung möglich sein muss, ohne eine Neuimplementierung der Schnittstellen. Die Anforderung an ein ästhetisches Design kann durch eine klare Trennung der Ansicht mit den Logikkomponenten erfüllt werden. Damit ist es möglich, die Gestaltung frei von der notwendigen Logik umzusetzen und sich auf das Aussehen der Benutzerschnittstelle zu konzentrieren. Die Architektur muss ebenfalls für Erweiterungen offen sein, damit bei zusätzlichen Anforderungen, die beim Einsatz der Anwendung entstehen, eine Umsetzung folgen kann.
+Aufgrund des Offline-Modus in der Anwendung, sowie die Verwendung des Konfigurationsservers müssen zwei unterschiedliche Formen der Datenanbindung unterstützt werden. Dies hat zur Folge, dass ein einfacher Austausch der Datenanbindung in der Anwendung möglich sein muss, ohne eine Neuimplementierung der Schnittstellen. Die Anforderung an ein ästhetisches Design kann durch eine klare Trennung der Ansicht mit den Logikkomponenten erfüllt werden. Damit ist es möglich, die Gestaltung frei von der notwendigen Logik umzusetzen und sich auf die Gestaltung der Benutzerschnittstelle zu konzentrieren. Die Architektur muss ebenfalls für Erweiterungen offen sein, damit zusätzliche Anforderungen, die beim Einsatz der Anwendung entstehen, umgesetzt werden können.
 
 \subsection{MVVM}
 Eine Lösung für die oben genannten Anforderungen an die Architektur bietet das von Microsoft entwickelte Model-View-ViewModel (MVVM) Entwurfsmuster. Hier wird eine strikte Trennung zwischen der Ansicht (View), der Logik (ViewModel) und den Daten (Model) vorgenommen. \par 
@@ -15,15 +15,15 @@ Eine Lösung für die oben genannten Anforderungen an die Architektur bietet das
 \caption{Komponenten im MVVM Entwurfsmuster}
 \label{mvvm}
 \end{figure}
-Die Kommunikation der einzelnen Komponenten ist in Abbildung \ref{mvvm} dargestellt. Die unterste Ebene ist die Model-Schicht. Diese ist für das Bereitstellen und Persistieren der Daten zuständig. Dies wird entweder mit einer Datenbank oder Webserviceschnittstelle realisiert. Wichtig bei dieser Schicht, wie in der Abbildung zu sehen, ist die unidirektionale Verbindung mit dem ViewModel. Da dies die einzige Verbindung zum Model ist, wird eine Manipulation von weiteren Komponenten verhindert. Dies vereinfacht das Finden von Fehlern, da es nur eine Schnittstelle gibt, die eine Veränderung der Daten durchführt. \par
-Auf der anderen Seite ist die View. Diese Komponente ist für das Darstellen der Daten zuständig. Es werden alle Komponenten einer Benutzerschnittstelle auf dieser Ebene verwendet. Der Benutzer führt alle Interaktionen mit dem Programm mit einem Eingabegerät wie der Maus oder Tastatur auf dieser Anwendungsschicht durch. Die Auswertung der Benutzereingaben folgt im "'Modell der Ansicht"' \cite[S.9]{bib:mvvm}, dem ViewModel. Hier werden die Eingaben behandelt und die entsprechenden Aktionen ausgeführt. Diese Schicht ist der Vermittler zwischen den Daten und der Benutzerschnittstelle. Aus diesem Grund werden die Daten, die vom Model erhalten werden für die Ansicht aufbereitet. Die Verbindung zur View-Ebene ist dabei bidirektional, damit sowohl Benutzereingaben, sowie Veränderungen im ViewModel registriert werden. Die Besonderheit liegt hier an der "'losen"' Bindung. Diese sorgt dafür, dass die Anwendung nicht abstürzt, wenn ein bestimmtes Element nicht vorhanden ist, was von der View erwartet wird. 
+Die Kommunikation der einzelnen Komponenten ist in Abbildung \ref{mvvm} dargestellt. Die unterste Ebene ist die Model-Schicht. Diese ist für das Bereitstellen und Persistieren der Daten zuständig. Es wird hierzu entweder eine Datenbank oder Webserviceschnittstelle verwendet. Wichtig bei dieser Schicht, wie in der Abbildung zu sehen, ist die unidirektionale Verbindung mit dem ViewModel. Damit ist eine Manipulation der Daten nur von einer Stelle aus möglich. Dies vereinfacht das Finden von Fehlern. \par
+Auf der anderen Seite ist die View. Diese Komponente ist für das Darstellen der Daten zuständig. Es werden alle Oberflächenelemente einer Benutzerschnittstelle auf dieser Ebene verwendet. Die Interaktionen des Benutzers werden auf dieser Anwendungsschicht durchgeführt. Die Auswertung der Eingaben folgt im "'Modell der Ansicht"' \cite[S.9]{bib:mvvm}, dem ViewModel. Diese Schicht ist der Vermittler zwischen den Daten und der Benutzerschnittstelle. Aus diesem Grund werden die Daten, die vom Model erhalten werden für die Ansicht aufbereitet. Die Verbindung zur View-Ebene ist dabei bidirektional, damit sowohl Benutzereingaben, als auch Veränderungen im ViewModel registriert werden.
 \par 
 Die Anforderung für einen einfachen Austausch der Datenquelle wird durch die Unabhängigkeit des Models erfüllt. Hierdurch können die Daten sowohl auf dem Gerät, als auch mit Webserviceschnittstellen geladen werden. Das MVVM Entwurfsmuster wird von der Technologie unterstützt und es sind bereits Codebeispiele vorhanden \cite{bib:winMvvm}. Mit der Trennung von View und ViewModel ist ein einfaches Erstellen von Benutzerschnittstellen möglich. Aufgrund der Unabhängigkeit beider Komponenten können diese auch separat entwickelt werden. Hierdurch wird es beispielsweise möglich, dass ein Designer und ein Programmierer unabhängig voneinander arbeiten können. 
 
 \subsection{Anwenden des Entwurfsmusters}
 Bei der Implementierung der Anwendung mussten für die Anzeige der Daten immer wiederkehrende Eigenschaften der Datensätze verwendet werden. Ein Beispiel für eine solche Eigenschaft ist der Name oder die Beschreibung eines Flugzeuges oder Upgrades. Da beim MVVM Entwurfsmuster die View nicht auf das Model zugreift, kennt es diese Datenobjekte nicht. Aus diesem Grund muss das ViewModel diese Daten konvertieren und ein neues Objekt bereitstellen. 
 
-Ebenfalls muss bei einer Manipulation oder Auswahl der Daten die Konvertierung rückgängig gemacht werden, damit das Model die Änderungen vornehmen kann. Diese Vorgehensweise hat bei einer Veränderung der Daten zur Laufzeit Vorteile, da das ViewModel den Zeitpunkt der Persistierung entscheiden kann und damit evtl. ein Rückgängig anbieten kann. Im Anwendungsbeispiel ist dies jedoch ein zusätzlicher Aufwand, der nicht benötigt wird, da keine Daten manipuliert werden, sondern lediglich eine Auswahl getätigt wird. Die eigentliche Datenbasis wird in der Anwendung nicht verändert.
+Ebenfalls muss bei einer Manipulation oder Auswahl der Daten die Konvertierung rückgängig gemacht werden, damit das Model die Änderungen vornehmen kann. Diese Vorgehensweise hat bei einer Veränderung der Daten zur Laufzeit Vorteile, da das ViewModel den Zeitpunkt der Persistierung entscheiden kann. Im Anwendungsbeispiel ist dies jedoch ein zusätzlicher Aufwand, der nicht benötigt wird, da keine Daten manipuliert werden, sondern eine Auswahl getätigt wird. Die eigentliche Datenbasis wird in der Anwendung nicht verändert.
 Für die Vermeidung des zusätzlichen Aufwandes wurde eine neue Komponente eingeführt. Auf diese haben alle drei Ebenen im MVVM Zugriff. In dieser Komponente sind die festen Datenelemente definiert. Es wird nur ein lesender Datenzugriff ermöglicht. Die konkrete Implementierung der Datensätze wird weiterhin im Model vorgenommen. Damit muss keine Konvertierung der Daten erfolgen, um der View einen Zugriff auf die Daten zu geben. \par 
 \begin{figure}
 \centering
@@ -37,5 +37,40 @@ Dazu gehört jeweils ein eigenes ViewModel.  Diese verwenden auch mehrfach die B
 
 
 \section{Navigation}
+Eine besondere Herausforderung bei der Implementierung ist die Navigation. Diese muss zuerst in das Entwurfsmuster eingeordnet werden. Es muss entschieden werden, in welcher Ebene navigiert wird. Der Wechsel der Ansichten ist eine Aufgabe der View. Diese bestimmt, wie zu einer neuen Seite navigiert wird. In dieser Ebene werden auch die konkreten Navigationsmethoden angeboten. Andererseits ist die Entscheidung darüber, wann ich in welche Ansicht übergehe eine Angelegenheit des ViewModels. Diese wertet die Auswahl eines Klicks aus und ist damit für dessen Bearbeitung zuständig. Weiterhin werden Objekte zwischen den beiden ViewModels ausgetauscht. Aus diesem Grund muss es eine Möglichkeit für den Austausch geben. \par 
+
+Die Lösung des Problems erfolgt mit dem Ansatz der Inversion of Control \cite{bib:ioc}. Bei diesem Prinzip geht es um die Auflösung von Abhängigkeiten. Anstatt ein Objekt direkt zu erzeugen, wird es von einer zentralen Stelle verwendet. Die Abhängigkeit wird damit von außerhalb des aktuellen Codes hinzugefügt. Dieser Ansatz hat besonders bei Softwaretests große Vorteile, da andere Objekte für Testzwecke verwendet werden können.  \par
+\begin{figure}[H]
+\centering
+\includegraphics[width=\hsize]{images/dependencyInjection}
+\caption{Navigation mit Inversion of Control}
+\label{ioc}
+\end{figure}
+Die Umsetzung des Prinzips ist in Abbildung \ref{ioc} dargestellt. Damit eine Verwendung der einzelnen Klassen aus der View im ViewModel möglich ist, wird für jede Ansicht (Page) ein passendes Interface (IPage) definiert. Eine Navigation wird beim Windows 8 Framework mit der Frame Klasse durchgeführt. Dieses implementiert das INavigationService Interface, welches zwei Navigationsmethoden beinhaltet. Beim Start der App Klasse erfolgt werden die einzelnen Pages und der Navigationsframe mit den definierten Interfaces im IOCContainer registriert. Der Container befindet auf der ViewModel Ebene. Für eine Navigation wird die Zielpage und der Navigationsservice mit der GetInstance<T> Methode erhalten. Anschließend kann die passende Navigationsmethode entweder mit oder ohne Parameter ausgeführt werden. \par 
+\begin{figure}[H]
+\begin{lstlisting}
+private void SaveSelectionAndNavigateToSummaryPage(DataCommon data)
+{
+       var selectedProgramm = GetSelectedProgramm(data.UniqueId);
+       _model.SelectAircraftProgramm(selectedProgramm);
+       var classToNavigate = SimpleIoc.Default.GetInstance<ISummary>();
+       var navigationService = SimpleIoc.Default.GetInstance<INavigationService>();
+       navigationService.Navigate(classToNavigate.GetType());
+}
+\end{lstlisting}
+\caption{Auszug des AircraftFamilyViewModels (siehe Anhang)}
+\label{navigateMethod}
+\end{figure}
+
+In Codebeispiel \ref{navigateMethod} wird ein solcher Navigationsvorgang im ViewModel demonstriert. Dieser Auszug ist aus der Flugzeugpgrogramm Auswahl entnommen. Nachdem ein Programm ausgewählt wurde, wird zuerst die Auswahl im Model gespeichert. Im zweiten Schritt erhält man die  Zusammenfassungsseite mit dem Interface (ISummary) vom Container. Die Navigation erfolgt anschließend mit dem Navigationsservice.
+\par
+Mit diesem Ansatz gelingt es, die Darstellung und die Entscheidung, welche Ansicht bei welchem Inhalt verwendet wird, der View Schicht zu überlassen. Der Wechsel von Ansichten wird mit Methoden durchgeführt, die eine Ansicht bereitstellt. Das ViewModel kann entscheiden, wann eine Navigation durchgeführt wird. Durch die Verwendung des Containers ist eine zentrale Stelle vorhanden, die jederzeit verwendet werden kann. Bei einer Navigation können Parameter übergeben werden, die eine Kommunikation der ViewModels ermöglicht. 
+ 
 \section{Expertenmodus}
+Beim Entwurf der Ansichten in Kapitel \ref{chapter_4} ist die Anforderung einer schnellen Bedienung mit dem Navigationskonzept umgesetzt worden. Damit nach der Heuristik einer flexiblen Nutzung weitere Möglichkeiten bei der Anwendung existieren, werden bei der Implementierung weitere Bedienelemente hinzugefügt. Bei diesen neuen Elementen ist es wichtig, dass diese nicht im Vordergrund stehen. Vielmehr sind diese erst nach dem Durchführen von bestimmten Aktionen für den Anwender sichtbar. 
+
+ 
+\subsection{Semantischer Zoom}
+\subsection{Flip View}
+
 \section{Anpassungen an die Zusammenfassung}
