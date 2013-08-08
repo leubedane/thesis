@@ -52,12 +52,53 @@ Auf die einzelnen Kriterien bezogen erfüllt die native Anwendung alle Anforderu
  Die Probleme, die bei der Verwendung einer Web Anwendung auftreten können durch den hybriden Ansatz gelöst werden. Ein Problem was weiterhin besteht, ist die Performanz. Diese wird mit der hybriden Anwendungsform besser, kommt jedoch nicht an die Leistung einer nativen Anwendung heran.
 
 \paragraph{Abwägung: }
-Nachdem alle Anwendungsformen auf die Erfüllung der aufgestellten Kriterien untersucht sind, kann eine Gegenüberstellung der einzelnen Komponenten erfolgen.  Bei der ersten Betrachtung der Anwendungsformen ist die Implementierung als Web Anwendung nicht sinnvoll. Die Anforderungen können zwar umgesetzt werden, jedoch ist ein erheblicher Mehraufwand für die Erreichung nötig. Ebenfalls hat die Anwendung im Vorhinein bereits Einschränkungen bzgl. der Performanz, sowie der Bereitstellung von Oberflächenelementen. Die Vorteile einer Implementierung für mehrere Zielsysteme ist bei der Umsetzung kein Kriterium. \par
 
+Nachdem alle Anwendungsformen auf die Erfüllung der aufgestellten Kriterien untersucht sind, kann eine Gegenüberstellung der einzelnen Komponenten erfolgen. Die Tabelle \ref{decision} zeigt eine Bewertung der Kriterien. Hierbei wurden die einzelnen Punkte anhand einer Skala von 0 (kann nicht erfüllt werden) bis 5 (ohne Einschränkungen möglich) bewertet.  Die Implementierung als Web Anwendung scheidet klar aus. Die Anforderungen können zwar umgesetzt werden, jedoch ist ein erheblicher Mehraufwand für die Erreichung nötig. Ebenfalls hat die Anwendung im Vorhinein bereits Einschränkungen bzgl. der Performanz, sowie der Bereitstellung von Oberflächenelementen. Die Vorteile einer Implementierung für mehrere Zielsysteme ist bei der Umsetzung kein Kriterium. \par
+\begin{figure}
+\begin{tabular}{| p{5.4cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |}
+\toprule[2pt] \rowcolor{dunkelgrau}
+\hline
+  Kriterium & Web \newline Anwendung & Hybride \newline Anwendung & Native \newline Anwendung \\
+  \hline
+  Lokale Datenspeicherung & 1 & 4 & 5
+   \\
+  \hline
+  Hardwarenahe Schnittstellen &1  &2  & 5  \\
+  \hline
+    Betriebssystemspezifische Oberflächenelemente & 1 & 4 & 5 \\
+  \hline
+    Summe & 3 & 10 & 15 \\
+  \hline
+\bottomrule[2pt]
+\end{tabular}
+\caption{Gegenüberstellung und Bewertung der Zielkriterien für die Anwendungsform}
+\label{decision}
+\end{figure}
+\par 
 Schwieriger ist die Entscheidung zwischen hybrid und nativ. Die beiden Kriterien lokale Speicherung der Daten und betriebssystemspezifsche Oberflächenelemente sind mit beiden Ansätzen ohne größere Einschränkungen möglich. Beim hybriden Ansatz ist ein geringer Mehraufwand bei der Implementierung nötig. Dies ist jedoch nicht relevant für die Entscheidung. Der wichtigste Grund für die Entscheidung für eine nativen Anwendung ist die Performanz bei der Bedienung. Nur durch die Verwendung von nativen Anwendungen können aufwändige Animationen oder das Rendern von vielen Bildern flüssig ablaufen. Eine hybride Lösung besitzt hier Einschränkungen, da die Hardware mit einer Zwischenschicht verwendet wird.
 
 \subsection{Anwendungstechnologie}
-Mit der Entscheidung für eine mobile Anwendungsform kommen drei mögliche Technologien für die Implementierung in Frage. Die Plattformen Android \footnote{http://www.android.com/}, iOS \footnote{http://www.apple.com/de/iphone/ios/} und Windows 8 \footnote{http://windows.microsoft.com/de-de/windows-8/} sind aufgrund ihrer Marktanteile (Android: 43,4\% iOS: 48,2\% Windows: 7,4\% Quelle: \cite{bib:marktanteilBS} ) die wichtigsten Technologien im Tablet Bereich. Die drei Plattformen haben unterschiedliche Ziele. Das iOS Betriebssystem hat den Vorteil einer hohen Verbreitung bei Business Anwendungen (siehe \cite[S.5]{bib:mobileMarketing2}). Android hat die meisten Nutzer bei Privatanwendungen (siehe \cite{bib:marktanteilMBS}). Bei Windows 8 ist der Vorteil eines neuen Konzeptes, was speziell für Tablet-PCs optimiert ist. Für die Umsetzung des Workflows kann jede dieser Technologien verwendet werden. Ist die Implementierung mit einem Framework umgesetzt, stellt das Implementieren auf einer anderen Zielplattform keine Herausforderung da. \par 
+Mit der Entscheidung für eine mobile Anwendungsform kommen drei mögliche Technologien für die Implementierung in Frage. Die Plattformen Android \footnote{http://www.android.com/}, iOS \footnote{http://www.apple.com/de/iphone/ios/} und Windows 8 \footnote{http://windows.microsoft.com/de-de/windows-8/} sind aufgrund ihrer Marktanteile (Android: 43,4\% iOS: 48,2\% Windows: 7,4\% Quelle: \cite{bib:marktanteilBS} ) die wichtigsten Technologien im Tablet Bereich. Die drei Plattformen haben unterschiedliche Ziele. Das iOS Betriebssystem hat den Vorteil einer hohen Verbreitung bei Business Anwendungen (siehe \cite[S.5]{bib:mobileMarketing2}). Android hat die meisten Nutzer bei Privatanwendungen (siehe \cite{bib:marktanteilMBS}). Bei Windows 8 ist der Vorteil eines neuen Konzeptes, was speziell für Tablet-PCs optimiert ist. Für die Umsetzung des Workflows kann jede dieser Technologien verwendet werden, da die Zielkriterien sich bei den unterschiedlichen Plattformen nicht unterscheiden (siehe Tabelle \ref{decisionTechnologie}). Ist die Implementierung mit einem Framework umgesetzt, stellt das Implementieren auf einer anderen Zielplattform keine Herausforderung dar. \par 
+\begin{figure}
+\begin{tabular}[H]{| p{5.4cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |}
+\toprule[2pt] \rowcolor{dunkelgrau}
+\hline
+  Kriterium & Android & iOS & Windows 8 \\
+  \hline
+  Lokale Datenspeicherung & 5 & 5 & 5
+   \\
+  \hline
+  Hardwarenahe Schnittstellen &4  &5  & 5  \\
+  \hline
+    Betriebssystemspezifische Oberflächenelemente & 5 & 5 & 5 \\
+  \hline
+    Summe & 14 & 15 & 15 \\
+  \hline
+\bottomrule[2pt]
+\end{tabular}
+\caption{Gegenüberstellung und Bewertung der Zielkriterien für Plattform}
+\label{decisionTechnologie}
+\end{figure}
 
 Bei der vorliegenden Arbeit wird auf Windows 8 gesetzt. Im Gegensatz zu iOS und Android wird dieses Betriebssystem nicht auf Smartphones ausgeführt. Dies führt zu einer besseren Optimierung für größere Bildschirme. Die Technologie ist sehr neu auf dem Markt (26. Oktober 2012), dadurch gibt es noch nicht viele Apps. Dies bietet die Möglichkeit den Anwender mit neuen Möglichkeiten in der Anwendung zu überraschen, da einige Konzepte noch nicht bekannt sind. Die Möglichkeit zu experimentieren und neue Ideen umzusetzen ist aufgrund der neuen Plattform vorhanden.  Die Verwendung von Windows 8 vereinfacht ebenfalls die Integration in ein Unternehmensumfeld, da hier die Microsoft Produkte weit verbreitet sind. Dies führt zu einer schnelleren Akzeptanz im Unternehmen. Somit wird im Folgenden die Anwendung für das Windows 8 Betriebssystem implementiert.
         
@@ -117,14 +158,14 @@ Für das Verwenden der ersten Hauptfunktion, der Produktauswahl wird der entspre
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\hsize]{images/catalogue_entwurf}
+\includegraphics[width=360px]{images/catalogue_entwurf}
 \caption{Entwurf der Produktkategorie Auswahl}
 \label{catalogueSketch}
 \end{figure}
 Abbildung \ref{catalogueSketch} zeigt die Zuteilung der Kategorien auf die einzelnen Bereiche im Flugzeug. Wichtig hierbei ist das Verwenden von ansprechenden Bildern und großen Auswahlboxen. Der Kunde muss die benötigten Upgrades den einzelnen Bereichen zuordnen können und kann mit der Anwendung schnell zu seinem benötigten Produkt navigieren. Mit der Darstellung wird das Ziel erreicht, den Kunden für die Komplexität des Produktes zu sensibilisieren und ihm gleichzeitig eine bessere Suchmöglichkeit als über Produkt- oder Kategorienummern zu ermöglichen. \par 
 
 Nach der Auswahl einer Kategorie wird nach dem in Abschnitt \ref{usingConcepts} vorgestellten Prinzip der hierarchischen Navigation eine Detail Seite angezeigt. Diese enthält die Details über die Upgrademöglichkeiten. Die Struktur beim Katalog des Anwendungsbeispiels enthält eine weitere Unterkategorie, die im Entwurf (siehe Abbildung \ref{detailSketch}) auf der linken Seite als Liste dargestellt ist. Nach der Auswahl eines dieser Elemente wird auf der rechten Seite die möglichen Upgrades der gewählten Unterkategorie angezeigt. Zusätzlich werden Informationen über die vorhandenen Möglichkeiten und optional Bilder für die Erklärung dargestellt.  Für jedes vorhandene Upgrade in einer Unterkategorie werden einzelne Kacheln verwendet. Diese können per Klick selektiert werden. Die Informationen über das jeweilige Upgrade sind in der Kachel enthalten, ebenfalls ein Produktbild und ggf. der Name des Herstellers. Diese Elemente sind immer auf dem ersten Bildschirm ohne Scrollen sichtbar. Der Benutzer sollte nur bei Bedarf von mehr Informationen scrollen müssen. Hierdurch wird eine schnelle Auswahl der gewünschten Upgrades ermöglicht. 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=\hsize]{images/detail_entwurf}
 \caption{Entwurf der Produktdetail Ansicht}
@@ -170,13 +211,8 @@ Diese ist bereits im modellierten Workflow vorgesehen. Von der Startseite aus ge
 \par 
 
 Für die Umsetzung der Funktionalen Anforderung F6, die ein Filtern der Anwendungsdaten spezifiziert, wird eine weitere Ansicht benötigt. Die Daten sind in der Flugzeugauswahl und in der neuen Startseite auf einen Kunden beschränkt. Andere Datensätze werden nicht benötigt.  Das Problem mit der Filterung kann aus diesem Grund mit einer Kundenauswahl gelöst werden. Diese Auswahl stellt im Anschluss alle kundenspezifischen Daten der Anwendung bereit und erfüllt die Anforderung eines Filters. \par 
-\begin{figure}
-\centering
-\includegraphics[width=\hsize]{images/customer_entwurf}
-\caption{Entwurf der Kundenauswahl}
-\label{customerSketch}
-\end{figure}
-Die Ansicht für die Auswahl der Kunden wird analog zu der Flugzeugauswahl gestaltet. Der Entwurf ist in Abbildung \ref{customerSketch} zu sehen. Das Bild des einzelnen Kunden ist dessen Logo. Die Elemente sind im Grid angeordnet. Eine Einteilung in Kategorien erfolgt Alphabetisch. Im Anwendungsbeispiel sind sehr viele Kunden vorhanden. Damit eine schnelle Auswahl erfolgen kann, wird der Semantische Zoom in der Ansicht verwendet. Die Kategorisierung erfolgt über das Alphabet. Es kann jedem Buchstaben ein Kunde zugeordnet werden. Nach der Auswahl eines Datums werden die kundenspezifischen Anwendungsdaten auf das mobile Endgerät geladen und können anschließend beim Kunden "'offline"' verwendet werden. \par 
+
+Die Ansicht für die Auswahl der Kunden wird analog zu der Flugzeugauswahl gestaltet. Es wird hier ebenfalls für jeden Kunden eine eigene Kachel angezeigt. Diese sind im Grid angeordnet. Eine Einteilung in Kategorien erfolgt Alphabetisch. Im Anwendungsbeispiel sind sehr viele Kunden vorhanden. Damit eine schnelle Auswahl erfolgen kann, wird der Semantische Zoom in der Ansicht verwendet. Die Kategorisierung erfolgt über das Alphabet. Es kann jedem Buchstaben ein Kunde zugeordnet werden. Nach der Auswahl eines Datums werden die kundenspezifischen Anwendungsdaten auf das mobile Endgerät geladen und können anschließend beim Kunden "'offline"' verwendet werden. \par 
 
 Die zweite Filterung der Daten wird über die Programmauswahl realisiert. Diese Auswahl wird beim Starten einer neuen Konfiguration von der Startseite aus aufgerufen. Der Programmfilter wählt den richtigen Produktkatalog aus und verringert die Menge der vorhandenen Flugzeuge. Bei der visuellen Darstellung der Ansicht werden die vier möglichen Programme angezeigt. Damit der Kunde die Programmauswahl versteht, wird für jedes Programm ein passendes Flugzeugbild gewählt. Für die Umsetzung der "'Content over Chrome"' Richtlinie erhalten die vier Kacheln eine Bildschirmfüllende Größe, so dass die Auswahl mit Touch vereinfacht wird.
 
@@ -198,8 +234,27 @@ Damit die oben genannten Navigationsmöglichkeiten umgesetzt werden können, mü
 
 \textbf{Auswahl durch Kacheln:} Zu den Hauptfunktionen der Anwendung wird mit großen Auswahlflächen navigiert. Diese besitzen ein aussagekräftiges Icon und werden direkt auf der Oberfläche angezeigt (siehe Entwürfe).  
 
-\textbf{Obere AppBar:} Für die Navigation zu allen wichtigen Ansichten wird zusätzlich eine Möglichkeit in der oberen AppBar gegeben. Über dieses Bedienelement kann zu der Startansicht, Flugzeugauswahl, Upgradeauswahl und Zusammenfassung navigiert werden. Diese Navigationsmöglichkeit ist in jeder Ansicht möglich und hilft dem erfahrenen Benutzer bei einer schnellen Bedienung (N2).
-
-\textbf{Untere AppBar:} Die Kundenauswahl ist nur für den Vertriebsexperten oder den Hersteller von Interesse. Aus diesem Grund wird die Navigation von der Startseite aus über die untere AppBar ermöglicht. Weiterhin wird die untere Leiste für ein schnelles Navigieren von der Detailansicht zur Zusammenfassung verwendet. Nach der Auswahl eines Upgrades wird durch einen Klick auf den entsprechenden Menüeintrag in der unteren AppBar  der Auswahlvorgang abgeschlossen und es erfolgt eine Navigation zur Zusammenfassung.
-
+\textbf{Obere AppBar:} Für die Navigation zu allen wichtigen Ansichten wird zusätzlich eine Möglichkeit in der oberen AppBar gegeben. Über dieses Bedienelement kann zu der Startansicht, Flugzeugauswahl, Upgradeauswahl und Zusammenfassung navigiert werden (Abbildung \ref{upperApp}). Diese Navigationsmöglichkeit ist in jeder Ansicht möglich und hilft dem erfahrenen Benutzer bei einer schnellen Bedienung (N2). \par
+\begin{figure}[H]
+\centering
+\includegraphics[width=\hsize]{images/UpperAppBar}
+\caption{Obere AppBar für die Navigation}
+\label{upperApp}
+\end{figure}
+\textbf{Untere AppBar:} Die Kundenauswahl ist nur für den Vertriebsexperten oder den Hersteller von Interesse. Aus diesem Grund wird die Navigation von der Startseite aus über die untere AppBar (siehe \ref{lowerApp}) ermöglicht.  Weiterhin wird diese Leiste für ein schnelles Navigieren von der Detailansicht zur Zusammenfassung verwendet . Nach der Auswahl eines Upgrades wird durch einen Klick auf den entsprechenden Menüeintrag (rechter Button im Bild) in der unteren AppBar  der Auswahlvorgang abgeschlossen und es erfolgt eine Navigation zur Zusammenfassung.
+\begin{figure}[H]
+\centering
+\includegraphics[width=\hsize]{images/LowerAppBar}
+\caption{Untere AppBar für die Navigation}
+\label{lowerApp}
+\end{figure}
 \textbf{Zurück Button:} In jeder Ansicht, außer der Startseite, wird dem Benutzer das Zurückkehren zur vorigen Ansicht ermöglicht. Hierdurch kann eine unabsichtliche Navigation schnell rückgängig gemacht werden.
+
+\section{Expertenmodus}
+Beim Entwurf der Ansichten in Kapitel \ref{chapter_4} ist die Anforderung einer schnellen Bedienung mit dem Navigationskonzept umgesetzt worden. Damit nach der Heuristik einer flexiblen Nutzung weitere Möglichkeiten bei der Anwendung existieren, werden bei der Implementierung weitere Bedienelemente hinzugefügt. Bei diesen neuen Elementen ist es wichtig, dass diese nicht im Vordergrund stehen. Vielmehr sind diese erst nach dem Durchführen von bestimmten Aktionen für den Anwender sichtbar. Diese Maßnahmen haben das Ziel einen Expertenmodus zu etablieren.
+
+\subsection{Flip View}
+Im neuen Navigationsworkflow (siehe \ref{appNavigation}) muss für die Auswahl eines Upgrades mehrere Vorselektionen durchlaufen werden. Dieser Mechanismus ist für den Kunden ideal, da er so den Aufbau des Produktes, sowie die einzelnen Möglichkeiten versteht. Der Experte, der den Aufbau kennt und genau weiß, was er will, ist dies mit der Zeit anstrengend. An dieser Stelle muss eine weitere Möglichkeit geschaffen werden, die für den Experten geeignet ist. 
+
+\subsection{Semantischer Zoom}
+Die Entwürfe für die Kunden- und Flugzeugauswahl sehen die Verwendung des Semantischen Zooms vor. 
