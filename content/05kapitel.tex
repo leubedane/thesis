@@ -11,7 +11,7 @@ Eine Lösung für die oben genannten Anforderungen an die Architektur bietet das
 
 \begin{figure}
 \centering
-\includegraphics{images/mvvm}
+\includegraphics[height=100px]{images/mvvm}
 \caption{Komponenten im MVVM Entwurfsmuster}
 \label{mvvm}
 \end{figure}
@@ -31,9 +31,11 @@ Für die Vermeidung des zusätzlichen Aufwandes wurde eine neue Komponente einge
 \caption{Klassendiagramm im MVVM Entwurfsmuster}
 \label{mvvmApp}
 \end{figure}
-Die einzelnen Objekte der Anwendung sind in der Abbildung \ref{mvvmApp} zu sehen. In der View Schicht sind die sogenannten Pages enthalten. Eine Page ist die Oberflächenschnittstelle im Windows 8 Framework.  Diese beinhaltet XML Elemente, sogenannten XAML Code. Mit diesem wird deklarativ eine Benutzerschnittstelle erstellt. Für jede, in Kapitel \ref{chapter_4} entworfene Ansicht ist eine Page vorhanden. Für jede Ansicht existiert ein passendes ViewModel, welches Programmcode für die Behandlung der Benutzereingaben enthält. Die Daten werden aus dem Model
+Die Abbildung \ref{mvvmApp} zeigt einen Ausschnitt des Klassendiagramms. Anhand der Auswahl des Upgrades, wie im Navigationsverlauf (siehe \ref{appNavigation}) zu sehen, wird die Anwendung des MVVM Entwurfsmusters demonstriert. Es werden hierfür die drei Ansichten SelectUpgradeTypePage, SystemUpgradePage und SelectUpgradePage benötigt. Alle drei erben von der Klasse Page. Diese ist die vom Framework bereitgestellte Oberflächenklasse und steht für eine Seite der Anwendung. Die Definition der Page und der enthaltenen Oberflächenelemente erfolgt in sogenanntem XAML Code. Dieser ist eine XML-basierte Sprache für das deklarative Erstellen von Benutzerschnittstellen. Alle diese Komponenten lassen sich in die View-Schicht einordnen. \par 
 
-Dazu gehört jeweils ein eigenes ViewModel.  Diese verwenden auch mehrfach die Basis Model Komponenten. Die konkreten Datenelemente werden in der Model-Schicht implementiert. 
+Zu jeder Ansicht existiert ein passendes ViewModel. Damit eine bidirektionale Verbindung aufgebaut werden kann wird für die Kommunikation von der View zum ViewModel sogenannte Bindings verwendet. Ein solches Binding bindet ein Oberflächenelement an das passende Datenelement im ViewModel. Im Beispiel ist das Grid Oberflächenelement an ein Array im ViewModel gebunden. Die Kommunikation in die entgegengesetzte Richtung erfolgt mit Events. Bei einer Änderung der Daten im ViewModel wird ein sogenanntes PropertyChangedEvent ausgeführt. Nachdem die View das Event erhalten hat, werden die Daten in der Ansicht aktualisiert. \par
+
+Für die drei ViewModel Klassen existiert eine gemeinsame Model Klasse. Da die Daten voneinander abhängig sind, ist eine gemeinsame Verwendung sinnvoll. Das Model stellt für jedes ViewModel die passenden Schnittstellen bereit. Die Datenobjekte UpgradeType, SystemUpgrade und Upgrade sind in der Model Schicht vorhanden und werden als Datenbasis verwendet. Die bereitgestellten Methoden verwenden Objekte dieser Klassen. Damit die Datenobjekte auch in der View verwendet werden können, ist die Definition als Interface in die DataCommon Komponente ausgelagert. Diese kann von allen drei Schichten der Anwendung verwendet werden. Im Beispiel wird die Verwendung in den ViewModel Klassen demonstriert. Hier werden die Datenelemente, die für das Binding mit der View benötigt werden als ein Array des Interface bereitgestellt. Dies sorgt für eine einheitliche Kommunikation der drei Ebenen und vermeidet eine Konvertierung der Daten im ViewModel
 
 
 \section{Navigation}
@@ -58,7 +60,7 @@ private void SaveSelectionAndNavigateToSummaryPage(DataCommon data)
        navigationService.Navigate(classToNavigate.GetType());
 }
 \end{lstlisting}
-\caption{Auszug des AircraftFamilyViewModels (siehe Anhang)}
+\caption{Auszug des AircraftFamilyViewModels (siehe Anhang A)}
 \label{navigateMethod}
 \end{figure}
 
@@ -66,5 +68,3 @@ In Codebeispiel \ref{navigateMethod} wird ein solcher Navigationsvorgang im View
 \par
 Mit diesem Ansatz gelingt es, die Darstellung und die Entscheidung, welche Ansicht bei welchem Inhalt verwendet wird, der View Schicht zu überlassen. Der Wechsel von Ansichten wird mit Methoden durchgeführt, die eine Ansicht bereitstellt. Das ViewModel kann entscheiden, wann eine Navigation durchgeführt wird. Durch die Verwendung des Containers ist eine zentrale Stelle vorhanden, die jederzeit verwendet werden kann. Bei einer Navigation können Parameter übergeben werden, die eine Kommunikation der ViewModels ermöglicht. 
  
-
-

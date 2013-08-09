@@ -10,23 +10,27 @@ Die Anpassungen und Vereinfachungen eines Konfigurationsprozesses bei der Verwen
 \includegraphics[width=\hsize]{images/konfigurationsprozess_alt}
 \caption{Auszug eines Konfigurationsprozesses}
 \end{figure}
-Ein Auszug aus einem Konfigurationsprozess ist in Abbildung  \ref{oldWorkflow} zu sehen. Zu Beginn möchte der Kunde ein konkretes Produkt auswählen. Dies geschieht über den Katalog.  Anschließend kann er mithilfe von eindeutigen Produktnummern die Bestellung über ein Formular weitergeben. Damit die Zusammenstellung des Kunden geprüft werden kann, werden die Daten beim Hersteller in das Konfigurationssystem eingepflegt. Dieses berechnet die komplexen Abhängigkeiten und prüft die Gültigkeit der Konfiguration. Der letzte Schritt ist die Angebotserstellung. Hierbei wird das konkrete Angebot für den Kunden erstellt.
+Ein Auszug aus einem Konfigurationsprozess ist in Abbildung  \ref{oldWorkflow} zu sehen. Die Darstellung zeigt eine Vereinfachung, da es in der Praxis meist Schleifen gibt. Zu Beginn möchte der Kunde ein konkretes Produkt auswählen. Dies geschieht über den Katalog.  Anschließend kann er mithilfe von eindeutigen Produktnummern die Bestellung über ein Formular weitergeben. Damit die Zusammenstellung des Kunden geprüft werden kann, werden die Daten beim Hersteller in das Konfigurationssystem eingepflegt. Dieses berechnet die komplexen Abhängigkeiten und prüft die Gültigkeit der Konfiguration. Der letzte Schritt ist die Angebotserstellung. Hierbei wird das konkrete Angebot für den Kunden erstellt.
 \par
 
-Bei der Verwendung dieser Prozessbeschreibung entstehen Probleme, die eine Vereinfachung des Prozesses erschweren. Das erste Problem ist die Verwendung von Produktnummern. Diese Nummern werden für eine eindeutige Identifizierung des Produktes bei der Bestellung verwendet. Bei der Verwendung können Fehler entstehen. Es kann die falsche Produktnummer vom Kunden bei der Auswahl verwendet werden, so dass nicht das richtige Produkt bei der Angebotserstellung verwendet wird. Bei der Produktauswahl sind 
+Bei der Verwendung dieser Prozessbeschreibung entsteht durch den gegebenen Prozess ein Kommunikationsproblem. Dies tritt aufgrund der Trennung von Produktauswahl und Produktkonfiguration auf. Der Kunde ist nur bei der Auswahl beteiligt. Das Feedback für die Umsetzung der Zusammenstellung erfolgt erst nach der Weitergabe der Bestellung. Dies ist problematisch, wenn bei der Konfiguration Alternativen auftreten, bei denen der Kunde entscheiden muss oder eine Konfiguration komplett nicht umsetzbar ist. Hier muss ggf. der Prozess wiederholt werden. Für die Lösung ist eine Hinzunahme des Kunden bei der Konfigurationsüberprüfung notwendig. Das Ziel sollte ein schnelles Feedback bei der aktuellen Auswahl sein. \par 
+
+Die zweite Stelle, an der eine Verbesserung möglich ist, befindet sich bei der Eingabe der Daten für den Produktkonfigurator und der damit verbundenen Prüfung. Der Kunde hat im vorigen Schritt bereits die Daten, die benötigt werden erfasst. Eine zweite Erfassung kann zu Fehlern oder Kommunikationsproblemen führen. Diese Probleme entstehen bei der falschen Eingabe des bestellten Produktes. Hierdurch kann der Konfigurator ein falsches Ergebnis liefern, welches zu einem inkorrekten Angebot führt, wodurch der Prozess wiederholt werden muss. Für die Verbesserung dieser Situation muss die Eingabe des Kunden direkt zum Konfigurator gegeben werden. Diese Maßnahme minimiert die Fehler bei der Erfassung. \par 
+
+Ein weiteres Problem ist die Verwendung von Produktnummern. Diese Nummern werden für eine eindeutige Identifizierung des Produktes bei der Bestellung verwendet. Bei der Verwendung können Fehler entstehen. Es kann die falsche Produktnummer vom Kunden bei der Auswahl verwendet werden, so dass nicht das richtige Produkt bei der Angebotserstellung verwendet wird. Bei der Produktauswahl sind 
 diese Informationen nicht notwendig, da der Kunde sich nur für das konkrete Produkt interessiert. Für die Vereinfachung des Prozesses ist eine automatische Zuordnung der korrekten Nummer im Hintergrund die Lösung. Somit wird der direkte Umgang des Kunden mit einzelnen Produktnummern vermieden und die alleinige Auswahl des Produktes steht für den Kunden im Vordergrund. Hierdurch wird der Prozess vereinfacht. \par
 
-Die zweite Stelle, an der eine Verbesserung möglich ist, befindet sich bei der Eingabe der Daten für den Produktkonfigurator und der damit verbundenen Prüfung. Der Kunde hat im vorigen Schritt bereits die Daten, die benötigt werden erfasst. Eine zweite Erfassung kann zu Fehlern oder Kommunikationsproblemen führen. Diese Probleme entstehen bei der falschen Eingabe des bestellten Produktes. Hierdurch kann der Konfigurator ein falsches Ergebnis liefern, welches zu einem inkorrekten Angebot führt, wodurch der Prozess wiederholt werden muss. Für die Verbesserung dieser Situation muss die Eingabe des Kunden direkt zum Konfigurator gegeben werden. Diese Maßnahme minimiert die Fehler bei der Erfassung. 
 
-Weiterhin entsteht durch den gegebenen Prozess ein Kommunikationsproblem. Dies tritt aufgrund der Trennung von Produktauswahl und Produktkonfiguration auf. Der Kunde ist nur bei der Auswahl beteiligt. Das Feedback für die Umsetzung der Zusammenstellung erfolgt erst nach der Weitergabe der Bestellung. Dies ist problematisch, wenn bei der Konfiguration Alternativen auftreten, bei denen der Kunde entscheiden muss oder eine Konfiguration komplett nicht umsetzbar ist. Hier muss ggf. der Prozess wiederholt werden. Für die Lösung ist eine Hinzunahme des Kunden bei der Konfigurationsüberprüfung notwendig. Das Ziel sollte ein schnelles Feedback bei der aktuellen Auswahl sein. 
 
 Zusammenfassend treten drei grundlegende Probleme bei einem Konfigurationsprozess auf:
 \begin{itemize}
+
+		\item zusätzlicher Kommunikationsaufwand durch zu spätes Feedback
+
+        \item Daten werden doppelt erfasst.
         \item Produktnummern sind für den Kunden schwierig zu handhaben.
         
-        \item Daten werden doppelt erfasst.
         
-        \item zusätzlicher Kommunikationsaufwand durch zu spätes Feedback
 \end{itemize}
 Diese drei Punkte müssen im neuen Workflow verbessert werden.
 
@@ -34,11 +38,11 @@ Diese drei Punkte müssen im neuen Workflow verbessert werden.
 Beim Anwendungsbeispiel des Kunden erfolgt die Auswahl der Upgrades ebenfalls über einen Produktkatalog. In diesem Katalog sind die einzelnen Upgrades aufgeführt. Die Auswahl der Produkte erfolgt über eine vorhandene Weboberfläche. Diese Oberfläche ist über die Homepage des Kunden verfügbar. Der Endkunde, im Anwendungsbeispiel eine Fluggesellschaft, wählt das gewünschte Upgrade aus dem Katalog aus. Bei der Bestellung werden die Produktcodes der Auswahl verwendet. Zusätzlich müssen die Flugzeuge angegeben werden, die das Upgrade erhalten sollen. Die Identifizierung erfolgt ebenfalls anhand des eindeutigen Flugzeugcodes. Beide Codes werden im nächsten Schritt von einem Produktkonfigurator erfasst und anschließend eine Überprüfung der Konfiguration durchgeführt.   \par 
 
 Beim Kunden wird die klare Trennung der Auswahl und der Überprüfung durch die Verwendung von zwei unterschiedlichen Systemen deutlich. Die Kommunikation der beiden Systeme erfolgt über die Produkt-, bzw. Flugzeugcodes. Bei der Überprüfung der Konfiguration ist der Kunde  nicht involviert. Der Experte bearbeitet die Bestellung und pflegt diese in das System ein. Bei der Umstellung des Prozesses muss auch dieser Vorgang der Konfiguration verstanden werden, um die Eignung für den neuen Workflow zu überprüfen. \par 
-\begin{figure}
-\label{webguiAblauf}
+\begin{figure} [H]
 \centering
 \includegraphics[width=300px]{images/workflow_webgui}
-\caption{Programmablauf der Konfigurationslösung}
+\caption{Programmablauf des Anwendungsbeispiels}
+\label{webguiAblauf}
 \end{figure}
 
 Abbildung \ref{webguiAblauf} zeigt den Ablauf einer Konfiguration mit dem derzeitigen System.

@@ -251,10 +251,26 @@ Damit die oben genannten Navigationsmöglichkeiten umgesetzt werden können, mü
 \textbf{Zurück Button:} In jeder Ansicht, außer der Startseite, wird dem Benutzer das Zurückkehren zur vorigen Ansicht ermöglicht. Hierdurch kann eine unabsichtliche Navigation schnell rückgängig gemacht werden.
 
 \section{Expertenmodus}
-Beim Entwurf der Ansichten in Kapitel \ref{chapter_4} ist die Anforderung einer schnellen Bedienung mit dem Navigationskonzept umgesetzt worden. Damit nach der Heuristik einer flexiblen Nutzung weitere Möglichkeiten bei der Anwendung existieren, werden bei der Implementierung weitere Bedienelemente hinzugefügt. Bei diesen neuen Elementen ist es wichtig, dass diese nicht im Vordergrund stehen. Vielmehr sind diese erst nach dem Durchführen von bestimmten Aktionen für den Anwender sichtbar. Diese Maßnahmen haben das Ziel einen Expertenmodus zu etablieren.
+Die Anforderung einer schnellen Bedienung ist mit einem komplexen Navigationskonzept erfüllt. Damit nach der Heuristik einer flexiblen Nutzung weitere Möglichkeiten bei der Anwendung existieren, werden weitere Konzepte für die Erfüllung der Anforderung benötigt. Bisher wurden nur die Bedürfnisse des Endkunden berücksichtigt. Das primäre Ziel beim Entwurf war es, dass komplexe Produkt zu vereinfachen und die Auswahl auf einem angenehmen Weg durchzuführen. Die zweite Zielgruppe der Anwendung sind weiterhin die Experten. Diese wollen die App auf eine effizientere Weise nutzen können. Da Produktkenntnisse vorhanden sind, können andere Ansätze bei de Navigation verwendet werden. Das Ziel des Entwurfs ist es dabei, einen sogenannten Expertenmodus bereitzustellen.
 
-\subsection{Flip View}
-Im neuen Navigationsworkflow (siehe \ref{appNavigation}) muss für die Auswahl eines Upgrades mehrere Vorselektionen durchlaufen werden. Dieser Mechanismus ist für den Kunden ideal, da er so den Aufbau des Produktes, sowie die einzelnen Möglichkeiten versteht. Der Experte, der den Aufbau kennt und genau weiß, was er will, ist dies mit der Zeit anstrengend. An dieser Stelle muss eine weitere Möglichkeit geschaffen werden, die für den Experten geeignet ist. 
 
-\subsection{Semantischer Zoom}
-Die Entwürfe für die Kunden- und Flugzeugauswahl sehen die Verwendung des Semantischen Zooms vor. 
+\subsection{Einsatz der Flip View}
+Im neuen Navigationsworkflow (siehe \ref{appNavigation}) muss für die Auswahl eines Upgrades mehrere Vorselektionen durchlaufen werden. Dieser Mechanismus ist für den Kunden ideal, da er so den Aufbau des Produktes, sowie die einzelnen Möglichkeiten versteht. Für den Experten, der den Aufbau kennt und genau weiß, was er will, ist dies mit der Zeit anstrengend. Hier muss eine weitere Möglichkeit geschaffen werden, wie die Auswahl schneller erfolgen kann. \par 
+
+Der Lösungsansatz besteht im Verwenden der Flip View. Dieses Oberflächenelement wird vom Framework bereitgestellt und ermöglicht ein schnelles Wechseln der aktuellen Seite durch eine Wisch Geste. Die Idee ist das Verwenden dieser Komponente in der Upgrade-Bereich Auswahl. 
+\begin{figure}
+\centering
+\includegraphics[width=400px]{images/flipView}
+\caption{Flip View in der Upgrade Bereich Auswahl}
+\label{flip}
+\end{figure}
+Abbildung \ref{flip} zeigt den Entwurf dieser Ansicht. Der normale Benutzer sieht nur das Bild in der Mitte und kann den gewünschten Flugzeugbereich auswählen, um danach den Upgrade-Typ zu wählen. Für eine schnellere Nutzung kann durch einen Wisch nach rechts oder links eine neue Seite angezeigt werden, die ein Inhaltsverzeichnis mit allen Produktkategorien enthält. Alle Typen lassen sich in die beiden Bereiche System und Cabin einordnen, weshalb nur zwei solcher Verzeichnisse benötigt werden. Der Experte wählt eine Kategorie aus und wird direkt zur Upgradeauswahl navigiert. Damit wird die Typ Auswahl übersprungen, so dass  Upgrades ausgewählt werden können.
+
+\subsection{Erweiterung des Semantischen Zooms}
+Die Entwürfe für die Kunden- und Flugzeugauswahl sehen die Verwendung des Semantischen Zooms vor. Dieser hilft bei einer schnelleren Auswahl der Flugzeuge. Beim ursprünglichen Entwurf werden die einzelnen Flugzeuge nach den Versionen eines Flugzeug gruppiert. Damit der Experte auch an dieser Stelle Flugzeuge schneller auswählen kann, wird der Semantische Zoom erweitert. Damit eine flexible Nutzung möglich ist, wird dem Benutzer die Möglichkeit gegeben die Kategorie selbst festzulegen. Dies wird mit einer Dropdown Liste im Kopfbereich der Flugzeugauswahl möglich (siehe \ref{dropdown}). Nach der Auswahl einer Kategorie erfolgt eine Neugruppierung der Datensätze und der semantische Zoom wird erweitert. Durch diese Maßnahme erhält der erfahrene Benutzer eine weitere Möglichkeit die einzelnen Flugzeuge schnell zu finden und somit eine effektive Auswahl durchzuführen.
+\begin{figure}
+\centering
+\includegraphics[width=400px]{images/semanticZoom}
+\caption{Dropdown List bei der Flugzeugauswahl}
+\label{dropdown}
+\end{figure}
