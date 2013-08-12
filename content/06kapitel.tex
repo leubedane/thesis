@@ -5,9 +5,9 @@ Die Anwendung wurde anhand der spezifizierten Anforderungen in Kapitel \ref{requ
 Der neue Workflow, wie in Kapitel \ref{chapter_3} beschrieben, ist auf die Verwendung mit einem mobilen Endgerät zugeschnitten. Aus diesem Grund ist eine Evaluation des Gesamtprozesses nicht zielführend. Wichtiger ist die Erfüllung der gestellten Anforderungen. Wenn diese erfüllt sind, so kann der modellierte Prozess umgesetzt werden. Für die Untersuchung der verschiedenen Anforderungstypen werden unterschiedliche Evaluationen durchgeführt.
 
 \subsection{Funktionale Anforderungen}
-Die Funktionalen Anforderungen aus Abschnitt \ref{functionRequ} werden mit Anwendern überprüft. Hierzu wird die alte Weboberfläche, die für die Konfiguration zuständig ist, als Ausgangspunkt verwendet. Da in der neuen Anwendung ein zusätzlicher Produktkatalog integriert ist, wird kein direkter Vergleich der beiden Lösungen durchgeführt. Stattdessen werden gezielte Aufgaben an die Benutzer gestellt, die eine Umsetzung der Anforderungen überprüft. Die einzelnen Aufgabenstellungen werden anhand einer Skala von 1-5 bewertet. Bei der Bewertung wird die Frage, wie gut oder schlecht die Aufgabe durchgeführt werden kann, für eine Bewertungsgrundlage verwendet. 
+Die Funktionalen Anforderungen aus Abschnitt \ref{functionRequ} werden mit Anwendern evaluiert. Hierzu wird die alte Weboberfläche, die aktuell für die Konfiguration verwendet wird, als Ausgangspunkt verwendet. Da in der neuen Anwendung ein zusätzlicher Produktkatalog integriert ist, wird kein direkter Vergleich der beiden Lösungen durchgeführt. Stattdessen werden gezielte Aufgaben an die Benutzer gestellt, die eine Umsetzung der Anforderungen überprüft. Die einzelnen Aufgabenstellungen werden anhand einer Skala von 1-5 bewertet. Bei der Bewertung wird die Frage, wie gut oder schlecht die Aufgabe durchgeführt werden kann, für eine Bewertungsgrundlage verwendet. 
 
-Da die aktuelle Konfigurationslösung für Experten entwickelt wurde, wird die Benutzerevaluation in einer Interview Form durchgeführt. Die auftretenden Fragen werden protokolliert, so dass auftretende Probleme besser erkannt werden können. 
+Da die aktuelle Konfigurationslösung für Experten entwickelt wurde, wird die Benutzerevaluation in einer Interview Form durchgeführt. Die auftretenden Fragen werden protokolliert, so dass eine zusätzliche Auswertung der Probleme im Anschluss erfolgen kann. Ebenfalls sind die Aufgaben so gestellt, dass sie mit beiden Anwendungen durchgeführt werden können. Da die Weboberfläche nicht die gleichen Funktionen besitzt, wie die App, werden die Anforderungen, die nur für die Tablet-Anwendung definiert wurden bei der Evaluation nicht berücksichtigt. 
 
 \subsection{Nicht-Funktionale Anforderungen}
 Eine Überprüfung der Nicht-Funktionalen Anforderungen ist eine größere Herausforderung, da hier meist subjektive Meinungen entstehen. Aus diesem Grund wurde bei der Spezifikation der Anforderungen die zehn Heuristiken von Nielson verwendet. Anhand dieser kann eine Auswertung der Anwendung erfolgen. Hierzu werden zwei unterschiedliche Arten von Tests durchgeführt. Die zuvor genannten Benutzertests werden mit zusätzlichen Fragen zur Verwendung der App erweitert. Die Fragestellungen beziehen sich auf eine subjektive Wahrnehmung der Nicht-Funktionalen Anforderungen. Für eine objektivere Sicht wird eine zusätzliche Expertenevaluation durchgeführt, bei der die zehn Heuristiken von Nielsen bewertet werden. Die Experten kennen sich mit dem System, sowie mit Benutzerschnittstellen aus und können so gezielt die Eigenschaften des Systems untersuchen. Bei der Durchführung wird der Experte die Anwendung ohne Vorgaben überprüfen und anschließend eine Bewertung anhand der vorgegebenen Kriterien abgeben. 
@@ -16,27 +16,46 @@ Eine Überprüfung der Nicht-Funktionalen Anforderungen ist eine größere Herau
 Damit eine Evaluation sinnvoll ist, muss eine geeignete Anzahl von Testergebnissen vorliegen. Anhand der Untersuchungen von Nielsen \cite{bib:countTests} findet eine Anzahl von fünf Personen bereits 75\% aller Usability Probleme. Weiterhin hat eine Anzahl von drei Benutzern das beste Verhältnis von Kosten und Nutzen. Aus diesem Grund werden vier Benutzertests und drei Expertentests durchgeführt. 
 
 \section{Ergebnisse}
+Nach der Durchführung der Evaluation sind drei Ergebnisse vorhanden. Die jeweiligen Fragebögen der Experten und Benutzer, sowie die Auswertung der Benutzerfragen. Bei der vorhandenen Konfigurationslösung sind Fragen zum Expertenwissen aufgetreten. Im Gegensatz dazu sind bei der Verwendung der Tablet Anwendung keine fachlichen Fragen aufgetreten. Dies zeigt die unterschiedlichen Zielgruppen der beiden Anwendungen. Eine wiederkehrende Frage ist beim Abschluss der Konfiguration aufgetreten. Hier ist nicht ersichtlich gewesen, wie diese Funktion durchgeführt werden kann. Diese Frage ist bei allen vier Testern aufgekommen. Die weiteren Aufgaben waren klar und konnten ohne Problem durchgeführt werden. 
 
-\subsection{Allgemeine Auswertung}
-\subsection{Benutzerauswertung}
-\begin{figure}
-\centering
-\includegraphics[width=\hsize]{images/bewertung_webgui}
-\caption{Komponenten im MVVM Entwurfsmuster}
-\label{bewertungWebgui}
-\end{figure}
+Für die Auswertung der Fragebögen wurden die wichtigsten Stellen herausgezogen. Das vollständige Ergebnis der Evaluation, sowie die einzelnen Bögen befinden sich im Anhang \ref{anhangEva}.
+
+
+\subsection{Auswertung der Benutzerergebnisse}
 \begin{figure}
 \centering
 \includegraphics[width=\hsize]{images/bewertung_tablet}
-\caption{Komponenten im MVVM Entwurfsmuster}
+\caption{Auswertung der Funktionalen Anforderungen im Fragebogen}
 \label{bewertungTablet}
 \end{figure}
-\begin{figure}
+Das Ergebnis der Fragebögen in Bezug auf die Funktionalen Anforderungen ist in Abbildung \ref{bewertungTablet} zu sehen. Auffällig ist die besonders gute Bewertung für die Auswahl einer neuen Konfiguration und der Alternativenauswahl. Diese beiden Ansichten und deren Funktionen konnten während des Tests schnell gefunden, verstanden und verwendet werden. Die drei Hauptfunktionen Flugzeugauswahl, Upgradeauswahl und Darstellung der Konfigurationsergebnisse sind durchschnittlich als Gut bewertet worden. Für eine optimale Verwendung hat hier das Wissen eines Kunden gefehlt, der seine eigenen Flugzeuge, sowie eine grobe Zuordnung der Upgrades in die einzelnen Bereiche. \par
+
+Das Problem mit dem Abschluss der Konfiguration, welches sich bereits bei den Fragen der Anwendern herausgestellt hat, ist auch in der Bewertung ersichtlich. Drei der vier Anwender haben dem Abschluss der Konfiguration mit befriedigend bewertet. An dieser Stelle sollte eine Verbesserung für die Erfüllung der Anforderungen stattfinden. \par 
+\begin{figure}[H]
 \centering
-\includegraphics[width=\hsize]{images/bewertung_ux}
-\caption{Komponenten im MVVM Entwurfsmuster}
+\includegraphics{images/bewertung_ux}
+\caption{Ergebnisse der Usability Fragen zu der Tablet Anwendung}
 \label{bewertungUx}
 \end{figure}
-\subsection{Expertenauswertung}
+Die wichtigsten Punkte des zweiten Teils der Evaluation ist in der Grafik \ref{bewertungUx} zu sehen. Besonders positiv fallen die Ergebnisse für die Bedienung mit dem Tablet, sowie einer verständlichen Alternativenauswahl auf. Somit wurde ein Verständnis für die Auswahl von Alternativen geschaffen, was dabei hilft den Konfigurationsprozess mit dem Kunden zusammen durchzuführen. Das Ergebnis für eine gute Bedienung auf dem Tablet resultiert auf der ausgewählten Plattform, sowie den gewählten Bedienelementen in der Entwurfsphase. Bei der Implementierung wurde der Entwurf sehr gut umgesetzt, wodurch die gute Bewertung zustande kommt. \par 
 
-\section{Anpassungen an die Zusammenfassung}
+Beim ersten Verwendung der Anwendung reagiert die App langsamer als beim zweiten Mal. Der Grund hierfür ist, dass beim initialen Start die Daten erst in den Hauptspeicher geladen werden müssen. Bei der nächsten Anwendung sind diese bereits im Speicher enthalten. Da eine Verzögerung nur bei wenigen Ansichten, wie der Navigation von der Upgradeauswahl in die Zusammenfassung auftritt, ist dieses Problem aufgrund der anderen positiven Bewertungen zu vernachlässigen. Eine andere Situation ist bei der Darstellung des aktuellen Konfigurationsstatus. Dies ist für die Anwendung essentiell, da der Benutzer zu jeder Zeit wissen muss, in welchem Status er sich befindet. Da auch hier die anderen Bewertungen positiv waren, kann aufgrund dieses Ergebnisses kein deutliches Problem erkannt werden.
+
+\subsection{Auswertung der Expertenergebnisse}
+Bei den Experten sind die Fragen gezielt nach den Nicht-Funktionalen Anforderungen gestellt worden. Hierbei wurden die zehn Heuristiken von Nielsen als Grundlage verwendet und jeder dieser Punkte bewertet. Die Befragung hat die Stärken und Schwächen der Anwendung aufgezeigt. In Abbildung \ref ist ein Ausschnitt der Auswertung zu sehen. Für eine Flexibilität bei der Nutzung wurde der Expertenmodus (siehe \ref{expertDesign}) entworfen. Das Ziel des Modus wurde mit der positiven Bewertung eindeutig erreicht. Eine klare Umsetzung der Designvorgaben ist durch die gute Bewertung der Konsistenz und Standards, sowie des ästhetischen und minimalistischen Designs gegeben. \par 
+\begin{figure}[H]
+\includegraphics{images/bewertung_expert}
+\caption{Auszug aus der Expertenbefragung}
+\label{bewertungExpert}
+\end{figure}
+Auch bei den Experten ist die dauerhafte Sichtbarkeit des Systemstatus, der analog zum Konfigurationsstatus aus den Benutzertests zu sehen ist, nicht vorhanden. An dieser Stelle fehlt ein Leitfaden in der Anwendung, so dass die folgenden Schritte deutlicher werden. 
+
+\section{Konsequenzen aus der Evaluation}
+Die Ergebnisse der Evaluation haben zwei Probleme der Anwendung aufgeworfen. Zum einen ist der Abschluss des Auswahlprozesses, sowie der aktuelle Status der Konfiguration, bzw. des Systems nicht sichtbar. Beide Schwerpunkte beziehen sich auf die Zusammenfassung. Diese Seite ist als Orientierungshilfe für den Anwender konzipiert worden. Aus diesem Grund muss diese Ansicht den aktuellen Systemstatus, sowie den Abschluss der Konfiguration beinhalten.  
+\begin{figure}[H]
+\includegraphics{images/bewertung_expert}
+\caption{Auszug aus der Expertenbefragung}
+\label{redesignSummary}
+\end{figure}
+Abbildung \ref{redesignSummary} zeigt den neuen Entwurf der Zusammenfassung. Die Idee ist der Mathematik entnommen, bei der Eingabe A + Eingabe B = Ergebnis C ergibt. Angewendet auf die Ansicht bedeutet dies, dass zuerst die Eingabedaten Flugzeug und Upgrades angezeigt werden und als Resultat die Konfigurationsgruppen gebildet werden. Weiterhin wird die Navigation zur Flugzeug- und Upgradeauswahl mit einer Kachel durchgeführt. Für eine bessere Übersicht erhalten die Kacheln die Anzahl der ausgewählten Elemente. Dies verhindert ein zu langes Scrollen bei größeren Selektionen. 
+Der Abschluss der Konfiguration wird durch größere Auswahlbuttons verbessert. Diese werden am Ende der Konfigurationsgruppen angezeigt. 

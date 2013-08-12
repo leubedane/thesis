@@ -38,7 +38,7 @@ Diese drei Punkte müssen im neuen Workflow verbessert werden.
 Beim Anwendungsbeispiel des Kunden erfolgt die Auswahl der Upgrades ebenfalls über einen Produktkatalog. In diesem Katalog sind die einzelnen Upgrades aufgeführt. Die Auswahl der Produkte erfolgt über eine vorhandene Weboberfläche. Diese Oberfläche ist über die Homepage des Kunden verfügbar. Der Endkunde, im Anwendungsbeispiel eine Fluggesellschaft, wählt das gewünschte Upgrade aus dem Katalog aus. Bei der Bestellung werden die Produktcodes der Auswahl verwendet. Zusätzlich müssen die Flugzeuge angegeben werden, die das Upgrade erhalten sollen. Die Identifizierung erfolgt ebenfalls anhand des eindeutigen Flugzeugcodes. Beide Codes werden im nächsten Schritt von einem Produktkonfigurator erfasst und anschließend eine Überprüfung der Konfiguration durchgeführt.   \par 
 
 Beim Kunden wird die klare Trennung der Auswahl und der Überprüfung durch die Verwendung von zwei unterschiedlichen Systemen deutlich. Die Kommunikation der beiden Systeme erfolgt über die Produkt-, bzw. Flugzeugcodes. Bei der Überprüfung der Konfiguration ist der Kunde  nicht involviert. Der Experte bearbeitet die Bestellung und pflegt diese in das System ein. Bei der Umstellung des Prozesses muss auch dieser Vorgang der Konfiguration verstanden werden, um die Eignung für den neuen Workflow zu überprüfen. \par 
-\begin{figure} [H]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\hsize]{images/workflow_webgui}
 \caption{Programmablauf des Anwendungsbeispiels}
@@ -86,6 +86,9 @@ separaten Ansicht (\textbf{Alternativenauswahl}) die richtige Lösung auswählen
 
 Da die Verwendung des Konfigurationsservers, wie in Kapitel \ref{configurator} beschrieben nach dem Client-Server Modell aufgebaut ist, wird eine andere Möglichkeit bei der Konfiguration nötig. Beim mobilen Einsatz der Anwendung kann es passieren, dass eine Verbindung mit dem Konfigurationsserver nicht möglich ist. Aus diesem Grund muss es einen alternativen Weg des Workflows geben. Wenn der Konfigurationsserver nicht verfügbar ist, wird die Konfiguration gespeichert, damit eine Prüfung später durchgeführt werden kann. In diesem Fall ist der Prozesses mit der Speicherung der Konfiguration beendet.
 
+\subsection{Einsatz der Anwendung}
+Wer ist der eigentliche Anwender der Arbeit? Diese Frage muss beantwortet werden, damit es weiter geht. ...
+
 
 \section{Anforderungsanalyse} \label{requirements}
 Nachdem der grundlegende Prozess auf die Bedürfnisse des Kunden, sowie an die mobile Umgebung angepasst ist, können daraus die Anforderungen der Anwendung für das Anwendungsbeispiel festgelegt werden. Bei der Festlegung wird zuerst die allgemeine Anforderung erläutert, sowie anschließend auf das Anwendungsbeispiel spezifiziert. Für eine einfachere Darstellung wird im Folgenden zwischen Funktionalen und Nicht-Funktionalen Anforderungen unterschieden. 
@@ -95,7 +98,7 @@ Die Nicht-Funktionalen Anforderungen betreffen alle Maßnahmen zur Vereinfachung
 Es lassen sich aus dem neuen Workflow folgende Anforderungen spezifizieren:
 
 
-\paragraph{Einfache Bedienung:} Dadurch, dass der Kunde kein Experte ist und die Anwendung nicht jeden Tag verwendet, muss die Bedienung für den Kunden einfach sein. Je weniger bei der Verwendung der Software erklärt werden muss, desto besser ist diese Anforderung erfüllt. Für die Erfüllung dieses Ziels sollen folgende Schwerpunkte der Softwareergonomie \cite{bib:softwareErgonomie} behandelt werden: 
+\paragraph{Einfache Bedienung:} Der Kunde ist kein Experte und verwendet die Anwendung nicht jeden Tag, somit muss die Bedienung einfach sein. Je weniger bei der Verwendung der Software erklärt werden muss, desto besser ist diese Anforderung erfüllt. Für die Erfüllung dieses Ziels sollen folgende Schwerpunkte der Softwareergonomie \cite{bib:softwareErgonomie} beachtet werden: 
 \begin{itemize}
         \item Selbstbeschreibungsfähigkeit
         \item Lernförderlichkeit
@@ -110,9 +113,8 @@ Für ein einheitliches Aussehen der Anwendung müssen die Richtlinien der jeweil
 
 Für eine bessere Übersicht der Nicht-Funktionalen Anforderungen sind diese in der Tabelle \ref{nonFunctionalRequ} dargestellt. Zu jeder Anforderung wird hier ein zusätzlicher Bezeichner definiert.
 
-
-\begin{tabular}[H]{| p{0.7cm} | p{2.2cm} | p{4.5cm} | p{5.5cm}|}
-
+\begin{table}
+\begin{tabular}{| p{0.7cm} | p{2.2cm} | p{4.5cm} | p{5.5cm}|}
 \toprule[2pt] \rowcolor{dunkelgrau}
 \hline
   Bez. & Anforderung & Beschreibung & Heuristiken nach Nielson \\
@@ -135,7 +137,9 @@ Für eine bessere Übersicht der Nicht-Funktionalen Anforderungen sind diese in 
     \hline
 \bottomrule[2pt]
 \end{tabular}
+\caption{Nicht-Funktionale Anforderungen mit Bezeichner}
 \label{nonFunctionalRequ}
+\end{table}
 
 \subsection{Funktionale Anforderungen}\label{functionRequ}
 Die Funktionalen Anforderungen sind von der Prozessbeschreibung im Abschnitt \ref{mobileConfiguration} abhängig. Im Folgenden werden diese speziell auf das Anwendungsprojekt spezifiziert. Zusätzlich zu der Spezifikation wird der Bezug zum neuen Workflow hergestellt:
@@ -159,6 +163,8 @@ Diese Anforderung wird ebenfalls durch die Verwendung einer mobilen Umgebung not
 
 Die Zuordnung der einzelnen Anforderungen zu den jeweiligen Prozessschritten ist in Tabelle \ref{functionalRequirements} zu sehen. Hierbei werden die drei Prozessanforderungen Produktkatalog, Konfiguration und mobile Zielumgebung unterschieden.
 \par 
+\begin{table}
+
 \begin{tabular}[H]{| p{0.4cm} | p{2.5cm} | p{5.9cm} | p{4.5cm} |}
 \toprule[2pt] \rowcolor{dunkelgrau}
 \hline
@@ -179,7 +185,9 @@ Die Zuordnung der einzelnen Anforderungen zu den jeweiligen Prozessschritten ist
     \hline
 \bottomrule[2pt]
 \end{tabular}
+\caption{Funktionale Anforderungen mit Bezeichner}
 \label{functionalRequirements}
+\end{table}
 
 
 

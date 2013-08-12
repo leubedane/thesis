@@ -54,7 +54,7 @@ Auf die einzelnen Kriterien bezogen erfüllt die native Anwendung alle Anforderu
 \paragraph{Abwägung: }
 
 Nachdem alle Anwendungsformen auf die Erfüllung der aufgestellten Kriterien untersucht sind, kann eine Gegenüberstellung der einzelnen Komponenten erfolgen. Die Tabelle \ref{decision} zeigt eine Bewertung der Kriterien. Hierbei wurden die einzelnen Punkte anhand einer Skala von 0 (kann nicht erfüllt werden) bis 5 (ohne Einschränkungen möglich) bewertet.  Die Implementierung als Web Anwendung scheidet klar aus. Die Anforderungen können zwar umgesetzt werden, jedoch ist ein erheblicher Mehraufwand für die Erreichung nötig. Ebenfalls hat die Anwendung im Vorhinein bereits Einschränkungen bzgl. der Performanz, sowie der Bereitstellung von Oberflächenelementen. Die Vorteile einer Implementierung für mehrere Zielsysteme ist bei der Umsetzung kein Kriterium. \par
-\begin{figure}
+\begin{table}
 \begin{tabular}{| p{5.4cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |}
 \toprule[2pt] \rowcolor{dunkelgrau}
 \hline
@@ -73,13 +73,13 @@ Nachdem alle Anwendungsformen auf die Erfüllung der aufgestellten Kriterien unt
 \end{tabular}
 \caption{Gegenüberstellung und Bewertung der Zielkriterien für die Anwendungsform}
 \label{decision}
-\end{figure}
+\end{table}
 \par 
 Schwieriger ist die Entscheidung zwischen hybrid und nativ. Die beiden Kriterien lokale Speicherung der Daten und betriebssystemspezifsche Oberflächenelemente sind mit beiden Ansätzen ohne größere Einschränkungen möglich. Beim hybriden Ansatz ist ein geringer Mehraufwand bei der Implementierung nötig. Dies ist jedoch nicht relevant für die Entscheidung. Der wichtigste Grund für die Entscheidung für eine nativen Anwendung ist die Performanz bei der Bedienung. Nur durch die Verwendung von nativen Anwendungen können aufwändige Animationen oder das Rendern von vielen Bildern flüssig ablaufen. Eine hybride Lösung besitzt hier Einschränkungen, da die Hardware mit einer Zwischenschicht verwendet wird.
 
 \subsection{Anwendungstechnologie}
 Mit der Entscheidung für eine mobile Anwendungsform kommen drei mögliche Technologien für die Implementierung in Frage. Die Plattformen Android \footnote{http://www.android.com/}, iOS \footnote{http://www.apple.com/de/iphone/ios/} und Windows 8 \footnote{http://windows.microsoft.com/de-de/windows-8/} sind aufgrund ihrer Marktanteile (Android: 43,4\% iOS: 48,2\% Windows: 7,4\% Quelle: \cite{bib:marktanteilBS} ) die wichtigsten Technologien im Tablet Bereich. Die drei Plattformen haben unterschiedliche Ziele. Das iOS Betriebssystem hat den Vorteil einer hohen Verbreitung bei Business Anwendungen (siehe \cite[S.5]{bib:mobileMarketing2}). Android hat die meisten Nutzer bei Privatanwendungen (siehe \cite{bib:marktanteilMBS}). Bei Windows 8 ist der Vorteil eines neuen Konzeptes, was speziell für Tablet-PCs optimiert ist. Für die Umsetzung des Workflows kann jede dieser Technologien verwendet werden, da die Zielkriterien sich bei den unterschiedlichen Plattformen nicht unterscheiden (siehe Tabelle \ref{decisionTechnologie}). Ist die Implementierung mit einem Framework umgesetzt, stellt das Implementieren auf einer anderen Zielplattform keine Herausforderung dar. \par 
-\begin{figure}
+\begin{table}
 \begin{tabular}[H]{| p{5.4cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |}
 \toprule[2pt] \rowcolor{dunkelgrau}
 \hline
@@ -98,7 +98,7 @@ Mit der Entscheidung für eine mobile Anwendungsform kommen drei mögliche Techn
 \end{tabular}
 \caption{Gegenüberstellung und Bewertung der Zielkriterien für Plattform}
 \label{decisionTechnologie}
-\end{figure}
+\end{table}
 
 Bei der vorliegenden Arbeit wird auf Windows 8 gesetzt. Im Gegensatz zu iOS und Android wird dieses Betriebssystem nicht auf Smartphones ausgeführt. Dies führt zu einer besseren Optimierung für größere Bildschirme. Die Technologie ist sehr neu auf dem Markt (26. Oktober 2012), dadurch gibt es noch nicht viele Apps. Dies bietet die Möglichkeit den Anwender mit neuen Möglichkeiten in der Anwendung zu überraschen, da einige Konzepte noch nicht bekannt sind. Die Möglichkeit zu experimentieren und neue Ideen umzusetzen ist aufgrund der neuen Plattform vorhanden.  Die Verwendung von Windows 8 vereinfacht ebenfalls die Integration in ein Unternehmensumfeld, da hier die Microsoft Produkte weit verbreitet sind. Dies führt zu einer schnelleren Akzeptanz im Unternehmen. Somit wird im Folgenden die Anwendung für das Windows 8 Betriebssystem implementiert.
         
@@ -250,7 +250,7 @@ Damit die oben genannten Navigationsmöglichkeiten umgesetzt werden können, mü
 \end{figure}
 \textbf{Zurück Button:} In jeder Ansicht, außer der Startseite, wird dem Benutzer das Zurückkehren zur vorigen Ansicht ermöglicht. Hierdurch kann eine unabsichtliche Navigation schnell rückgängig gemacht werden.
 
-\section{Expertenmodus}
+\section{Expertenmodus}\label{expertDesign}
 Die Anforderung einer schnellen Bedienung ist mit einem komplexen Navigationskonzept erfüllt. Damit nach der Heuristik einer flexiblen Nutzung weitere Möglichkeiten bei der Anwendung existieren, werden weitere Konzepte für die Erfüllung der Anforderung benötigt. Bisher wurden nur die Bedürfnisse des Endkunden berücksichtigt. Das primäre Ziel beim Entwurf war es, dass komplexe Produkt zu vereinfachen und die Auswahl auf einem angenehmen Weg durchzuführen. Die zweite Zielgruppe der Anwendung sind weiterhin die Experten. Diese wollen die App auf eine effizientere Weise nutzen können. Da Produktkenntnisse vorhanden sind, können andere Ansätze bei de Navigation verwendet werden. Das Ziel des Entwurfs ist es dabei, einen sogenannten Expertenmodus bereitzustellen.
 
 
