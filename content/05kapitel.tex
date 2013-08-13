@@ -67,4 +67,65 @@ private void SaveSelectionAndNavigateToSummaryPage(DataCommon data)
 In Codebeispiel \ref{navigateMethod} wird ein solcher Navigationsvorgang im ViewModel demonstriert. Dieser Auszug ist aus der Flugzeugpgrogramm Auswahl entnommen. Nachdem ein Programm ausgewählt wurde, wird zuerst die Auswahl im Model gespeichert. Im zweiten Schritt erhält man die  Zusammenfassungsseite mit dem Interface (ISummary) vom Container. Die Navigation erfolgt anschließend mit dem Navigationsservice.
 \par
 Mit diesem Ansatz gelingt es, die Darstellung und die Entscheidung, welche Ansicht bei welchem Inhalt verwendet wird, der View Schicht zu überlassen. Der Wechsel von Ansichten wird mit Methoden durchgeführt, die eine Ansicht bereitstellt. Das ViewModel kann entscheiden, wann eine Navigation durchgeführt wird. Durch die Verwendung des Containers ist eine zentrale Stelle vorhanden, die jederzeit verwendet werden kann. Bei einer Navigation können Parameter übergeben werden, die eine Kommunikation der ViewModels ermöglicht. 
+
+\section{Ergebnisse der Implementierung}
+Die Entwürfe des vorigen Kapitels konnten detailreich bei der Implementierung abgebildet werden. Im Folgenden werden die wichtigsten implementierten Ansichten kurz vorgestellt.
+
+\subsection{Startseite und Flugzeugprogrammauswahl}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\hsize]{images/impl/start_screen_impl}
+\caption{Auszug der implementierten Startseite}
+\label{startScreenImpl}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[height=200px]{images/impl/select_aircraft_family_impl}
+\caption{Auszug der implementierten Flugzeugprogrammauswahl}
+\label{aircraftProgrammImpl}
+\end{figure}
+
+\subsection{Upgradeauswahl}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\hsize]{images/impl/select_upgrade_type_impl}
+\caption{Auszug der implementierten Upgradetypauswahl}
+\label{upgradeTypeSelectionImpl}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\hsize]{images/impl/select_upgrade_impl}
+\caption{Auszug der implementierten Upgradeauswahl}
+\label{upgradeSelectionImpl}
+\end{figure}
+
+\subsection{Flugzeugauswahl}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\hsize]{images/impl/select_aircrafts_impl}
+\caption{Auszug der implementierten Flugzeugauswahl}
+\label{aircraftSelectionImpl}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\hsize]{images/impl/semantic_zoom_impl}
+\caption{Auszug des Semantischen Zooms in der Flugzeugauswahl}
+\label{aircraftSelectionZoomImpl}
+\end{figure}
+
+\subsection{Konfigurationsansicht}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\hsize]{images/impl/app_bar_impl}
+\caption{Konfigurationsgruppen und Navigationsbar in der Zusammenfassung}
+\label{configurationResultImpl}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\hsize]{images/impl/alternative_impl}
+\caption{Alternativenauswahl für die zweite Konfigurationsgruppe}
+\label{alternativeSelectionImpl}
+\end{figure}
+
  
