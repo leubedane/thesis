@@ -84,12 +84,15 @@ separaten Ansicht (\textbf{Alternativenauswahl}) die richtige Lösung auswählen
 Da die Verwendung des Konfigurationsservers, wie in Kapitel \ref{configurator} beschrieben nach dem Client-Server Modell aufgebaut ist, wird eine andere Möglichkeit bei der Konfiguration nötig. Beim mobilen Einsatz der Anwendung kann es passieren, dass eine Verbindung mit dem Konfigurationsserver nicht möglich ist. Aus diesem Grund muss es einen alternativen Weg des Workflows geben. Wenn der Konfigurationsserver nicht verfügbar ist, wird die Konfiguration gespeichert, damit eine Prüfung später durchgeführt werden kann. In diesem Fall ist der Prozesses mit der Speicherung der Konfiguration beendet.
 
 \subsection{Einsatz der Anwendung}
-Nach der Umstellung des Konfigurationsprozesses müssen die Benutzer der Anwendung identifiziert werden. Dies ist eine Voraussetzung, um die Anforderungen für die Zielgruppe passend zu definieren. Der neue Prozess ist darauf ausgelegt, dass ein Vertreter des Flugzeugherstellers zusammen mit einem Endkunden die Konfiguration durchführt. Der Kunde im Anwendungsbeispiel ist kein unerfahrener Laie. Stattdessen ist er für Upgrades der vorhandenen Flugzeugflotte einer Fluggesellschaft zuständig. Somit ist bereits ein Wissen über das Produkt vorhanden. Dies hat zur Folge, dass der Kunde die Struktur und den Aufbau des Flugzeuges kennt. Dies unterscheidet die Konfiguration zu einem Online-Konfigurator eines Autoherstellers. Hier sind unerfahrene Anwender die Zielgruppe, denen der Aufbau des Produktes auf eine andere Weise erklärt werden muss. 
+Nach der Umstellung des Konfigurationsprozesses müssen die Benutzer der Anwendung identifiziert werden. Dies ist eine Voraussetzung, um die Anforderungen für die Zielgruppe passend zu definieren. Der neue Prozess ist darauf ausgelegt, dass ein Vertreter des Flugzeugherstellers zusammen mit einem Endkunden die Konfiguration durchführt. Der Kunde im Anwendungsbeispiel ist kein unerfahrener Laie. Stattdessen ist er für Upgrades der vorhandenen Flugzeugflotte einer Fluggesellschaft zuständig. Somit ist bereits ein Wissen über das Produkt vorhanden. Dies hat zur Folge, dass der Kunde die Struktur und den Aufbau des Flugzeuges kennt. Dies unterscheidet die Konfiguration zu einem Online-Konfigurator eines Autoherstellers. Hier sind unerfahrene Anwender die Zielgruppe, denen der Aufbau des Produktes auf eine andere Weise erklärt werden muss. \par 
+\begin{figure}
+\centering
+\includegraphics[width=\hsize]{images/konfigurationsprozess_neu}
+\caption{Umsetzung des neuen Workflows}
+\label{newWorkflow}
+\end{figure}
 
-
-Zuvor wurde lediglich die Produktauswahl dem Kunden überlassen. 
-Die Überarbeitung des Konfigurationsprozesses wird komplett mit dem Kunden zusammen durchgeführt (siehe Vorgang ...)  Diese Besonderheit muss beim Entwurf der Ansichten  berücksichtigt werden.
-
+Zuvor wurde lediglich die Produktauswahl, sowie die Bestellung dem Kunden überlassen. Die neue Tablet Anwendung vereint die einzelnen Prozessschritte, so dass am Ende eine direkte Bestellung folgen kann, die zu einem Angebot führt. Die Durchführung des Konfigurationsprozesses wird  komplett mit dem Kunden zusammen durchgeführt (siehe Vorgang \ref{newWorkflow}). Dies hat zur Folge, dass die App für zwei unterschiedliche Zielgruppen konzipiert werden muss.
 
 
 \section{Anforderungsanalyse} \label{requirements}

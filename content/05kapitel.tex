@@ -105,7 +105,7 @@ Bei der Auswahl der Upgrades, wie in Abbildung \ref{upgradeSelectionImpl} zu seh
 \end{figure}
 
 \subsection{Flugzeugauswahl}
-Die Auswahl der Flugzeuge (siehe \ref{aircraftSelectionImpl}) ist mit dem Grid und den passenden Kacheln umgesetzt worden. Zusätzlich ist durch eine ListBox am oberen Rand die Möglichkeit zur Auswahl der Kategorie (im Bild nach Flugzeugversion) umgesetzt worden. 
+Die Auswahl der Flugzeuge (siehe \ref{aircraftSelectionImpl}) ist mit den Kacheln im Grid umgesetzt worden. Zusätzlich ist durch eine ListBox am oberen Rand die Möglichkeit zur Auswahl der Kategorie (im Bild nach Flugzeugversion) vorhanden. Der Semantische Zoom ist bei dieser Ansicht möglich und hilft bei einer schnellen Auswahl.  
 \begin{figure}[H]
 \centering
 \includegraphics[width=\hsize]{images/impl/select_aircrafts_impl}
@@ -120,13 +120,14 @@ Die Auswahl der Flugzeuge (siehe \ref{aircraftSelectionImpl}) ist mit dem Grid u
 \end{figure}
 
 \subsection{Konfigurationsansicht}
-
+Eine Übersicht der Konfigurationsergebnisse wird in der Zusammenfassungsseite (siehe \ref{configurationResultImpl}) gezeigt. Im Screenshot sind zwei Konfigurationsgruppen angezeigt, die beide komplett sind somit auch bestellt werden können. Der Abschluss der Konfiguration erfolgt mit den Buttons in der unteren AppBar. Die obere Leiste zeigt die Navigationsmöglichkeiten, die in der kompletten Anwendung vorhanden sind. Auf der rechten Seite können die Hauptansichten ausgewählt werden und auf der linken Seite kann zur Startseite navigiert werden. 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\hsize]{images/impl/app_bar_impl}
 \caption{Konfigurationsgruppen und Navigationsbar in der Zusammenfassung}
 \label{configurationResultImpl}
 \end{figure}
+Die Auswahl der Alternativen ist in Abbildung \ref{alternativeSelectionImpl} dargestellt. Hier werden zuerst die bestimmten Alternativen angezeigt,die ausgewählt werden können. Zusätzlich sind die zuvor ausgewählten Upgrades vorhanden, sowie die zur Konfigurationsgruppe gehörigen Flugzeuge. 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\hsize]{images/impl/alternative_impl}
