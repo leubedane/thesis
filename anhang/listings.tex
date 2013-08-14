@@ -1,9 +1,10 @@
 \chapter{Anhang}
 
 
-\section{Klassendiagramm}
-\begin{figure}
-\begin{lstlisting}
+\section{Quellcodeauszug}
+Im der Abbildung \ref{aircraftFamilySelectionViewModelClass} ist das vollständige ViewModel für die Auswahl des Flugzeugprogramms zu sehen. Die Klasse wurde für ein Beispiel der Navigation in der Anwendung verwendet und ist im Text referenziert.
+
+\begin{lstlisting}[caption=Vollständige SelectAircraftFamilyViewModel Klasse für die Flugzeugprogrammauswahl]
 /// <summary>
     /// This View Model has the logic for aircraft family selection. Normally its the first view if
     /// a new configuration is started.
@@ -25,8 +26,6 @@
             DataGroupElements = new ObservableCollection<DataCommon>
                 {new AircraftProgrammGroup(_model.GetAllAircraftProgramms())}; 
         }
-\end{lstlisting} 
-\begin{lstlisting}
         public ICommand SelectAircraftCommand
         {
             get { return _familySelectedCommand ?? (_familySelectedCommand = new RelayCommand<DataCommon>(SaveSelectionAndNavigateToSummaryPage)); }
@@ -52,7 +51,12 @@
         }
     }
 \end{lstlisting} 
-\label{aircraftFamilySelectionViewModel}
-\end{figure}
+\label{aircraftFamilySelectionViewModelClass}
+
  
 \section{Evaluationsergebnisse} \label{anhangEva}
+Im Folgenden werden die kompletten Ergebnisse der Evaluation dargestellt. Die Fragebögen für die Experten (siehe \ref{evaluationBogenExpert}) und der Benutzer (siehe \ref{evaluationSheetUser)
+
+
+\includepdf[pages=1]{anhang/evaluationsbogenExperte.pdf}
+\includepdf[pages=1-2]{anhang/evaluationsbogenUser.pdf}
