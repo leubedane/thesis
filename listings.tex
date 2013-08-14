@@ -1,5 +1,4 @@
 
-
 \begin{figure}
 \begin{lstlisting}
 /// <summary>
@@ -23,7 +22,8 @@
             DataGroupElements = new ObservableCollection<DataCommon>
                 {new AircraftProgrammGroup(_model.GetAllAircraftProgramms())}; 
         }
-
+\end{lstlisting} 
+\begin{lstlisting}
         public ICommand SelectAircraftCommand
         {
             get { return _familySelectedCommand ?? (_familySelectedCommand = new RelayCommand<DataCommon>(SaveSelectionAndNavigateToSummaryPage)); }
