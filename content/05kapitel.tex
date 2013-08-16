@@ -79,22 +79,23 @@ Das Ergebnis für die Startseite (siehe \ref{startScreenImpl}) konnte vom Entwur
 \caption{Auszug der implementierten Startseite}
 \label{startScreenImpl}
 \end{figure}
-Bei der Auswahl des Flugzeugprogramms (siehe \ref{aircraftProgrammImpl}) wurde der Begriff Familie für die Auswahl verwendet, sowie passende Flugzeuge des jeweiligen Programms.
+Bei der Auswahl des Flugzeugprogramms (siehe \ref{aircraftProgrammImpl}), dass direkt nach dem Start einer neuen Konfiguration angezeigt wird, wurde der Begriff Familie statt Programm verwendet. Die Darstellung enthält ein zugehöriges Flugzeug  in der passenden Kachel.
 \begin{figure}[H]
 \centering
-\includegraphics[height=200px]{images/impl/select_aircraft_family_impl}
+\includegraphics[height=250px]{images/impl/select_aircraft_family_impl}
 \caption{Auszug der implementierten Flugzeugprogrammauswahl}
 \label{aircraftProgrammImpl}
 \end{figure}
 
 \subsection{Upgradeauswahl}
-In Abbildung \ref{upgradeTypeSelectionImpl} ist die Auswahl des Upgrade Typs zu sehen. Diese wurde mit der FlipView (vgl. \ref{flip}) umgesetzt. Auf der linken Seite ist der Expertenmodus zu sehen, indem direkt die entsprechenden Kategorien ausgewählt werden können. Die rechte Seite ist die Ansicht für den Kunden und die Voreinstellung beim Aufruf der Seite.
 \begin{figure}[H]
 \centering
 \includegraphics[width=\hsize]{images/impl/select_upgrade_type_impl}
 \caption{Auszug der implementierten Upgradetypauswahl}
 \label{upgradeTypeSelectionImpl}
 \end{figure}
+In Abbildung \ref{upgradeTypeSelectionImpl} ist die Auswahl des Upgrade Typs zu sehen. Diese wurde mit der FlipView (vgl. \ref{flip}) umgesetzt. Auf der linken Seite ist der Expertenmodus zu sehen, indem direkt die entsprechenden Kategorien ausgewählt werden können. Die rechte Seite ist die Ansicht für den Kunden und die Voreinstellung beim Aufruf der Seite.
+
 
 Bei der Auswahl der Upgrades, wie in Abbildung \ref{upgradeSelectionImpl} zu sehen, sind viele Informationen auf der Ansicht enthalten. Auf der rechten Seite können die einzelnen Unterkategorien ausgewählt werden. Die Details zu der Auswahl erscheinen auf dem rechten Bildschirmrand. Die einzelnen Upgrades werden auf das wesentliche Reduziert. Nach der erfolgten Auswahl wird die derzeitige Selektion auf der unteren AppBar angezeigt. Ein Abschluss der Auswahl, sowie die Navigation in die Zusammenfassungsseite erfolgt mit einem Button. \par 
 \begin{figure}[H]
@@ -105,7 +106,7 @@ Bei der Auswahl der Upgrades, wie in Abbildung \ref{upgradeSelectionImpl} zu seh
 \end{figure}
 
 \subsection{Flugzeugauswahl}
-Die Auswahl der Flugzeuge (siehe \ref{aircraftSelectionImpl}) ist mit den Kacheln im Grid umgesetzt worden. Zusätzlich ist durch eine ListBox am oberen Rand die Möglichkeit zur Auswahl der Kategorie (im Bild nach Flugzeugversion) vorhanden. Der Semantische Zoom ist bei dieser Ansicht möglich und hilft bei einer schnellen Auswahl.  
+Die Auswahl der Flugzeuge (siehe \ref{aircraftSelectionImpl}) ist mit den Kacheln im Grid umgesetzt worden. Für eine schnelle Auswahl von großen Datensätzen wurde der Semantische Zoom in dieser Ansicht verwendet. Damit dem Benutzer mehr Möglichkeiten gegeben werden, kann er die Gruppierung der Flugzeuge mit eine Auswahlliste selbst festlegen. Abbildung \ref{aircraftSelectionZoomImpl} zeigt den semantischen Zoom mit den verschiedenen Flugzeugtypen gruppiert.  In dieser Ansicht wird die Anzahl der Elemente in der Gruppe angezeigt. 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\hsize]{images/impl/select_aircrafts_impl}
@@ -115,7 +116,7 @@ Die Auswahl der Flugzeuge (siehe \ref{aircraftSelectionImpl}) ist mit den Kachel
 \begin{figure}[H]
 \centering
 \includegraphics[width=\hsize]{images/impl/semantic_zoom_impl}
-\caption{Auszug des Semantischen Zooms in der Flugzeugauswahl}
+\caption{Herausgezoomte Ansicht der Flugzeugauswahl}
 \label{aircraftSelectionZoomImpl}
 \end{figure}
 
