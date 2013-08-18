@@ -1,13 +1,14 @@
 \chapter{Entwurf der Benutzerschnittstelle}\label{chapter_4}
-Die Anforderungen der Anwendung für die Unterstützung des neuen Workflows wurden im vorigen Kapitel abgeleitet. Diese Kriterien werden im nächsten Schritt in einem Entwurf der Benutzerschnittstelle umgesetzt. Bevor die Schnittstelle entworfen werden kann, muss die geeignete Anwendungsform und eine darauf basierende Technologie ausgewählt werden. Anschließend folgt eine kurze Analyse der Zielplattform und deren Konzepte, damit diese beim Entwurf berücksichtigt werden können, bevor die einzelnen Ansichten entworfen werden.
+Die Anforderungen der Anwendung für die Unterstützung des neuen Workflows wurden im vorigen Kapitel spezifiziert. Diese Kriterien werden im nächsten Schritt in einem Entwurf der Benutzerschnittstelle umgesetzt. Bevor die Schnittstelle entworfen werden kann, muss die geeignete Anwendungsform und eine darauf basierende Technologie ausgewählt werden. Anschließend folgt eine kurze Analyse der Zielplattform und deren Konzepte, damit diese beim Entwurf berücksichtigt werden können.
 
 \section{Auswahl der Anwendungsplattform}
-Aufgrund der vielen Möglichkeiten bei der Entwicklung von mobilen Anwendungen muss die Art und Technologie der Anwendung richtig gewählt werden. Hierbei soll zuerst die passende Anwendungsform (Nativ, Web oder Hybrid siehe \ref{mobileAppsGrundlagen}) gewählt werden. Durch diese Vorauswahl, wird die Anzahl der möglichen Technologien begrenzt, was im folgenden Schritt die Auswahl vereinfacht.
+Aufgrund der vielen Möglichkeiten bei der Entwicklung von mobilen Anwendungen muss die Anwendungsart und Technologie richtig gewählt werden. Hierbei soll zuerst die passende Anwendungsform (Nativ, Web oder Hybrid siehe \ref{mobileAppsGrundlagen}) gewählt werden. Durch diese Vorauswahl, wird die Anzahl der möglichen Technologien begrenzt, was im folgenden Schritt die Auswahl vereinfacht.
 
 
 \subsection{Anwendungsform}
-Damit die richtige Anwendungsform der App ausgewählt werden kann, müssen die drei Möglichkeiten Nativ, Web und Hybrid auf ihre Eignung bei der Umsetzung der Anforderungen untersucht werden. Wichtig bei der Entscheidung ist die Festlegung der konkreten Kriterien. 
+Damit die richtige Anwendungsform der App ausgewählt werden kann, müssen die drei Möglichkeiten Nativ, Web und Hybrid auf ihre Eignung bei der Umsetzung der Anforderungen untersucht werden. Für eine Entscheidungsgrundlage werden konkrete Kriterien festgelegt. 
 Die Umsetzung der rein fachlichen Funktionen Produktauswahl und Konfiguration kann mit jeder Anwendungsform durchgeführt werden. Hier sind die Unterschiede für eine Auswahl nicht ausreichend. \par
+
 Bei den  Funktionalen Anforderungen sind die zwei Kriterien, die aufgrund der mobilen Zielumgebung wichtig sind für die Auswahl bedeutend. Diese sind das Speichern und Laden (F5), sowie die Filterung der Anwendungsdaten (F6). Für die Umsetzung dieser Funktionen ist eine Verwendung des Dateisystems auf der mobilen Zielumgebung notwendig. Hier muss eine Form der Speicherung, ob Datenbank oder einfaches Speichern in einer Datei möglich sein. Diese Voraussetzung ist für die Entscheidung der Anwendungsform essentiell. \par
 
 Das zweite Kriterium leitet sich von den Nicht-Funktionalen Anforderungen einer schnellen Bedienung (N2) ab. Damit die Anwendung schnell bedient werden kann, müssen die vorhandenen Hardwareressourcen optimal verwendet werden können. Dies ist notwendig, um bspw. das Laden von Bildern zu beschleunigen. Ebenfalls müssen Seitenübergänge ohne große Wartezeiten möglich sein, um die Anforderung erfüllen zu können. Die Anwendungsform muss für die Umsetzung Schnittstellen bereitstellen, die auf die vorhandene Hardware optimiert sind.
@@ -18,42 +19,42 @@ Im Folgenden werden die drei festgestellten Kriterien lokale Speicherung der Dat
 
 \paragraph{Native Anwendung: }Bei Nativen Anwendungen ist der komplette Funktionsumfang der mobilen Zielplattform verfügbar. Dies ermöglicht ein breites Anwendungsfeld für native Anwendungen.
 \begin{itemize}
-\item \textbf{Lokale Speicherung der Daten:} Die native Anwendungsform stellt Schnittstellen für den Zugriff auf eine lokale Datenbank oder ein lokales Dateisystem bereit. Diese können ohne Anpassungen verwendet werden. 
+\item \textbf{Lokale Speicherung der Daten:} Die native Anwendungsform stellt Schnittstellen für den Zugriff auf eine lokale Datenbank oder ein lokales Dateisystem bereit. Diese können ohne Anpassungen verwendet werden.
 
-\item \textbf{Hardwarenahe Schnittstellen:} Dadurch, dass die einzelnen Schnittstellen direkt vom Hersteller der jeweiligen Plattform kommen, sind Operationen für das System optimiert. Mit einer nativen Anwendung wird damit die beste Performanz erreicht. 
+\item \textbf{Hardwarenahe Schnittstellen:} Dadurch, dass die einzelnen Schnittstellen direkt vom Hersteller der jeweiligen Plattform bereitgestellt werden, sind die Operationen für das jeweilige System optimiert. Mit einer nativen Anwendung wird damit die beste Performanz erreicht. 
 
-\item \textbf{Betriebssystemspezfische Oberflächenelemente:} Native Anwendungen verwenden für die Benutzerschnittstelle die spezifische Oberflächenelemente. Die Steuerung mit Touch ist ebenfalls auf diese Anwendungsform optimiert. Dies ergibt eine vollständige Verwendungsmöglichkeit des bereitgestellten Frameworks.
+\item \textbf{Betriebssystemspezfische Oberflächenelemente:} Native Anwendungen verwenden für die Benutzerschnittstelle die nativen Oberflächenelemente. Weiterhin werden spezielle Elemente bereitgestellt, die für eine Verwendung mit Touchscreen optimiert sind. 
 \end{itemize}
 
-Auf die einzelnen Kriterien bezogen erfüllt die native Anwendung alle Anforderungen. Der volle Funktionsumfang des Systems ist gegeben, wodurch die App ideal für die gewählte Zielplattform geeignet ist.
+Auf die einzelnen Kriterien bezogen erfüllt die native Anwendung alle Anforderungen ohne Einschränkungen. Der volle Funktionsumfang des Systems ist gegeben, wodurch die App ideal an die gewählte Zielplattform angepasst werden kann.
 
 \paragraph{Web Anwendung: } Web Anwendungen werden im Browser ausgeführt. 
  Dies führt dazu, dass nur Funktionen verwendet werden können, die der jeweilige Browser auf der Zielplattform zur Verfügung stellt. 
  \begin{itemize}
- \item \textbf{Lokale Speicherung der Daten:} Ein Speichern und Laden der Daten vom Betriebssystem ist bei einer Web Anwendung nicht ohne weiteres möglich. Der Browser verbietet durch das Sandbox-Modell einen direkten Zugriff auf das System.  Ein Ansatz zur Lösung des Problems ist die Installation des Servers direkt auf dem Zielsystem, so dass dieser lokal zur Verfügung steht. Eine Erfüllung der Anforderungen ist damit möglich, jedoch mit erheblichem Mehraufwand. 
+ \item \textbf{Lokale Speicherung der Daten:} Ein Speichern und Laden der Daten vom Betriebssystem ist bei einer Web Anwendung nicht ohne weiteres möglich. Der Browser verbietet durch ein Sandbox-Modell einen direkten Zugriff auf das System.  Ein Ansatz zur Lösung des Problems ist die Installation des Servers direkt auf dem Zielsystem, so dass dieser lokal zur Verfügung steht. Eine Erfüllung der Anforderungen ist damit möglich, jedoch mit erheblichem Mehraufwand. 
  
  \item \textbf{Hardwarenahe Schnittstellen:} Die Kommunikation mit dem Betriebssystem erfolgt durch den Browser. Diese zusätzliche Zwischenschicht sorgt dafür, dass die Hardware nicht direkt verwendet wird, wie es bei einer nativen Anwendung der Fall ist. Der zusätzliche Overhead sorgt dafür, dass die Performance bei einer Web Anwendung nicht ideal im Vergleich zur nativen Lösung ist.
  
  \item \textbf{Betriebssystemspezfische Oberflächenelemente:} Die grundlegenden Oberflächenelemente sind HTML Elemente. Diese können mit Javascript und CSS einen passenden Stil für das jeweilige Betriebssystem erhalten. Die Verwendung von speziellen Touch Gesten ist mit Web Anwendungen aufgrund der Interoperabilität mit mehreren Betriebssystemen schwieriger. Hier sind ebenfalls nur begrenzte Interaktionen möglich.
  
  \end{itemize}
- Der Hauptvorteil der Web Anwendung die Verwendung, ohne komplette neue Implementierung auf mehreren Systemen ist aufgrund der Kriterien nicht relevant. Die wichtigen Eigenschaften der Anwendung Performanz und lokale Speicherung können mit dieser Anwendungsform gelöst werden, jedoch deutlich schlechter als bei der nativen Variante.
+ Der Hauptvorteil der Web Anwendung die Verwendung, ohne komplette neue Implementierung auf mehreren Systemen ist aufgrund der Kriterien nicht relevant. Die wichtigen Eigenschaften der Anwendung Performanz und lokale Speicherung können mit dieser Anwendungsform gelöst werden, jedoch mit einem deutlichen Mehraufwand und Einbußen bei der Performanz.
 
 
 \paragraph{Hybride Anwendung: }Durch die Verwendung der lokalen Schnittstellen im nativen Anwendungscontainer (siehe \ref{hybridApplication}) können die vorhanden Ressourcen wie bei einer Nativen Anwendung verwendet werden. Dies führt zu einigen Verbesserungen gegenüber einer reinen Web Anwendung.
 
 \begin{itemize}
- \item \textbf{Lokale Speicherung der Daten:} Für die Umsetzung dieser Anforderung muss eine geeignete Schnittstelle im Anwendungscontainer zur Verfügung gestellt werden. Hierdurch wird eine problemlose Verwendung des Dateisystems möglich. Das Kriterium kann ohne Einschränkungen erfüllt werden. 
+ \item \textbf{Lokale Speicherung der Daten:} Für die Umsetzung dieser Anforderung muss eine geeignete Schnittstelle im Anwendungscontainer zur Verfügung gestellt werden. Hierdurch wird eine Verwendung des Dateisystems möglich. Das Kriterium kann ohne Einschränkungen erfüllt werden. 
  
  \item \textbf{Hardwarenahe Schnittstellen:} Durch den Anwendungscontainer wird, wie bei einer Webanwendung der Browser, eine Zwischenschicht nötig. Damit wird ein zusätzlicher Kommunikationsaufwand benötigt. Dieser zusätzliche Aufwand verringert die Performanz der Anwendung.
  
- \item \textbf{Betriebssystemspezfische Oberflächenelemente:} Die Oberflächenelemente des Betriebssystems lassen sich im Container bereitstellen. Somit können die nativen Elemente in der Hybriden Anwendung verwendet werden. Die Verwendung der Touch Bedienung wird durch dieses Konzept ermöglicht.
+ \item \textbf{Betriebssystemspezfische Oberflächenelemente:} Die Oberflächenelemente des Betriebssystems lassen sich im Container bereitstellen. Somit können die nativen Elemente in der Hybriden Anwendung verwendet werden. Die Verwendung der Touch Bedienelemente eine Plattform wird durch dieses Konzept ermöglicht.
  \end{itemize}
  Die Probleme, die bei der Verwendung einer Web Anwendung auftreten können durch den hybriden Ansatz gelöst werden. Ein Problem was weiterhin besteht, ist die Performanz. Diese wird mit der hybriden Anwendungsform besser, kommt jedoch nicht an die Leistung einer nativen Anwendung heran.
 
 \paragraph{Abwägung: }
 
-Nachdem alle Anwendungsformen auf die Erfüllung der aufgestellten Kriterien untersucht sind, kann eine Gegenüberstellung der einzelnen Komponenten erfolgen. Die Tabelle \ref{decision} zeigt eine Bewertung der Kriterien. Hierbei wurden die einzelnen Punkte anhand einer Skala von 0 (kann nicht erfüllt werden) bis 5 (ohne Einschränkungen möglich) bewertet.  Die Implementierung als Web Anwendung scheidet klar aus. Die Anforderungen können zwar umgesetzt werden, jedoch ist ein erheblicher Mehraufwand für die Erreichung nötig. Ebenfalls hat die Anwendung im Vorhinein bereits Einschränkungen bzgl. der Performanz, sowie der Bereitstellung von Oberflächenelementen. Die Vorteile einer Implementierung für mehrere Zielsysteme ist bei der Umsetzung kein Kriterium. \par
+Nachdem alle Anwendungsformen auf die Erfüllung der aufgestellten Kriterien untersucht sind, kann eine Gegenüberstellung der einzelnen Komponenten erfolgen. Die Tabelle \ref{decision} zeigt eine Bewertung der Kriterien. Hierbei wurden die einzelnen Punkte anhand einer Skala von 0 (kann nicht erfüllt werden) bis 5 (ohne Einschränkungen möglich) bewertet.  Die Implementierung als Web Anwendung scheidet klar aus. Die Anforderungen können zwar umgesetzt werden, jedoch ist ein erheblicher Mehraufwand bei der Implementierung notwendig. Ebenfalls hat die Anwendung im Vorhinein bereits Einschränkungen bzgl. der Performanz, sowie der Bereitstellung von Oberflächenelementen. Die Vorteile einer Verfügbarkeit der Anwendung für mehrere Zielsysteme mit einer Implementierung ist bei der Umsetzung kein Kriterium. \par
 \begin{table}
 \begin{tabular}{| p{5.4cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |}
 \toprule[2pt] \rowcolor{dunkelgrau}
@@ -75,7 +76,7 @@ Nachdem alle Anwendungsformen auf die Erfüllung der aufgestellten Kriterien unt
 \label{decision}
 \end{table}
 \par 
-Schwieriger ist die Entscheidung zwischen hybrid und nativ. Die beiden Kriterien lokale Speicherung der Daten und betriebssystemspezifsche Oberflächenelemente sind mit beiden Ansätzen ohne größere Einschränkungen möglich. Beim hybriden Ansatz ist ein geringer Mehraufwand bei der Implementierung nötig. Dies ist jedoch nicht relevant für die Entscheidung. Der wichtigste Grund für die Entscheidung für eine nativen Anwendung ist die Performanz bei der Bedienung. Nur durch die Verwendung von nativen Anwendungen können aufwändige Animationen oder das Rendern von vielen Bildern flüssig ablaufen. Eine hybride Lösung besitzt hier Einschränkungen, da die Hardware mit einer Zwischenschicht verwendet wird.
+Schwieriger ist die Entscheidung zwischen dem hybriden und nativen Ansatz. Die beiden Kriterien lokale Speicherung der Daten und betriebssystemspezifsche Oberflächenelemente sind mit beiden Ansätzen ohne größere Einschränkungen möglich. Beim hybriden Ansatz ist ein geringer Mehraufwand bei der Implementierung nötig. Dies ist jedoch nicht relevant für die Entscheidung. Der wichtigste Grund für die Entscheidung für eine nativen Anwendung ist die Performanz bei der Bedienung. Nur durch die Verwendung von nativen Anwendungen können aufwändige Animationen oder das Rendern von vielen Bildern flüssig ablaufen. Eine hybride Lösung besitzt hier Einschränkungen, da die Hardware mit einer Zwischenschicht verwendet wird. Weiterhin können die Touch Bedienelemente der Zielplattform bei einer nativen Anwendung besser verwendet werden, da keine Kompromisse notwendig sind.
 
 \subsection{Anwendungstechnologie}
 Mit der Entscheidung für eine mobile Anwendungsform kommen drei mögliche Technologien für die Implementierung in Frage. Die Plattformen Android \footnote{http://www.android.com/}, iOS \footnote{http://www.apple.com/de/iphone/ios/} und Windows 8 \footnote{http://windows.microsoft.com/de-de/windows-8/} sind aufgrund ihrer Marktanteile (Android: 43,4\% iOS: 48,2\% Windows: 7,4\% Quelle: \cite{bib:marktanteilBS} ) die wichtigsten Technologien im Tablet Bereich. Die drei Plattformen haben unterschiedliche Ziele. Das iOS Betriebssystem hat den Vorteil einer hohen Verbreitung bei Business Anwendungen (siehe \cite[S.5]{bib:mobileMarketing2}). Android hat die meisten Nutzer bei Privatanwendungen (siehe \cite{bib:marktanteilMBS}). Bei Windows 8 ist der Vorteil eines neuen Konzeptes, was speziell für Tablet-PCs optimiert ist. Für die Umsetzung des Workflows kann jede dieser Technologien verwendet werden, da die Zielkriterien sich bei den unterschiedlichen Plattformen nicht unterscheiden (siehe Tabelle \ref{decisionTechnologie}). Ist die Implementierung mit einem Framework umgesetzt, stellt das Implementieren auf einer anderen Zielplattform keine Herausforderung dar. \par 
