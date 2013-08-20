@@ -1,24 +1,24 @@
 \chapter{Implementierung}\label{chapter_5}
- Die Implementierung hat das Ziel die Umsetzung der zuvor entworfenen Ansichten, sowie die Realisierung der Anwendung auf der Zielplattform. Im folgenden wird die Architektur und der Aufbau beschrieben. Anschließend werden die wichtigsten Entscheidungen, die bei der Implementierung getroffen wurden erklärt.
+ Die Implementierung hat das Ziel die Umsetzung der zuvor entworfenen Ansichten sowie die Realisierung der Anwendung auf der Zielplattform. Im Folgenden wird die Architektur und der Aufbau beschrieben. Anschließend werden die wichtigsten Entscheidungen, die bei der Implementierung getroffen wurden, erklärt.
 
 \section{Anwendungsarchitektur}
 Damit die Entwicklung der Anwendung beschleunigt werden kann, indem wiederverwendbare Muster in der Anwendung verwendet werden, wird zuerst eine geeignete Anwendungsarchitektur benötigt. Als erste Voraussetzung muss diese von der Zielumgebung, bzw. von der Technologie unterstützt werden. \par 
 
-Aufgrund des Offline-Modus in der Anwendung, sowie die Verwendung des Konfigurationsservers müssen zwei unterschiedliche Formen der Datenanbindung unterstützt werden. Dies hat zur Folge, dass ein einfacher Austausch der Datenanbindung in der Anwendung möglich sein muss, ohne eine Neuimplementierung der Schnittstellen. Die Anforderung an ein ästhetisches Design kann durch eine klare Trennung der Ansicht mit den Logikkomponenten erfüllt werden. Damit ist es möglich, die Gestaltung frei von der notwendigen Logik umzusetzen und sich auf die Gestaltung der Benutzerschnittstelle zu konzentrieren. Die Architektur muss ebenfalls für Erweiterungen offen sein, damit zusätzliche Anforderungen, die beim Einsatz der Anwendung entstehen, umgesetzt werden können.
+Aufgrund des Offline-Modus in der Anwendung sowie die Verwendung des Konfigurationsservers müssen zwei unterschiedliche Formen der Datenanbindung unterstützt werden. Dies hat zur Folge, dass ein einfacher Austausch der Datenanbindung in der Anwendung möglich sein muss, ohne eine Neuimplementierung der Schnittstellen. Die Anforderung an ein ästhetisches Design kann durch eine klare Trennung der Ansicht mit den Logikkomponenten erfüllt werden. Damit ist es möglich, die Gestaltung frei von der notwendigen Logik umzusetzen und sich auf die Gestaltung der Benutzerschnittstelle zu konzentrieren. Die Architektur muss ebenfalls für Erweiterungen offen sein, damit zusätzliche Anforderungen, die beim Einsatz der Anwendung entstehen, umgesetzt werden können.
 
-\subsection{MVVM}
-Eine Lösung für die oben genannten Anforderungen an die Architektur bietet das von Microsoft entwickelte Model-View-ViewModel (MVVM) Entwurfsmuster. Hier wird eine strikte Trennung zwischen der Ansicht (View), der Logik (ViewModel) und den Daten (Model) vorgenommen. \par 
+\subsection{Model-View-ViewModel}
+Eine Lösung für die oben genannten Anforderungen an die Architektur bietet das von Microsoft entwickelte Model-View-ViewModel (MVVM) Entwurfsmuster. Hier wird eine strikte Trennung zwischen der Ansicht (View), der Logik (ViewModel) und den Daten (Model) vorgenommen.\par 
 
 \begin{figure}
 \centering
 \includegraphics[height=100px]{images/mvvm}
-\caption{Komponenten im MVVM Entwurfsmuster}
+\caption{Komponenten und Kontrollfluss im MVVM Entwurfsmuster}
 \label{mvvm}
 \end{figure}
-Die Kommunikation der einzelnen Komponenten ist in Abbildung \ref{mvvm} dargestellt. Die unterste Ebene ist die Model-Schicht. Diese ist für das Bereitstellen und Persistieren der Daten zuständig. Es wird hierzu entweder eine Datenbank oder Webserviceschnittstelle verwendet. Wichtig bei dieser Schicht, wie in der Abbildung zu sehen, ist die unidirektionale Verbindung mit dem ViewModel. Damit ist eine Manipulation der Daten nur von einer Stelle aus möglich. Dies vereinfacht das Finden von Fehlern. \par
-Auf der anderen Seite ist die View. Diese Komponente ist für das Darstellen der Daten zuständig. Es werden alle Oberflächenelemente einer Benutzerschnittstelle auf dieser Ebene verwendet. Die Interaktionen des Benutzers werden auf dieser Anwendungsschicht durchgeführt. Die Auswertung der Eingaben folgt im "'Modell der Ansicht"' \cite[S.9]{bib:mvvm}, dem ViewModel. Diese Schicht ist der Vermittler zwischen den Daten und der Benutzerschnittstelle. Aus diesem Grund werden die Daten, die vom Model erhalten werden für die Ansicht aufbereitet. Die Verbindung zur View-Ebene ist dabei bidirektional, damit sowohl Benutzereingaben, als auch Veränderungen im ViewModel registriert werden.
-\par 
-Die Anforderung für einen einfachen Austausch der Datenquelle wird durch die Unabhängigkeit des Models erfüllt. Hierdurch können die Daten sowohl auf dem Gerät, als auch mit Webserviceschnittstellen geladen werden. Das MVVM Entwurfsmuster wird von der Technologie unterstützt und es sind bereits Codebeispiele vorhanden \cite{bib:winMvvm}. Mit der Trennung von View und ViewModel ist ein einfaches Erstellen von Benutzerschnittstellen möglich. Aufgrund der Unabhängigkeit beider Komponenten können diese auch separat entwickelt werden. Hierdurch wird es beispielsweise möglich, dass ein Designer und ein Programmierer unabhängig voneinander arbeiten können. 
+Die Kommunikation der einzelnen Komponenten ist in Abbildung \ref{mvvm} dargestellt. Die unterste Ebene ist die Model-Schicht. Diese ist für das Bereitstellen und Persistieren der Daten zuständig. Es wird hierzu entweder eine Datenbank oder Webserviceschnittstelle verwendet. Wichtig bei dieser Schicht, wie in der Abbildung zu sehen, ist der unidirektionale Kontrollfluss mit dem ViewModel. Damit ist eine Manipulation der Daten nur von einer Stelle aus möglich. Dies vereinfacht das Finden von Fehlern. \par
+Auf der anderen Seite ist die View. Diese Komponente ist für das Darstellen der Daten zuständig. Es werden alle Oberflächenelemente einer Benutzerschnittstelle auf dieser Ebene verwendet. Die Interaktionen des Benutzers werden auf dieser Anwendungsschicht durchgeführt. Die Auswertung der Eingaben folgt im "'Modell der Ansicht"' \cite[S.9]{bib:mvvm}, dem ViewModel. Diese Schicht ist der Vermittler zwischen den Daten und der Benutzerschnittstelle. Aus diesem Grund werden die Daten, die vom Model erhalten werden für die Ansicht aufbereitet. Die Verbindung zur View-Ebene ist dabei bidirektional, damit sowohl Benutzereingaben, als auch Veränderungen im ViewModel registriert werden. \par
+
+Die Anforderung für einen einfachen Austausch der Datenquelle wird durch die Unabhängigkeit des Models erfüllt. Hierdurch können die Daten sowohl auf dem Gerät, als auch mit Webserviceschnittstellen geladen werden. Das MVVM Entwurfsmuster wird von der Technologie unterstützt und es sind bereits Codebeispiele vorhanden \cite{bib:winMvvm}. Mit der Trennung von View und ViewModel ist ein einfaches Erstellen von Benutzerschnittstellen möglich. Aufgrund der Unabhängigkeit beider Komponenten können diese auch separat entwickelt werden. Hierdurch wird es beispielsweise möglich, dass ein Designer und ein Programmierer unabhängig voneinander arbeiten können. Diese Vorteile sind der Grund für die Entscheidung zur Verwendung des MVVM Design Patterns anstatt des gängigen Model-View-Controlers (MVC), bei dem die View vom Controller abhängig ist und ein unabhängiges Testen der beiden Schichten nicht möglich ist.
 
 \subsection{Anwenden des Entwurfsmusters}
 Bei der Implementierung der Anwendung mussten für die Anzeige der Daten immer wiederkehrende Eigenschaften der Datensätze verwendet werden. Ein Beispiel für eine solche Eigenschaft ist der Name oder die Beschreibung eines Flugzeuges oder Upgrades. Da beim MVVM Entwurfsmuster die View nicht auf das Model zugreift, kennt es diese Datenobjekte nicht. Aus diesem Grund muss das ViewModel diese Daten konvertieren und ein neues Objekt bereitstellen. 
@@ -39,7 +39,7 @@ Für die drei ViewModel Klassen existiert eine gemeinsame Model Klasse. Da die D
 
 
 \section{Navigation}
-Eine besondere Herausforderung bei der Implementierung ist die Navigation. Diese muss zuerst in das Entwurfsmuster eingeordnet werden. Es muss entschieden werden, in welcher Ebene navigiert wird. Der Wechsel der Ansichten ist eine Aufgabe der View. Diese bestimmt, wie zu einer neuen Seite navigiert wird. In dieser Ebene werden auch die konkreten Navigationsmethoden angeboten. Andererseits ist die Entscheidung darüber, wann ich in welche Ansicht übergehe eine Angelegenheit des ViewModels. Diese wertet die Auswahl eines Klicks aus und ist damit für dessen Bearbeitung zuständig. Weiterhin werden Objekte zwischen den beiden ViewModels ausgetauscht. Aus diesem Grund muss es eine Möglichkeit für den Austausch geben. \par 
+Eine besondere Herausforderung bei der Implementierung ist die Navigation. Diese muss zuerst in das Entwurfsmuster eingeordnet werden. Es muss entschieden werden, in welcher Ebene navigiert wird. Der Wechsel der Ansichten ist eine Aufgabe der View. Diese bestimmt, wie zu einer neuen Seite navigiert wird. In dieser Ebene werden auch die konkreten Navigationsmethoden angeboten. Andererseits ist die Entscheidung darüber, wann in welche Ansicht gewechselt wird eine Angelegenheit des ViewModels. Diese wertet die Auswahl eines Klicks aus und ist damit für dessen Bearbeitung zuständig. Weiterhin werden Objekte zwischen den beiden ViewModels ausgetauscht. Aus diesem Grund muss es eine Möglichkeit für den Austausch geben. \par 
 
 Die Lösung des Problems erfolgt mit dem Ansatz der Inversion of Control \cite{bib:ioc}. Bei diesem Prinzip geht es um die Auflösung von Abhängigkeiten. Anstatt ein Objekt direkt zu erzeugen, wird es von einer zentralen Stelle verwendet. Die Abhängigkeit wird damit von außerhalb des aktuellen Codes hinzugefügt. Dieser Ansatz hat besonders bei Softwaretests große Vorteile, da andere Objekte für Testzwecke verwendet werden können.  \par
 \begin{figure}[H]
@@ -94,10 +94,10 @@ Bei der Auswahl des Flugzeugprogramms (siehe \ref{aircraftProgrammImpl}), dass d
 \caption{Auszug der implementierten Upgradetypauswahl}
 \label{upgradeTypeSelectionImpl}
 \end{figure}
-In Abbildung \ref{upgradeTypeSelectionImpl} ist die Auswahl des Upgrade Typs zu sehen. Diese wurde mit der FlipView (vgl. \ref{flip}) umgesetzt. Auf der linken Seite ist der Expertenmodus zu sehen, indem direkt die entsprechenden Kategorien ausgewählt werden können. Die rechte Seite ist die Ansicht für den Kunden und die Voreinstellung beim Aufruf der Seite.
+In Abbildung \ref{upgradeTypeSelectionImpl} ist die Auswahl des Upgrade Typs zu sehen. Diese wurde mit der FlipView (vgl. \ref{flip}) umgesetzt. Beim Aufruf der Seite ist die Upgradetyp Auswahl (rechtes Bild) zu sehen.  Um in den Expertenmodus (linke Seite) zu kommen, wird eine Wisch-Geste nach von links nach rechts durchgeführt. Dieses "'flippen"' unterstützt den Experten bei einer schnelleren Navigation.
 
 
-Bei der Auswahl der Upgrades, wie in Abbildung \ref{upgradeSelectionImpl} zu sehen, sind viele Informationen auf der Ansicht enthalten. Auf der rechten Seite können die einzelnen Unterkategorien ausgewählt werden. Die Details zu der Auswahl erscheinen auf dem rechten Bildschirmrand. Die einzelnen Upgrades werden auf das wesentliche Reduziert. Nach der erfolgten Auswahl wird die derzeitige Selektion auf der unteren AppBar angezeigt. Ein Abschluss der Auswahl, sowie die Navigation in die Zusammenfassungsseite erfolgt mit einem Button. \par 
+Bei der Auswahl der Upgrades, wie in Abbildung \ref{upgradeSelectionImpl} zu sehen, sind viele Informationen auf der Ansicht enthalten. Auf der rechten Seite können die einzelnen Unterkategorien ausgewählt werden. Die Details zu der Auswahl erscheinen auf dem rechten Bildschirmrand. Die einzelnen Upgrades werden auf das Wesentliche reduziert. Nach der erfolgten Auswahl wird die derzeitige Selektion auf der unteren AppBar angezeigt. Ein Abschluss der Auswahl sowie die Navigation in die Zusammenfassungsseite erfolgt mit einem Button. \par 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\hsize]{images/impl/select_upgrade_impl}
@@ -106,7 +106,7 @@ Bei der Auswahl der Upgrades, wie in Abbildung \ref{upgradeSelectionImpl} zu seh
 \end{figure}
 
 \subsection{Flugzeugauswahl}
-Die Auswahl der Flugzeuge (siehe \ref{aircraftSelectionImpl}) ist mit den Kacheln im Grid umgesetzt worden. Für eine schnelle Auswahl von großen Datensätzen wurde der Semantische Zoom in dieser Ansicht verwendet. Damit dem Benutzer mehr Möglichkeiten gegeben werden, kann er die Gruppierung der Flugzeuge mit eine Auswahlliste selbst festlegen. Abbildung \ref{aircraftSelectionZoomImpl} zeigt den semantischen Zoom mit den verschiedenen Flugzeugtypen gruppiert.  In dieser Ansicht wird die Anzahl der Elemente in der Gruppe angezeigt. 
+Die Auswahl der Flugzeuge (siehe \ref{aircraftSelectionImpl}) ist mit den Kacheln im Grid umgesetzt worden. Für eine schnelle Auswahl von großen Datensätzen wurde der semantische Zoom in dieser Ansicht verwendet. Damit dem Benutzer mehr Möglichkeiten gegeben werden, kann er die Gruppierung der Flugzeuge mit eine Auswahlliste selbst festlegen. Abbildung \ref{aircraftSelectionZoomImpl} zeigt den semantischen Zoom mit den verschiedenen Flugzeugtypen gruppiert.  In dieser Ansicht wird die Anzahl der Elemente in der Gruppe angezeigt. 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\hsize]{images/impl/select_aircrafts_impl}
@@ -128,7 +128,7 @@ Eine Übersicht der Konfigurationsergebnisse wird in der Zusammenfassungsseite (
 \caption{Konfigurationsgruppen und Navigationsbar in der Zusammenfassung}
 \label{configurationResultImpl}
 \end{figure}
-Die Auswahl der Alternativen ist in Abbildung \ref{alternativeSelectionImpl} dargestellt. Hier werden zuerst die bestimmten Alternativen angezeigt,die ausgewählt werden können. Zusätzlich sind die zuvor ausgewählten Upgrades vorhanden, sowie die zur Konfigurationsgruppe gehörigen Flugzeuge. 
+Die Auswahl der Alternativen ist in Abbildung \ref{alternativeSelectionImpl} dargestellt. Hier werden zuerst die bestimmten Alternativen angezeigt,die ausgewählt werden können. Zusätzlich sind die zuvor ausgewählten Upgrades vorhanden sowie die zur Konfigurationsgruppe gehörigen Flugzeuge. 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\hsize]{images/impl/alternative_impl}

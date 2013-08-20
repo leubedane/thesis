@@ -53,7 +53,7 @@ Der neue Workflow muss die im vorigen Abschnitt erwähnten Probleme des Konfigur
 
 \subsection{Umstellung auf einen mobilen Konfigurationsprozess}\label{mobileConfiguration}
 Die Probleme mit der Verwendung von Produktnummern und die doppelte Erfassung der Daten lassen sich durch die Zusammenlegung von Auswahl und Konfigurationsprüfung mit einem System lösen. Diese Maßnahme ermöglicht es dem Kunden die gewünschte Auswahl zu tätigen und gleichzeitig ein Feedback der Konfiguration zu erhalten. Durch die bessere Rückmeldung verringert sich der Kommunikationsaufwand, da der Kunde im Idealfall sofort das Resultat sieht. \par 
- Für eine noch bessere Unterstützung, sowie Hilfestellung beim Aufkommen von Alternativen ist die Durchführung des Prozesses mit einem Mitarbeiter des Herstellers von Vorteil. Dieser kann den Kunden durch die Konfiguration führen oder dabei unterstützen. Gleichzeitig wird hier ein besseres Verständnis für das Produkt ermöglicht. Der Hersteller hat den Vorteil einer Beschleunigung des Prozesses von der Produktauswahl bis zur Angebotserstellung. Er kann durch die direkte Auswahl der Produkte, sowie ein sofortiges Prüfen und ggf. eine Selektion der Alternativen die Konfiguration abschließen und ein  Angebot erstellen. \par 
+ Für eine noch bessere Unterstützung sowie Hilfestellung beim Aufkommen von Alternativen ist die Durchführung des Prozesses mit einem Mitarbeiter des Herstellers von Vorteil. Dieser kann den Kunden durch die Konfiguration führen oder dabei unterstützen. Gleichzeitig wird hier ein besseres Verständnis für das Produkt ermöglicht. Der Hersteller hat den Vorteil einer Beschleunigung des Prozesses von der Produktauswahl bis zur Angebotserstellung. Er kann durch die direkte Auswahl der Produkte sowie ein sofortiges Prüfen und ggf. eine Selektion der Alternativen die Konfiguration abschließen und ein  Angebot erstellen. \par 
  
 Diese Umstellungen des Prozesses setzt die Verwendung eines mobilen Endgerätes, in diesem Fall eines Tablet-PCs voraus. Durch die Mobilität des Gerätes kann die Konfiguration direkt beim Kunden vor Ort durchgeführt werden. Die verbesserte Kommunikationsmöglichkeit mithilfe des Tablets sorgt für ein besseres Verständnis des Kunden und dessen Wünsche. 
 
@@ -66,7 +66,7 @@ Zusammenfassend sind folgende zwei Maßnahmen beim neuen Workflow durchzuführen
 \end{itemize}
 Die konkrete Umsetzung dieser beiden Änderungen wird im Folgenden am Anwendungsbeispiel durchgeführt. \par
 
-\subsection{Soll-Prozess ds Workflows im Anwendungsbeispiels}\label{workflowNew}
+\subsection{Soll-Prozess des Workflows im Anwendungsbeispiel}\label{workflowNew}
 Für die Umsetzung der aus Abschnitt \ref{mobileConfiguration} erstellten Maßnahmen müssen die beiden vorhandenen Systeme für die Auswahl und Konfiguration auf ein gemeinsames Gerät portiert werden. Das Konfigurationssystem muss hierfür vereinfacht werden, um den Zugang für den Kunden zu erleichtern. Die Herausforderung besteht hier in einer übersichtlichen Darstellung der Konfigurationsergebnisse. Diese müssen für den Kunden nachvollziehbar aufbereitet werden, weil er nicht die Produktkenntnisse des Experten besitzt. Da der Kunde die Auswahl der einzelnen Produkte "'live"' vornimmt, muss die Anwendung ein schnelleres Feedback erzeugen. Bei der vorherigen Lösung hat der Experte die komplette Zusammenstellung des Kunden erhalten und musste diese in das System übertragen. Beim neuen Workflow dagegen möchte der Kunde die Reihenfolge bei der Auswahl selbst bestimmen. Dies muss im neuen Anwendungsverlauf berücksichtigt werden. \par 
 \begin{figure}
 \centering
@@ -89,14 +89,14 @@ Nach der Umstellung des Konfigurationsprozesses müssen die Benutzer der Anwendu
 \label{newWorkflow}
 \end{figure}
 Betrachtet man die Zielgruppe im Workflow des Anwendungsbeispiels,  so stellt man fest, dass
-zuvor die Produktauswahl, sowie die Bestellung dem Kunden überlassen wurde. Die neue Tablet Anwendung vereint die einzelnen Prozessschritte, so dass am Ende eine direkte Bestellung folgen kann, die zu einem Angebot führt. Die Durchführung des Konfigurationsprozesses wird im Zusammenwirken von Kunde und Anbieter durchgeführt (siehe Vorgang \ref{newWorkflow}). Dies hat zur Folge, dass die App für zwei unterschiedliche Zielgruppen konzipiert werden muss.
+zuvor die Produktauswahl sowie die Bestellung dem Kunden überlassen wurde. Die neue Tablet Anwendung vereint die einzelnen Prozessschritte, so dass am Ende eine direkte Bestellung folgen kann, die zu einem Angebot führt. Die Durchführung des Konfigurationsprozesses wird im Zusammenwirken von Kunde und Anbieter durchgeführt (siehe Abbildung \ref{newWorkflow}). Dies hat zur Folge, dass die App für zwei unterschiedliche Zielgruppen konzipiert werden muss.
 
 
 \section{Anforderungsanalyse} \label{requirements}
-Nachdem der grundlegende Prozess auf die Bedürfnisse des Kunden, sowie an die mobile Umgebung angepasst ist, können daraus die Anforderungen der Anwendung für das Anwendungsbeispiel festgelegt werden. Bei der Festlegung wird zuerst die allgemeine Anforderung erläutert, sowie anschließend auf das Anwendungsbeispiel spezifiziert. Zur übersichtlichen Darstellung wird im Folgenden zwischen Funktionalen und Nicht-Funktionalen Anforderungen unterschieden. 
+Nachdem der grundlegende Prozess auf die Bedürfnisse des Kunden sowie an die mobile Umgebung angepasst ist, können daraus die Anforderungen der Anwendung für das Anwendungsbeispiel festgelegt werden. Bei der Festlegung wird zuerst die allgemeine Anforderung erläutert sowie anschließend auf das Anwendungsbeispiel spezifiziert. Zur übersichtlichen Darstellung wird im Folgenden zwischen Funktionalen und Nicht-Funktionalen Anforderungen unterschieden. 
 
 \subsection{Nicht-Funktionale Anforderungen}\label{non_functional_requirements}
-Die Nicht-Funktionalen Anforderungen betreffen alle Maßnahmen zur Vereinfachung, bzw. Unterstützung des Prozesses, sowie Anforderungen aufgrund des vorhandenen Systems. Diese speziellen Voraussetzungen sind für den Benutzer meistens nicht sichtbar und laufen im Hintergrund, bzw. unbewusst ab. Aus diesem Grund müssen hier auch spezielle Gütekriterien festgelegt werden, um am Ende eine Evaluation zu ermöglichen. Als Basis für diese Anforderungen werden die 10 Heuristiken für Benutzerschnittstellen von Nielsen \cite{bib:heuristicsNielsen} verwendet.
+Die Nicht-Funktionalen Anforderungen betreffen alle Maßnahmen zur Vereinfachung, bzw. Unterstützung des Prozesses sowie Anforderungen aufgrund des vorhandenen Systems. Diese speziellen Voraussetzungen sind für den Benutzer meistens nicht sichtbar und laufen im Hintergrund, bzw. unbewusst ab. Aus diesem Grund müssen hier auch spezielle Gütekriterien festgelegt werden, um am Ende eine Evaluation zu ermöglichen. Als Basis für diese Anforderungen werden die 10 Heuristiken für Benutzerschnittstellen von Nielsen \cite{bib:heuristicsNielsen} verwendet.
 Es lassen sich aus dem neuen Workflow folgende Anforderungen spezifizieren:
 
 
@@ -108,10 +108,10 @@ Es lassen sich aus dem neuen Workflow folgende Anforderungen spezifizieren:
 \end{itemize}
 Die Kriterien nach Nielsen sind Konsistenz, Erkennung vor Erinnerung und Sichtbarkeit des Systemstatus.
 
-\paragraph{Schnelle Bedienung:} Die zweite Zielgruppe der Anwendung ist der Experte. Für diesen muss es die Möglichkeit einer schnellen Bedienung der Anwendung geben, sodass er möglichst effizient die Konfiguration gestalten kann. Somit wird eine flexible Bedienung der Anwendung nötig. Für eine zusätzliche Steigerung der Effizienz muss die Navigation zwischen den einzelnen Seiten schnell sein. Dies bedeutet, dass beim Übergang von einer zur nächsten Seite der Benutzer nicht lange warten sollte. Ebenfalls muss es genügend Feedback geben, wenn ein Seitenwechsel länger dauern sollte. Hier werden die beiden Heuristiken Sichtbarkeit des aktuellen Status und Flexibilität, sowie Effizienz bei der Benutzung beachtet.
+\paragraph{Schnelle Bedienung:} Die zweite Zielgruppe der Anwendung ist der Experte. Für diesen muss es die Möglichkeit einer schnellen Bedienung der Anwendung geben, sodass er möglichst effizient die Konfiguration gestalten kann. Somit wird eine flexible Bedienung der Anwendung nötig. Für eine zusätzliche Steigerung der Effizienz muss die Navigation zwischen den einzelnen Seiten schnell sein. Dies bedeutet, dass beim Übergang von einer zur nächsten Seite der Benutzer nicht lange warten sollte. Ebenfalls muss es genügend Feedback geben, wenn ein Seitenwechsel länger dauern sollte. Hier werden die beiden Heuristiken Sichtbarkeit des aktuellen Status und Flexibilität sowie Effizienz bei der Benutzung beachtet.
 
 \paragraph{Optimierung auf die Umgebung: } Da ein mobiles Gerät nur begrenzte oder eingeschränkte Resourcen zur Verfügung hat, müssen die einzelnen Bedienelemente auf die Umgebung angepasst sein. Ebenfalls muss die Bedienung für eine Touch-Eingabe optimiert sein. 
-Für ein einheitliches Aussehen der Anwendung müssen die Richtlinien der jeweiligen Technologie beachtet werden. Diese Anforderung enthält die beiden Heuristiken ästhetisches und minimalistisches Design, sowie Standards und Konsistenz.
+Für ein einheitliches Aussehen der Anwendung müssen die Richtlinien der jeweiligen Technologie beachtet werden. Diese Anforderung enthält die beiden Heuristiken ästhetisches und minimalistisches Design sowie Standards und Konsistenz.
 
 Für eine bessere Übersicht der Nicht-Funktionalen Anforderungen sind diese in der Tabelle \ref{nonFunctionalRequ} dargestellt. Zu jeder Anforderung wird hier ein zusätzlicher Bezeichner definiert.
 
