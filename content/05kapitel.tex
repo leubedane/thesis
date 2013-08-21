@@ -9,7 +9,7 @@ Aufgrund des Offline-Modus in der Anwendung sowie der Verwendung des Konfigurati
 \subsection{Model-View-ViewModel}
 Eine Lösung für die oben genannten Anforderungen an die Architektur bietet das von Microsoft entwickelte Model-View-ViewModel (MVVM) Entwurfsmuster. Hier wird eine strikte Trennung zwischen der Ansicht (View), der Logik (ViewModel) und den Daten (Model) vorgenommen.\par 
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[height=100px]{images/mvvm}
 \caption{Komponenten und Kontrollfluss im MVVM Entwurfsmuster}
@@ -49,7 +49,7 @@ Die Lösung des Problems erfolgt mit dem Ansatz der Inversion of Control \cite{b
 \label{ioc}
 \end{figure}
 Die Umsetzung des Prinzips ist in Abbildung \ref{ioc} dargestellt. Damit eine Verwendung der einzelnen Klassen aus der View im ViewModel möglich ist, wird für jede Ansicht (Page) ein passendes Interface (IPage) definiert. Eine Navigation wird beim Windows 8 Framework mit der Frame Klasse durchgeführt. Dieses implementiert das INavigationService Interface, welches zwei Navigationsmethoden beinhaltet. Eine Methode kann mit einem Parameter für das neue ViewModel ausgeführt werden, die Andere ohne Parameter. Beim Start der App Klasse werden die einzelnen Pages und der Navigationsframe mit den definierten Interfaces im IOCContainer registriert. Der Container befindet auf der ViewModel  Ebene. Für eine Navigation werden die Zielpage und der Navigationsservice mit der GetInstance<T> Methode erhalten. Anschließend kann die passende Navigationsmethode entweder mit oder ohne Parameter ausgeführt werden. \par 
-\begin{figure}[H]
+\begin{figure}
 \begin{lstlisting}
 private void SaveSelectionAndNavigateToSummaryPage(DataCommon data)
 {
@@ -72,17 +72,20 @@ Mit diesem Ansatz gelingt es, die Darstellung und die Entscheidung, welche Ansic
 Die Entwürfe des vorigen Kapitels konnten detailreich bei der Implementierung abgebildet werden. Im Folgenden werden die wichtigsten implementierten Ansichten kurz vorgestellt.
 
 \subsection{Startseite und Flugzeugprogrammauswahl}
-Das Ergebnis für die Startseite (siehe \ref{startScreenImpl}) konnte vom Entwurf übernommen werden. Für die Anzeige des aktuellen Status der Konfiguration wurde eine Signalfarbe und ein passendes Icon hinzugefügt. Ebenfalls wurde der Text durch passende Icons ausgetauscht (vgl. \ref{startSketch}) 
-\begin{figure}[H]
+
+Das Ergebnis für die Startseite (siehe \ref{startScreenImpl}) konnte vom Entwurf übernommen werden. Für die Anzeige des aktuellen Status der Konfiguration wurde eine Signalfarbe und ein passendes Icon hinzugefügt. Ebenfalls wurde der Text durch passende Icons ausgetauscht (vgl. \ref{startSketch}). \par
+\begin{figure}
 \centering
 \includegraphics[width=\hsize]{images/impl/start_screen_impl}
 \caption{Auszug der implementierten Startseite}
 \label{startScreenImpl}
 \end{figure}
 Bei der Auswahl des Flugzeugprogramms (siehe \ref{aircraftProgrammImpl}), dass direkt nach dem Start einer neuen Konfiguration angezeigt wird, wurde der Begriff Familie statt Programm verwendet. Die Darstellung enthält ein zugehöriges Flugzeug  in der passenden Kachel.
+
+
 \begin{figure}[H]
 \centering
-\includegraphics[height=250px]{images/impl/select_aircraft_family_impl}
+\includegraphics[width=\hsize]{images/impl/select_aircraft_family_impl}
 \caption{Auszug der implementierten Flugzeugprogrammauswahl}
 \label{aircraftProgrammImpl}
 \end{figure}
@@ -109,27 +112,27 @@ Bei der Auswahl der Upgrades, wie in Abbildung \ref{upgradeSelectionImpl} zu seh
 Die Auswahl der Flugzeuge (siehe \ref{aircraftSelectionImpl}) ist mit den Kacheln im Grid umgesetzt worden. Für eine schnelle Auswahl von großen Datensätzen wurde der semantische Zoom in dieser Ansicht verwendet. Damit dem Benutzer mehr Möglichkeiten gegeben werden, kann er die Gruppierung der Flugzeuge mit eine Auswahlliste selbst festlegen. Abbildung \ref{aircraftSelectionZoomImpl} zeigt den semantischen Zoom mit den verschiedenen Flugzeugtypen gruppiert.  In dieser Ansicht wird die Anzahl der Elemente in der Gruppe angezeigt. 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\hsize]{images/impl/select_aircrafts_impl}
+\includegraphics[width=400px]{images/impl/select_aircrafts_impl}
 \caption{Auszug der implementierten Flugzeugauswahl}
 \label{aircraftSelectionImpl}
 \end{figure}
 \begin{figure}[H]
 \centering
-\includegraphics[width=\hsize]{images/impl/semantic_zoom_impl}
+\includegraphics[width=400px]{images/impl/semantic_zoom_impl}
 \caption{Herausgezoomte Ansicht der Flugzeugauswahl}
 \label{aircraftSelectionZoomImpl}
 \end{figure}
 
 \subsection{Konfigurationsansicht}
 Eine Übersicht der Konfigurationsergebnisse wird in der Zusammenfassungsseite (siehe \ref{configurationResultImpl}) gezeigt. Im Screenshot sind zwei Konfigurationsgruppen angezeigt, die beide komplett sind und somit auch bestellt werden können. Der Abschluss der Konfiguration erfolgt mit den Buttons in der unteren AppBar. Die obere Leiste zeigt die Navigationsmöglichkeiten, die in der kompletten Anwendung vorhanden sind. Auf der rechten Seite können die Hauptansichten ausgewählt werden und auf der linken Seite kann zur Startseite navigiert werden. \par 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=\hsize]{images/impl/app_bar_impl}
 \caption{Konfigurationsgruppen und Navigationsbar in der Zusammenfassung}
 \label{configurationResultImpl}
 \end{figure}
 Die Auswahl der Alternativen ist in Abbildung \ref{alternativeSelectionImpl} dargestellt. Hier werden zuerst die möglichen Alternativen angezeigt, die ausgewählt werden können. Zusätzlich sind die zuvor ausgewählten Upgrades vorhanden sowie die zur Konfigurationsgruppe gehörigen Flugzeuge. 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=\hsize]{images/impl/alternative_impl}
 \caption{Alternativenauswahl für die zweite Konfigurationsgruppe}
