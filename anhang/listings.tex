@@ -16,7 +16,6 @@ Im der Abbildung \ref{aircraftFamilySelectionViewModelClass} ist das vollständi
 
         public SelectAircraftFamilyViewModel()
         {
-            Headline = "select aircraft family";
             _model = new AircraftModel();
             InitializeDataSource();
         }
@@ -24,12 +23,9 @@ Im der Abbildung \ref{aircraftFamilySelectionViewModelClass} ist das vollständi
         private void InitializeDataSource()
         {
 
-            DataGroupElements = new ObservableCollection<IIdentable>
-                {
-                    new AircraftProgrammGroup(_model.GetAllAircraftProgramms())
-                }; 
+            DataGroupElements = new ObservableCollection<DataCommon>
+                {new AircraftProgrammGroup(_model.GetAllAircraftProgramms())}; 
         }
-
         public ICommand SelectAircraftCommand
         {
             get { return _familySelectedCommand ?? (_familySelectedCommand = new RelayCommand<DataCommon>(SaveSelectionAndNavigateToSummaryPage)); }
@@ -53,11 +49,7 @@ Im der Abbildung \ref{aircraftFamilySelectionViewModelClass} ist das vollständi
         {
             return _model.GetAllAircraftProgramms().FirstOrDefault(programm => programm.UniqueId.Equals(uniqueId));
         }
-
-        public override void Initialize(object parameter)
-        {
-            
-        }
+    }
 \end{lstlisting} 
 \label{aircraftFamilySelectionViewModelClass}
 
@@ -68,11 +60,23 @@ Die Fragebögen für die Experten und die Benutzer sind auf den folgenden beiden
 \includepdf[pages=1]{anhang/evaluationsbogenExperte.pdf}
 \includepdf[pages=1-2]{anhang/evaluationsbogenUser.pdf}
 
-\section{Zusätzliche Evaluationsergebnisse} \label{anhangEvaErg}
-Im Folgenden wird das Ergebnis des ersten Teils vom Benutzerfragebogen dargestellt. In Abbildung \ref{bewertungWebguiComplete} ist die vollständige Auswertung der Fragebögen für die Fragen zur vorhandenen Konfigurationslösung zu sehen. Da beide Anwendungen unterschiedliche Zielgruppen und Ziele verfolgen, wurde kein Vergleich durchgeführt. Die Fragen waren für die Darstellung der Unterschiede, sowie für das Durchführen der gemeinsamen Aktionen hilfreich. \par 
+\section{Evaluationsergebnisse} \label{anhangEvaErg}
+Im Folgenden werden die kompletten Ergebnisse der Evaluation dargestellt. In Abbildung \ref{bewertungWebguiComplete} ist die vollständige Auswertung der Fragebögen für die Fragen zur vorhandenen Konfigurationslösung. Das Ergebnis wurde zur Unterscheidung der beiden Lösungen verwendet. Die vollständigen Ergebnisse der Fragen mit dem Schwerpunkt für die Erfüllung der Nicht-Funktionalen Anforderungen ist im Diagramm \ref{tabletComplete} zu sehen. Das vollständige Ergebnis der Expertenbefragung zu den Heuristiken nach Nielsen ist in der Abbildung \ref{bewertungExpertComplete} dargestellt. \par 
 \begin{figure}[H]
 \centering
 \includegraphics{images/bewertung_webgui}
 \caption{Ergebnis der Fragen zur vorhandenen Konfigurationslösung}
 \label{bewertungWebguiComplete}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics{images/bewertung_tabletComplete}
+\caption{Vollständiges Ergebnis der Benutzerumfrage zu Usability Fragen}
+\label{bewertungTabletComplete}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics{images/bewertung_expert_complete}
+\caption{Vollständiges Ergebnis der Expertenbefragung}
+\label{bewertungExpertComplete}
 \end{figure}
